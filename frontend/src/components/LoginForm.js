@@ -23,7 +23,6 @@ function LoginFormPage() {
 		setErrors([]);
 		return dispatch(sessionActions.login({ email, password })).catch(
 			(res) => {
-				console.log(res);
 				if (res.errors) setErrors(res.errors);
 			}
 		);

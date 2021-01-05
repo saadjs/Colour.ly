@@ -14,13 +14,11 @@ function App() {
 	const [loaded, setLoaded] = useState(false);
 
 	const sessionUser = useSelector((state) => state.session.user);
-	// console.log(sessionUser);
 
 	useEffect(() => {
-		dispatch(sessionActions.restoreUser()).then(
-			(res) => console.log(res)
-			// setAuthenticated(true)
-		);
+		dispatch(sessionActions.restoreUser()).catch((res) => {
+			if (!res.errors) setAuthenticated(true);
+		});
 		setLoaded(true);
 	}, [authenticated, dispatch]);
 
