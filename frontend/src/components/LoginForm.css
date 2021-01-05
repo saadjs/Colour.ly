@@ -50,6 +50,13 @@ input:focus {
 	padding: 10px;
 	width: 80%;
 }
+.demo-button {
+	cursor: pointer;
+	margin: 1rem;
+	background-color: #a8dadc;
+	padding: 10px;
+	width: 80%;
+}
 
 .login-button:hover {
 	background-color: #e63946;
@@ -59,7 +66,7 @@ input:focus {
 .form-title {
 	text-align: center;
 	color: #457b9d;
-	font-size: 60px;
+	font-size: 3rem;
 	margin: 0;
 	padding: 0;
 	font-family: cursive;
@@ -68,23 +75,24 @@ input:focus {
 .form-subheading {
 	text-align: center;
 	font-weight: 400;
-	font-size: 30px;
+	font-size: 2rem;
 	margin: 0;
 	padding: 0;
-	padding-bottom: 20px;
+	padding-bottom: 1rem;
 	color: #e63946;
 }
 
-.cta-p {
-	font-size: 12px;
-	margin-top: 20px;
+.p-signup-link {
+	font-size: 1rem;
+	margin-top: 1rem;
 	font-weight: 600;
 	font-family: "Open Sans", sans-serif;
 }
 
 .signup-link {
-	margin-top: 20px;
-	font-size: 12px;
+	text-decoration: none;
+	margin-top: 1rem;
+	font-size: 0.8rem;
 	font-weight: 600;
 	color: #457b9d;
 }
@@ -94,8 +102,8 @@ input:focus {
 	border: 1px solid #471517;
 	color: #471517;
 	font-size: 14px;
-	margin-bottom: 5px;
-	padding-left: 5px;
-	padding-right: 5px;
+	margin-bottom: 0.5rem;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
 	font-weight: 600;
 }

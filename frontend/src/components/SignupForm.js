@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, Redirect } from "react-router-dom";
 import * as sessionActions from "../store/session";
-import "./SignupForm.css";
 
 function SignupFormPage() {
 	// redux
@@ -36,57 +35,63 @@ function SignupFormPage() {
 	};
 
 	return (
-		<div className="signup-container">
-			<h1 id="signup-heading">Sign Up</h1>
-			<div className="signup-error-msg-holder">
-				<ul>
-					{errors.map((error, idx) => (
-						<li key={idx}>{error}</li>
-					))}
-				</ul>
-			</div>
-			<form id="signup-form" onSubmit={handleSubmit}>
-				<input
-					type="email"
-					value={email}
-					onChange={(e) => setEmail(e.target.value)}
-					placeholder="Email"
-					required
-				/>
-				<input
-					type="text"
-					value={username}
-					onChange={(e) => setUsername(e.target.value)}
-					placeholder="Username"
-					required
-				/>
-				<input
-					type="password"
-					autoComplete="on"
-					value={password}
-					onChange={(e) => setPassword(e.target.value)}
-					placeholder="Password"
-					required
-				/>
-				<input
-					type="password"
-					autoComplete="on"
-					value={confirmPassword}
-					onChange={(e) => setConfirmPassword(e.target.value)}
-					placeholder="Confirm password"
-					required
-				/>
-				<input
-					type="submit"
-					value="Create Account"
-					id="signup-form-submit"
-				/>
-				<NavLink to="/login" id="back-to-login">
-					Already have an account?
-				</NavLink>
+		<div className="LoginForm">
+			<form className="login-form" onSubmit={handleSubmit}>
+				{errors.map((error, idx) => (
+					<div key={idx} className="errors">
+						<p>{error}</p>
+					</div>
+				))}
+
+				<div className="input-wrapper">
+					<h1 className="form-title">Color.ly</h1>
+					<h3 className="form-subheading">Sign Up</h3>
+					<label>Email</label>
+					<input
+						type="email"
+						onChange={(e) => setEmail(e.target.value)}
+						required
+					/>
+				</div>
+				<div className="input-wrapper">
+					<label>Username</label>
+					<input
+						type="text"
+						onChange={(e) => setUsername(e.target.value)}
+						required
+					/>
+				</div>
+				<div className="input-wrapper">
+					<label>Password</label>
+					<input
+						type="password"
+						autoComplete="on"
+						value={password}
+						onChange={(e) => setPassword(e.target.value)}
+						required
+					/>
+				</div>
+				<div className="input-wrapper">
+					<label>Confirm Password</label>
+					<input
+						type="password"
+						autoComplete="on"
+						value={confirmPassword}
+						onChange={(e) => setConfirmPassword(e.target.value)}
+						required
+					/>
+				</div>
+				<button type="submit" className="login-button">
+					Sign Up
+				</button>
+				<p className="p-signup-link">
+					Have an account?{" "}
+					<NavLink to="/login" className="signup-link">
+						Sign in
+					</NavLink>
+				</p>
 			</form>
 		</div>
 	);
 }
-
 export default SignupFormPage;

@@ -28,6 +28,16 @@ function LoginFormPage() {
 		);
 	};
 
+	// Demo login handler
+	const handleDemoLogin = () => {
+		dispatch(
+			sessionActions.login({
+				email: "demo@aa.io",
+				password: "password",
+			})
+		);
+	};
+
 	return (
 		<div className="LoginForm">
 			<form className="login-form" onSubmit={handleSubmit}>
@@ -60,7 +70,10 @@ function LoginFormPage() {
 				<button type="submit" className="login-button">
 					Login
 				</button>
-				<p className="cta-p">
+				<button onClick={handleDemoLogin} className="demo-button">
+					Login as Demo
+				</button>
+				<p className="p-signup-link">
 					Need an account?{" "}
 					<NavLink to="/signup" className="signup-link">
 						Sign Up here
