@@ -47,7 +47,6 @@ export const signup = (user) => async (dispatch) => {
 		}),
 	});
 	const newUser = await response.json();
-	console.log(newUser);
 	return newUser;
 };
 
