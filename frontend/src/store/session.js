@@ -14,7 +14,8 @@ const removeUser = () => {
 	};
 };
 
-export const login = (email, password) => async (dispatch) => {
+export const login = (user) => async (dispatch) => {
+	const { email, password } = user;
 	const response = await fetch("/api/auth/login", {
 		method: "POST",
 		headers: {
@@ -25,10 +26,9 @@ export const login = (email, password) => async (dispatch) => {
 			password,
 		}),
 	});
-	const user = await response.json();
-	console.log(user);
-	dispatch(setUser(user));
-	return user;
+	const userData = await response.json();
+	dispatch(setUser(userData));
+	return userData;
 };
 
 const initialState = { user: null };
