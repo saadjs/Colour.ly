@@ -47,7 +47,20 @@ export const signup = (user) => async (dispatch) => {
 		}),
 	});
 	const newUser = await response.json();
+	dispatch(setUser(newUser));
 	return newUser;
+};
+
+// User logout
+export const logout = () => async (dispatch) => {
+	const response = await fetch("/api/auth/logout", {
+		headers: {
+			"Content-Type": "application/json",
+		},
+	});
+	const data = await response.json();
+	dispatch(removeUser());
+	return data;
 };
 
 const initialState = { user: null };
