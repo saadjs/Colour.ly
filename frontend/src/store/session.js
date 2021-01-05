@@ -1,6 +1,9 @@
 const SET_USER = "session/setUser";
 const REMOVE_USER = "session/removeUser";
 
+// Action Creators
+
+// Set user action creator
 const setUser = (user) => {
 	return {
 		type: SET_USER,
@@ -8,6 +11,7 @@ const setUser = (user) => {
 	};
 };
 
+// Remove user action creator
 const removeUser = () => {
 	return {
 		type: REMOVE_USER,
@@ -28,8 +32,12 @@ export const login = (user) => async (dispatch) => {
 		}),
 	});
 	const userData = await response.json();
-	dispatch(setUser(userData));
-	return userData;
+	if (!userData.errors) {
+		dispatch(setUser(userData));
+		return userData;
+	} else {
+		throw userData;
+	}
 };
 
 // User signup
@@ -47,8 +55,28 @@ export const signup = (user) => async (dispatch) => {
 		}),
 	});
 	const newUser = await response.json();
-	dispatch(setUser(newUser));
-	return newUser;
+	if (!newUser.errors) {
+		dispatch(setUser(newUser));
+		return newUser;
+	} else {
+		throw newUser;
+	}
+};
+
+// Restore user
+export const restoreUser = () => async (dispatch) => {
+	const response = await fetch("api/auth/", {
+		headers: {
+			"Content-Type": "application/json",
+		},
+	});
+	const userData = await response.json();
+	if (!userData.errors) {
+		dispatch(setUser(userData));
+		return userData;
+	} else {
+		throw userData;
+	}
 };
 
 // User logout

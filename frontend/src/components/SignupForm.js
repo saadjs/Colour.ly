@@ -27,7 +27,7 @@ function SignupFormPage() {
 			return dispatch(
 				sessionActions.signup({ email, username, password })
 			).catch((res) => {
-				if (res.data && res.data.errors) setErrors(res.data.errors);
+				if (res.errors) setErrors(res.errors);
 			});
 		}
 		return setErrors([

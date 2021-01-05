@@ -1,12 +1,33 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
 import { Route, Switch } from "react-router-dom";
 import LoginFormPage from "./components/LoginForm";
-import Navigation from "./components/Navigation";
 import SignupFormPage from "./components/SignupForm";
+import Navigation from "./components/Navigation";
+
+// Redux
+import { useDispatch, useSelector } from "react-redux";
 import * as sessionActions from "./store/session";
 
 function App() {
+	const dispatch = useDispatch();
+	const [authenticated, setAuthenticated] = useState(false);
+	const [loaded, setLoaded] = useState(false);
+
+	const sessionUser = useSelector((state) => state.session.user);
+	// console.log(sessionUser);
+
+	useEffect(() => {
+		dispatch(sessionActions.restoreUser()).then(
+			(res) => console.log(res)
+			// setAuthenticated(true)
+		);
+		setLoaded(true);
+	}, [authenticated, dispatch]);
+
+	if (!loaded) {
+		return null;
+	}
+
 	return (
 		<>
 			<Navigation />

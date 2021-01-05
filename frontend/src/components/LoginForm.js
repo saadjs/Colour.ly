@@ -14,7 +14,7 @@ function LoginFormPage() {
 	const [password, setPassword] = useState("");
 	const [errors, setErrors] = useState([]);
 
-	// if use had already logged in, redirect to /songs else redirect to login page
+	// if use had already logged in, redirect to home,
 	if (sessionUser) return <Redirect to="/" />;
 
 	// user login submit handler
@@ -23,7 +23,8 @@ function LoginFormPage() {
 		setErrors([]);
 		return dispatch(sessionActions.login({ email, password })).catch(
 			(res) => {
-				if (res.data && res.data.errors) setErrors(res.data.errors);
+				console.log(res);
+				if (res.errors) setErrors(res.errors);
 			}
 		);
 	};
@@ -62,11 +63,7 @@ function LoginFormPage() {
 					id="password-field"
 					placeholder="Password"
 				/>
-				<input
-					type="submit"
-					value="I DARE TO ENTER"
-					id="login-form-submit"
-				/>
+				<input type="submit" value="Login" id="login-form-submit" />
 				<input
 					id="login-form-submit-demo"
 					type="button"
