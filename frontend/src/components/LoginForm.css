@@ -1,43 +1,101 @@
-#main-holder {
-	min-height: 80vh;
-	min-width: 40vw;
+.LoginForm {
+	height: 100vh;
+	width: 100vw;
 	display: flex;
 	justify-content: center;
-	flex-direction: column;
 	align-items: center;
-	font-family: "Ubuntu", sans-serif;
+	align-self: center;
+	overflow: hidden;
 }
 
-#login-form {
-	padding: 5px 2px;
-	min-width: 20vw;
+.login-form {
+	border: none;
 	display: flex;
 	flex-direction: column;
-}
-
-#login-form input {
-	padding: 5px;
-	margin: 5px;
-	display: flex;
-}
-
-#main-holder h1 {
-	padding: 5px;
-	margin: 5px;
-}
-
-#sign-up-link {
-	margin: 5px;
-	font-size: 20px;
-}
-
-#login-form-submit,
-#login-form-submit-demo {
 	justify-content: center;
-	font-family: "Ubuntu", sans-serif;
-	font-size: 1em;
+	align-items: center;
+	height: 70%;
+	width: 30%;
+	box-shadow: 10px 5px 5px #457b9d;
 }
 
-#login-heading {
-	color: rgba(198, 46, 0, 0.8);
+input {
+	padding: 2px;
+	margin: 2px;
+	border-bottom: 1px solid black;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	font-weight: 600;
+}
+
+input:hover {
+	border-bottom: 2px solid #a8dadc;
+}
+
+input:focus {
+	outline: none;
+}
+
+.input-wrapper {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 15px;
+	width: 80%;
+}
+
+.login-button {
+	color: white;
+	background-color: black;
+	padding: 10px;
+	width: 80%;
+}
+
+.login-button:hover {
+	background-color: #e63946;
+	cursor: pointer;
+}
+
+.form-title {
+	text-align: center;
+	color: #457b9d;
+	font-size: 60px;
+	margin: 0;
+	padding: 0;
+	font-family: cursive;
+}
+
+.form-subheading {
+	text-align: center;
+	font-weight: 400;
+	font-size: 30px;
+	margin: 0;
+	padding: 0;
+	padding-bottom: 20px;
+	color: #e63946;
+}
+
+.cta-p {
+	font-size: 12px;
+	margin-top: 20px;
+	font-weight: 600;
+	font-family: "Open Sans", sans-serif;
+}
+
+.signup-link {
+	margin-top: 20px;
+	font-size: 12px;
+	font-weight: 600;
+	color: #457b9d;
+}
+
+.errors {
+	background-color: #dca7a6;
+	border: 1px solid #471517;
+	color: #471517;
+	font-size: 14px;
+	margin-bottom: 5px;
+	padding-left: 5px;
+	padding-right: 5px;
+	font-weight: 600;
 }

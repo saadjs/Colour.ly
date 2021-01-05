@@ -28,51 +28,45 @@ function LoginFormPage() {
 		);
 	};
 
-	// demo user login handler
-	const demoLoginHandler = (e) => {
-		dispatch(
-			sessionActions.login({
-				email: "demo@aa.io",
-				password: "password",
-			})
-		);
-	};
-
 	return (
-		<div id="main-holder">
-			<h1 id="login-heading">Login</h1>
-			<div id="login-error-msg-holder">
-				{errors.map((error, idx) => (
-					<p key={idx}>{error}</p>
-				))}
-			</div>
-			<form id="login-form" onSubmit={handleSubmit}>
-				<input
-					type="text"
-					onChange={(e) => setEmail(e.target.value)}
-					required
-					id="username-field"
-					placeholder="Email"
-				/>
-				<input
-					type="password"
-					autoComplete="on"
-					onChange={(e) => setPassword(e.target.value)}
-					required
-					id="password-field"
-					placeholder="Password"
-				/>
-				<input type="submit" value="Login" id="login-form-submit" />
-				<input
-					id="login-form-submit-demo"
-					type="button"
-					value="Login as Demo"
-					onClick={demoLoginHandler}
-				/>
+		<div className="LoginForm">
+			<form className="login-form" onSubmit={handleSubmit}>
+				{errors &&
+					errors.map((error, idx) => (
+						<div className="errors" key={idx}>
+							<p>{error}</p>
+						</div>
+					))}
+				<div className="input-wrapper">
+					<h1 className="form-title">Color.ly</h1>
+					<h3 className="form-subheading">Login</h3>
+					<label>Email</label>
+					<input
+						type="text"
+						onChange={(e) => setEmail(e.target.value)}
+						required
+					/>
+				</div>
+				<div className="input-wrapper">
+					<label>Password</label>
+					<input
+						type="password"
+						autoComplete="on"
+						onChange={(e) => setPassword(e.target.value)}
+						required
+						id="password-field"
+					/>
+				</div>
+				<button type="submit" className="login-button">
+					Login
+				</button>
+				<p className="cta-p">
+					Need an account?{" "}
+					<NavLink to="/signup" className="signup-link">
+						Sign Up here
+					</NavLink>
+				</p>
 			</form>
-			<NavLink id="sign-up-link" to="/signup">
-				Ohh.. That Didn't work? Claim an account...
-			</NavLink>
 		</div>
 	);
 }
