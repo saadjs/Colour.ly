@@ -16,6 +16,9 @@ function SignupFormPage() {
 	const [confirmPassword, setConfirmPassword] = useState("");
 	const [errors, setErrors] = useState([]);
 
+	// if user has logged in, redirect to Home
+	if (sessionUser) return <Redirect to="/" />;
+
 	// sign up button submit handler
 	const handleSubmit = (e) => {
 		e.preventDefault();

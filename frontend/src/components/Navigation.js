@@ -7,15 +7,15 @@ function Navigation() {
 	const sessionUser = useSelector((state) => state.session.user);
 
 	let sessionLinks;
-	if (sessionUser) {
-		sessionLinks = <ProfileButton user={sessionUser} />;
-	} else {
+	if (!sessionUser) {
 		sessionLinks = (
 			<>
 				<NavLink to="/login">Log In</NavLink>
 				<NavLink to="/signup">Sign Up</NavLink>
 			</>
 		);
+	} else {
+		sessionLinks = <ProfileButton user={sessionUser} />;
 	}
 
 	return (
@@ -24,7 +24,8 @@ function Navigation() {
 				<NavLink exact to="/">
 					Home
 				</NavLink>
-				{sessionUser && sessionLinks}
+				<h1>This is Home</h1>
+				{sessionLinks}
 			</li>
 		</ul>
 	);
