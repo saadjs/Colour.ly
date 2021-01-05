@@ -1,0 +1,30 @@
+.env
+
+# Flask App ignores
+__pycache__/
+*.py[cod]
+
+# REACT APP ignores
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.vscode/
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn.lock
+yarn-debug.log*
+yarn-error.log*
