@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Route, Switch } from "react-router-dom";
+
+// Global Styles: styled-component
+import GlobalStyle from "./components/GlobalStyle";
+
+// Components
 import LoginFormPage from "./components/LoginForm";
 import SignupFormPage from "./components/SignupForm";
 import Nav from "./components/Nav";
@@ -28,6 +33,7 @@ function App() {
 
 	return (
 		<>
+			<GlobalStyle />
 			<Nav />
 			<Switch>
 				<Route path="/login">
