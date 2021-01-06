@@ -1,26 +1,27 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { NavLink, Redirect } from "react-router-dom";
+//* redux stuff
+import { useDispatch } from "react-redux";
 import * as sessionActions from "../store/session";
+//? page transition stuff
 import { motion } from "framer-motion";
 import { signupContainer } from "./styles/Animation";
 
-function SignupFormPage() {
-	// redux
+function SignupFormPage({ sessionUser }) {
+	//* redux
 	const dispatch = useDispatch();
-	const sessionUser = useSelector((state) => state.session.user);
 
-	// all the states for user login and errors
+	//? all the states for user login and errors
 	const [email, setEmail] = useState("");
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
 	const [errors, setErrors] = useState([]);
 
-	// if user has logged in, redirect to Home
+	//! if user has logged in, redirect to Home
 	if (sessionUser) return <Redirect to="/" />;
 
-	// sign up button submit handler
+	//* sign up button submit handler
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		if (password === confirmPassword) {
@@ -42,6 +43,7 @@ function SignupFormPage() {
 			variants={signupContainer}
 			initial="hidden"
 			animate="show"
+			exit="exit"
 		>
 			<form className="login-form" onSubmit={handleSubmit}>
 				{errors.map((error, idx) => (

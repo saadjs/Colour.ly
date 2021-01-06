@@ -1,26 +1,26 @@
 import React, { useState } from "react";
+import { NavLink, Redirect } from "react-router-dom";
+//* redux stuff
 import * as sessionActions from "./../store/session";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, Redirect } from "react-router-dom";
+//? styles and page transitions
 import "./LoginForm.css";
-
 import { motion } from "framer-motion";
 import { loginContainer } from "./styles/Animation";
 
-function LoginFormPage() {
-	// redux dispatch
+function LoginFormPage({ sessionUser }) {
+	//* redux dispatch
 	const dispatch = useDispatch();
 
-	// session user
-	const sessionUser = useSelector((state) => state.session.user);
+	//* user input states
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [errors, setErrors] = useState([]);
 
-	// if use had already logged in, redirect to home,
+	//! if use had already logged in, redirect to home,
 	if (sessionUser) return <Redirect to="/" />;
 
-	// user login submit handler
+	//? user login submit handler
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		setErrors([]);
@@ -31,7 +31,7 @@ function LoginFormPage() {
 		);
 	};
 
-	// Demo login handler
+	//? Demo login handler
 	const handleDemoLogin = () => {
 		dispatch(
 			sessionActions.login({
@@ -47,6 +47,7 @@ function LoginFormPage() {
 			variants={loginContainer}
 			initial="hidden"
 			animate="show"
+			exit="exit"
 		>
 			<form className="login-form" onSubmit={handleSubmit}>
 				{errors &&

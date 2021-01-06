@@ -2,20 +2,22 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 // Redux stuff
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import * as sessionActions from "../store/session";
 
 // style stuff
 import styled from "styled-components";
-import { motion } from "framer-motion";
 
 function Nav({ sessionUser }) {
 	const dispatch = useDispatch();
+
+	//* handle logout button press
 	const handleLogout = (e) => {
 		e.preventDefault();
 		dispatch(sessionActions.logout());
 	};
 
+	//? generate links based on user logged in status
 	let sessionLinks;
 	if (!sessionUser) {
 		sessionLinks = (
@@ -48,6 +50,7 @@ function Nav({ sessionUser }) {
 	);
 }
 
+//* Styled Components
 const StyledNav = styled.nav`
 	min-height: 10vh;
 	display: flex;

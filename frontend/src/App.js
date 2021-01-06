@@ -1,24 +1,33 @@
 import React, { useEffect, useState } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, useLocation } from "react-router-dom";
 
-// Global Styles: styled-component
+//* Global Styles: styled-component
 import GlobalStyle from "./components/styles/GlobalStyle";
 
-// Components
+//* Components
 import LoginFormPage from "./components/LoginForm";
 import SignupFormPage from "./components/SignupForm";
 import Nav from "./components/Nav";
+import Home from "./components/Home";
 
-// Redux
+//* Redux
 import { useDispatch, useSelector } from "react-redux";
 import * as sessionActions from "./store/session";
 
+//* Page Transitions
+import { AnimatePresence } from "framer-motion";
+
 function App() {
 	const dispatch = useDispatch();
+
+	//? Different States
 	const [authenticated, setAuthenticated] = useState(false);
 	const [loaded, setLoaded] = useState(false);
-
+	//* Get current user
 	const sessionUser = useSelector((state) => state.session.user);
+	console.log("sessionUser: ", sessionUser);
+	//! need a current url/location for page transitions
+	const location = useLocation();
 
 	useEffect(() => {
 		dispatch(sessionActions.restoreUser()).catch((res) => {
@@ -27,6 +36,7 @@ function App() {
 		setLoaded(true);
 	}, [authenticated, dispatch]);
 
+	//! return null if the useEffect hasn't run
 	if (!loaded) {
 		return null;
 	}
@@ -35,14 +45,19 @@ function App() {
 		<>
 			<GlobalStyle />
 			<Nav sessionUser={sessionUser} />
-			<Switch>
-				<Route path="/login">
-					<LoginFormPage />
-				</Route>
-				<Route path="/signup">
-					<SignupFormPage />
-				</Route>
-			</Switch>
+			<AnimatePresence exitBeforeEnter>
+				<Switch location={location} key={location.pathname}>
+					<Route path="/login">
+						<LoginFormPage sessionUser={sessionUser} />
+					</Route>
+					<Route path="/signup">
+						<SignupFormPage sessionUser={sessionUser} />
+					</Route>
+					<Route exact path="/">
+						<Home />
+					</Route>
+				</Switch>
+			</AnimatePresence>
 		</>
 	);
 }
