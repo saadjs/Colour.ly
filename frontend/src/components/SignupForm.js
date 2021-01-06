@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, Redirect } from "react-router-dom";
 import * as sessionActions from "../store/session";
+import { motion } from "framer-motion";
+import { signupContainer } from "./styles/Animation";
 
 function SignupFormPage() {
 	// redux
@@ -35,7 +37,12 @@ function SignupFormPage() {
 	};
 
 	return (
-		<div className="LoginForm">
+		<motion.div
+			className="LoginForm"
+			variants={signupContainer}
+			initial="hidden"
+			animate="show"
+		>
 			<form className="login-form" onSubmit={handleSubmit}>
 				{errors.map((error, idx) => (
 					<div key={idx} className="errors">
@@ -91,7 +98,7 @@ function SignupFormPage() {
 					</NavLink>
 				</p>
 			</form>
-		</div>
+		</motion.div>
 	);
 }
 export default SignupFormPage;

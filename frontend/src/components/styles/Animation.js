@@ -20,3 +20,18 @@ export const pageAnimation = {
 		},
 	},
 };
+
+export const loginformAnim = {
+	hidden: { opacity: 0 },
+	show: { opacity: 1, transition: { duration: 1 } },
+};
+
+export const loginContainer = {
+	hidden: { x: 100 },
+	show: { x: 0 },
+};
+
+export const signupContainer = {
+	hidden: { x: -100 },
+	show: { x: 0 },
+};

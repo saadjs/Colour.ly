@@ -4,6 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink, Redirect } from "react-router-dom";
 import "./LoginForm.css";
 
+import { motion } from "framer-motion";
+import { loginContainer } from "./styles/Animation";
+
 function LoginFormPage() {
 	// redux dispatch
 	const dispatch = useDispatch();
@@ -39,7 +42,12 @@ function LoginFormPage() {
 	};
 
 	return (
-		<div className="LoginForm">
+		<motion.div
+			className="LoginForm"
+			variants={loginContainer}
+			initial="hidden"
+			animate="show"
+		>
 			<form className="login-form" onSubmit={handleSubmit}>
 				{errors &&
 					errors.map((error, idx) => (
@@ -80,7 +88,7 @@ function LoginFormPage() {
 					</NavLink>
 				</p>
 			</form>
-		</div>
+		</motion.div>
 	);
 }
 
