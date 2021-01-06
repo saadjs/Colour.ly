@@ -44,27 +44,27 @@ function SignupFormPage() {
 				))}
 
 				<div className="input-wrapper">
-					<h1 className="form-title">Color.ly</h1>
+					<h1 className="form-title">Colour.ly</h1>
 					<h3 className="form-subheading">Sign Up</h3>
-					<label>Email</label>
 					<input
 						type="email"
+						placeholder="Email"
 						onChange={(e) => setEmail(e.target.value)}
 						required
 					/>
 				</div>
 				<div className="input-wrapper">
-					<label>Username</label>
 					<input
 						type="text"
+						placeholder="Username"
 						onChange={(e) => setUsername(e.target.value)}
 						required
 					/>
 				</div>
 				<div className="input-wrapper">
-					<label>Password</label>
 					<input
 						type="password"
+						placeholder="Password"
 						autoComplete="on"
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}
@@ -72,9 +72,9 @@ function SignupFormPage() {
 					/>
 				</div>
 				<div className="input-wrapper">
-					<label>Confirm Password</label>
 					<input
 						type="password"
+						placeholder="Confirm Password"
 						autoComplete="on"
 						value={confirmPassword}
 						onChange={(e) => setConfirmPassword(e.target.value)}

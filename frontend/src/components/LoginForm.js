@@ -48,19 +48,19 @@ function LoginFormPage() {
 						</div>
 					))}
 				<div className="input-wrapper">
-					<h1 className="form-title">Color.ly</h1>
+					<h1 className="form-title">Colour.ly</h1>
 					<h3 className="form-subheading">Login</h3>
-					<label>Email</label>
 					<input
 						type="text"
+						placeholder="Email"
 						onChange={(e) => setEmail(e.target.value)}
 						required
 					/>
 				</div>
 				<div className="input-wrapper">
-					<label>Password</label>
 					<input
 						type="password"
+						placeholder="Password"
 						autoComplete="on"
 						onChange={(e) => setPassword(e.target.value)}
 						required

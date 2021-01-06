@@ -59,7 +59,6 @@ const StyledNav = styled.nav`
 	align-items: center;
 	padding: 1rem 10rem;
 	background-color: #1d3557;
-
 	a {
 		color: #f1faee;
 		text-decoration: none;
