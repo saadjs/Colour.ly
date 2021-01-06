@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Route, Switch } from "react-router-dom";
 import LoginFormPage from "./components/LoginForm";
 import SignupFormPage from "./components/SignupForm";
-import Navigation from "./components/Navigation";
+import Nav from "./components/Nav";
 
 // Redux
 import { useDispatch, useSelector } from "react-redux";
@@ -28,7 +28,7 @@ function App() {
 
 	return (
 		<>
-			<Navigation />
+			<Nav />
 			<Switch>
 				<Route path="/login">
 					<LoginFormPage />
