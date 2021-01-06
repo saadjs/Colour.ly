@@ -23,10 +23,11 @@ function App() {
 	//? Different States
 	const [authenticated, setAuthenticated] = useState(false);
 	const [loaded, setLoaded] = useState(false);
+
 	//* Get current user
 	const sessionUser = useSelector((state) => state.session.user);
-	console.log("sessionUser: ", sessionUser);
-	//! need a current url/location for page transitions
+
+	//? need a current url/location for page transitions
 	const location = useLocation();
 
 	useEffect(() => {
@@ -45,19 +46,19 @@ function App() {
 		<>
 			<GlobalStyle />
 			<Nav sessionUser={sessionUser} />
-			<AnimatePresence exitBeforeEnter>
-				<Switch location={location} key={location.pathname}>
-					<Route path="/login">
-						<LoginFormPage sessionUser={sessionUser} />
-					</Route>
-					<Route path="/signup">
-						<SignupFormPage sessionUser={sessionUser} />
-					</Route>
-					<Route exact path="/">
-						<Home />
-					</Route>
-				</Switch>
-			</AnimatePresence>
+			{/* <AnimatePresence exitBeforeEnter> */}
+			<Switch location={location} key={location.pathname}>
+				<Route path="/login">
+					<LoginFormPage sessionUser={sessionUser} />
+				</Route>
+				<Route path="/signup">
+					<SignupFormPage sessionUser={sessionUser} />
+				</Route>
+				<Route exact path="/">
+					<Home />
+				</Route>
+			</Switch>
+			{/* </AnimatePresence> */}
 		</>
 	);
 }
