@@ -15,8 +15,8 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	height: 70%;
-	width: 30%;
+	height: 80%;
+	width: 25%;
 	box-shadow: 10px 5px 5px #457b9d;
 }
 
@@ -107,4 +107,15 @@ input:focus {
 	padding-left: 0.5rem;
 	padding-right: 0.5rem;
 	font-weight: 600;
+}
+
+@media (max-width: 1300px) {
+	.LoginForm {
+		width: 90%;
+		height: 75vh;
+	}
+	.login-form {
+		height: 80%;
+		width: 50%;
+	}
 }

@@ -9,11 +9,8 @@ import * as sessionActions from "../store/session";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
-function Nav() {
+function Nav({ sessionUser }) {
 	const dispatch = useDispatch();
-
-	const sessionUser = useSelector((state) => state.session.user);
-
 	const handleLogout = (e) => {
 		e.preventDefault();
 		dispatch(sessionActions.logout());
@@ -59,6 +56,10 @@ const StyledNav = styled.nav`
 	align-items: center;
 	padding: 1rem 10rem;
 	background-color: #1d3557;
+	button {
+		padding: 3px;
+		color: #f1faee;
+	}
 	a {
 		color: #f1faee;
 		text-decoration: none;

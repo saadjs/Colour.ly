@@ -34,15 +34,12 @@ a:hover
 }
 
 button {
-    font-weight: bold;
-    font-size: 1.1rem;
     cursor: pointer;
-    padding: 1rem 2rem;
     background: transparent;
     transition: all 0.5s ease;
     &:hover{
         background-color: #fff3d0;
-        color: #000000;
+        color: #c10000;
     }
 }
 
@@ -63,14 +60,6 @@ span {
     font-weight: bold;
     color: #B65906;
 }
-
-p {
-    padding: 1rem 0rem;
-    color: #000000;
-    font-size: 1.4rem;
-    line-height: 150%;
-}
-
 `;
 
 export default GlobalStyle;

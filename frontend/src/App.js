@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Route, Switch } from "react-router-dom";
 
 // Global Styles: styled-component
-import GlobalStyle from "./components/GlobalStyle";
+import GlobalStyle from "./components/styles/GlobalStyle";
 
 // Components
 import LoginFormPage from "./components/LoginForm";
@@ -34,7 +34,7 @@ function App() {
 	return (
 		<>
 			<GlobalStyle />
-			<Nav />
+			<Nav sessionUser={sessionUser} />
 			<Switch>
 				<Route path="/login">
 					<LoginFormPage />
