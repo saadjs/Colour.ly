@@ -21,6 +21,8 @@ function ColorColumns({ paletteTitle, colors, paletteId }) {
 }
 
 const StyledContainerDiv = styled.div`
+	box-shadow: 10px 5px 5px #d0b64d;
+	padding: 10px;
 	:hover {
 		cursor: pointer;
 	}
@@ -35,7 +37,8 @@ const StyledInnerDiv = styled.div`
 
 const StyledH5 = styled.h5`
 	color: #000000;
-	padding-top: 0.5rem;
+	text-align: center;
+	padding: 0.5rem;
 	font-size: 1rem;
 `;
 

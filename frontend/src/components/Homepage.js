@@ -40,7 +40,12 @@ const Colors = styled.div`
 `;
 
 const ContainerDiv = styled.div`
-	width: 70%;
+	width: 100%;
+	padding: 0 2rem;
+	h1 {
+		text-align: center;
+		padding: 1rem;
+	}
 `;
 
 export default Homepage;
