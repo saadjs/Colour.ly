@@ -5,7 +5,7 @@ import { Redirect, useHistory } from "react-router-dom";
 import { ChromePicker } from "react-color";
 
 function NewPalette({ sessionUser, colorCombos }) {
-	const [pickedColor, setPickedColor] = useState("");
+	const [pickedColor, setPickedColor] = useState("#57AEB0");
 	const [pickedColorName, setPickedColorName] = useState("");
 	const [createdPalette, setCreatedPalette] = useState([]);
 	const [paletteTitle, setPaletteTitle] = useState("");
@@ -72,6 +72,7 @@ function NewPalette({ sessionUser, colorCombos }) {
 					<input
 						type="text"
 						placeholder="Colour Name"
+						required
 						value={pickedColorName}
 						onChange={(e) => setPickedColorName(e.target.value)}
 					/>
@@ -82,6 +83,7 @@ function NewPalette({ sessionUser, colorCombos }) {
 				<form onSubmit={handleSave}>
 					<input
 						type="text"
+						required
 						value={paletteTitle}
 						onChange={(e) => setPaletteTitle(e.target.value)}
 					/>
