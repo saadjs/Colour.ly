@@ -43,7 +43,7 @@ export const login = (user) => async (dispatch) => {
 // User signup
 export const signup = (user) => async (dispatch) => {
 	const { username, email, password } = user;
-	const response = await fetch("api/auth/signup", {
+	const response = await fetch("/api/auth/signup", {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
@@ -65,7 +65,7 @@ export const signup = (user) => async (dispatch) => {
 
 // Restore user
 export const restoreUser = () => async (dispatch) => {
-	const response = await fetch("api/auth/", {
+	const response = await fetch("/api/auth/", {
 		headers: {
 			"Content-Type": "application/json",
 		},
