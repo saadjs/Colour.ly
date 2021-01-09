@@ -9,7 +9,7 @@ import GlobalStyle from "./components/styles/GlobalStyle";
 import LoginFormPage from "./components/LoginForm";
 import SignupFormPage from "./components/SignupForm";
 import Nav from "./components/Nav";
-import Home from "./components/Home";
+import Homepage from "./components/Homepage";
 
 //* Redux
 import { useDispatch, useSelector } from "react-redux";
@@ -24,7 +24,7 @@ function App() {
 	//? Different States
 	const [authenticated, setAuthenticated] = useState(false);
 	const [loaded, setLoaded] = useState(false);
-	const [allColorDesigns, setAllColorDesigns] = useState([]);
+	const [colorCombos, setColorCombos] = useState([]);
 
 	//* Get current user
 	const sessionUser = useSelector((state) => state.session.user);
@@ -39,7 +39,7 @@ function App() {
 		(async () => {
 			const response = await axios.get("/api/palettes");
 			const data = response.data;
-			setAllColorDesigns(data);
+			setColorCombos(data);
 			console.log(data);
 			setLoaded(true);
 		})();
@@ -63,7 +63,7 @@ function App() {
 					<SignupFormPage sessionUser={sessionUser} />
 				</Route>
 				<Route exact path="/">
-					<Home />
+					<Homepage colorCombos={colorCombos} />
 				</Route>
 			</Switch>
 			{/* </AnimatePresence> */}

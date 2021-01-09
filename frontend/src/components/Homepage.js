@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { pageAnimation } from "./styles/Animation";
 
-function Home() {
+function Homepage({allColorCombos}) {
 	return (
 		<motion.div
 			variants={pageAnimation}
@@ -15,4 +15,4 @@ function Home() {
 	);
 }
 
-export default Home;
+export default Homepage;
