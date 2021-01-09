@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
 function Box({ name, background }) {
-	console.log(name, background);
 	const [copy, setCopy] = useState(false);
 
 	const handleCopy = () => {
@@ -21,8 +20,8 @@ function Box({ name, background }) {
 				/>
 				<CopiedText className={`copy ${copy && "overlay-show"}`}>
 					<h1>Copied!</h1>
-					<p className="wowThatsLight">{name}</p>
-					<p className="wowThatsLight">{background}</p>
+					<p>{name}</p>
+					<p>{background}</p>
 				</CopiedText>
 
 				<div>
@@ -39,32 +38,25 @@ function Box({ name, background }) {
 }
 
 const StyledDiv = styled.div`
-	width: 20%;
+	cursor: pointer;
 	height: 100%;
+	width: 20%;
 	display: inline-block;
 	position: relative;
-	cursor: pointer;
 	:hover .cpy-btn {
 		opacity: 1;
 		transition: 0.5s;
 	}
-	.wowThatsDark {
-		color: white;
-	}
-	.wowThatsLight {
-		color: black;
-	}
 	.show.overlay-show {
 		opacity: 1;
 		position: absolute;
-		transform: scale(50);
+		transform: scaleX(9);
 		z-index: 10;
 	}
 	.copy.overlay-show {
 		opacity: 1;
 		transform: scale(1);
-		z-index: 25;
-		transition: all 0.25s ease;
+		z-index: 10;
 		transition-delay: 0.3s;
 	}
 `;
@@ -75,7 +67,6 @@ const Overlay = styled.div`
 	opacity: 0;
 	z-index: 0;
 	transition: transform 0.75s ease-in-out;
-	transform: scale(0.1);
 `;
 
 const Content = styled.div`
@@ -85,26 +76,19 @@ const Content = styled.div`
 	bottom: 0;
 	padding: 10px;
 	color: black;
-	letter-spacing: 1px;
 	text-transform: uppercase;
-	font-size: 12px;
 `;
 
 const CopyButton = styled.button`
-	all: unset;
 	position: absolute;
-	display: inline-block;
-	width: 100px;
-	height: 30px;
+	width: 5rem;
+	height: 4rem;
 	top: 50%;
 	left: 50%;
 	margin-left: -50px;
 	margin-top: -15px;
 	text-align: center;
-	outline: none;
-	background: rgba(255, 255, 255, 0.3);
-	font-size: 1rem;
-	line-height: 30px;
+	background: rgba(69, 50, 50, 0.3);
 	color: white;
 	text-transform: uppercase;
 	opacity: 0;
@@ -125,19 +109,14 @@ const CopiedText = styled.div`
 	opacity: 0;
 	color: white;
 	h1 {
-		font-weight: 400px;
 		text-transform: uppercase;
-		text-shadow: 1px 2px black;
-		background: lightblue;
+		background: #0227f7;
 		width: 100%;
-		margin-bottom: 0;
-		padding: 1rem;
 		text-align: center;
 	}
 	p {
 		font-size: 2rem;
 		text-transform: uppercase;
-		font-weight: 100;
 	}
 `;
 
