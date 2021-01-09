@@ -25,7 +25,6 @@ def seed_palettes():
                                 {"name": "Storm Petrel", "color": "#8395a7"},
                                 {"name": "Imperial Primer", "color": "#222f3e"},
                          ],
-                     emoji='🇩🇪',
                      user_id=User.query.filter_by(username='monkey').first().id
                      )
     
@@ -50,7 +49,6 @@ def seed_palettes():
                                 { "name": "brown", "color": "#795548" },
                                 { "name": "grey", "color": "#9E9E9E" },
                                 { "name": "blue grey", "color": "#607D8B" }],
-                       emoji='🇨🇳',
                        user_id=User.query.filter_by(username='Demo').first().id
                        )
     
@@ -76,7 +74,6 @@ def seed_palettes():
                                 { "name": "Dark Sapphire", "color": "#0c2461" },
                                 { "name": "Forest Blues", "color": "#0a3d62" },
                                 { "name": "Reef Encounter", "color": "#079992" }],
-                       emoji='🇫🇷',
                         user_id=User.query.filter_by(username='Demo').first().id
                        )
     
@@ -102,7 +99,6 @@ def seed_palettes():
                                 { "name": "Sasquatch Socks", "color": "#FC427B" },
                                 { "name": "Pine Glade", "color": "#BDC581" },
                                 { "name": "Highlighter Lavender", "color": "#82589F" }],
-                       emoji='🇮🇳',
                        user_id=User.query.filter_by(username='saad').first().id
                        )
     
@@ -128,7 +124,6 @@ def seed_palettes():
                                 { "name": "Grey Porcelain", "color": "#84817a" },
                                 { "name": "Alameda Ochre", "color": "#cc8e35" },
                                 { "name": "Desert", "color": "#ccae62" }],
-                       emoji='🇪🇸',
                        user_id=User.query.filter_by(username='bob').first().id
                        )
     
@@ -154,7 +149,6 @@ def seed_palettes():
                                 { "name": "Chain Gang Grey", "color": "#718093" },
                                 { "name": "Pico Void", "color": "#192a56" },
                                 { "name": "Electro Magnetic", "color": "#2f3640" }],
-                       emoji='🇬🇧',
                        user_id=User.query.filter_by(username='cow').first().id
                        )
     
@@ -180,7 +174,6 @@ def seed_palettes():
                                 { "name": "Blurple", "color": "#4834d4" },
                                 { "name": "Deep Cove", "color": "#130f40" },
                                 { "name": "Wizard Grey", "color": "#535c68" }],
-                       emoji='🇦🇺',
                        user_id=User.query.filter_by(username='monkey').first().id
                            )
     
@@ -206,7 +199,6 @@ def seed_palettes():
                                 { "name": "Chi-Gong", "color": "#d63031" },
                                 { "name": "Prunus Avium", "color": "#e84393" },
                                 { "name": "Dracula Orchid", "color": "#2d3436" }],
-                       emoji='🇺🇸',
                        user_id=User.query.filter_by(username='Demo').first().id
                        )
     
@@ -233,7 +225,6 @@ def seed_palettes():
                                 { "name": "Circumorbital Ring", "color": "#5758BB" },
                                 { "name": "Magenta Purple", "color": "#6F1E51" }
                            ],
-                       emoji='🇳🇱',
                        user_id=User.query.filter_by(username='saad').first().id
                        )
     
@@ -260,7 +251,6 @@ def seed_palettes():
                                 {"name": "Porcelain Rose", "color": "#e66767"},
                                 {"name": "Biscay", "color": "#303952"},
                        ],
-                       emoji='🇷🇺',
                        user_id=User.query.filter_by(username='Demo').first().id
                        )
     
@@ -287,7 +277,6 @@ def seed_palettes():
                                 {"name": "Innuendo", "color": "#a5b1c2"},
                                 {"name": "Blue Horizon", "color": "#4b6584"},
                          ],
-                     emoji='🇩🇪',
                      user_id=User.query.filter_by(username='Demo').first().id
                      )
     
@@ -314,7 +303,6 @@ def seed_palettes():
                                 {"name": "Light Indigo", "color": "#7158e2"},
                                 {"name": "Baltic Sea", "color": "#3d3d3d"},
                          ],
-                     emoji='🇩🇪',
                      user_id=User.query.filter_by(username='saad').first().id
                      )
     
@@ -341,7 +329,6 @@ def seed_palettes():
                                 {"name": "London Square", "color": "#808e9b"},
                                 {"name": "Black Pearl", "color": "#1e272e"},
                          ],
-                     emoji='🇩🇪',
                      user_id=User.query.filter_by(username='bob').first().id
                      )
     
