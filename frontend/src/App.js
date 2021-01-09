@@ -10,6 +10,7 @@ import LoginFormPage from "./components/LoginForm";
 import SignupFormPage from "./components/SignupForm";
 import Nav from "./components/Nav";
 import Homepage from "./components/Homepage";
+import Palette from "./components/Palette";
 
 //* Redux
 import { useDispatch, useSelector } from "react-redux";
@@ -40,7 +41,6 @@ function App() {
 			const response = await axios.get("/api/palettes");
 			const data = response.data;
 			setColorCombos(data);
-			console.log(data);
 			setLoaded(true);
 		})();
 	}, [authenticated, dispatch]);
@@ -56,6 +56,9 @@ function App() {
 			<Nav sessionUser={sessionUser} />
 			{/* <AnimatePresence exitBeforeEnter> */}
 			<Switch location={location} key={location.pathname}>
+				<Route exact path="/palettes/:id">
+					<Palette />
+				</Route>
 				<Route path="/login">
 					<LoginFormPage sessionUser={sessionUser} />
 				</Route>
