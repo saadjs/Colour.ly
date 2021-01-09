@@ -34,6 +34,9 @@ function Nav({ sessionUser }) {
 		sessionLinks = (
 			<>
 				<li>
+					<NavLink to="/palettes/create">Create Palette</NavLink>
+				</li>
+				<li>
 					<button onClick={handleLogout}>Log out</button>
 				</li>
 			</>
@@ -60,7 +63,7 @@ const StyledNav = styled.nav`
 	padding: 1rem 10rem;
 	background-color: #1d3557;
 	button {
-		padding: 3px;
+		padding: 2px;
 		color: #f1faee;
 	}
 	a {

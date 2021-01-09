@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { NavLink, Redirect } from "react-router-dom";
 //* redux stuff
 import * as sessionActions from "./../store/session";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 //? styles and page transitions
 import "./LoginForm.css";
 import { motion } from "framer-motion";

@@ -9,8 +9,9 @@ import GlobalStyle from "./styles/GlobalStyle";
 import LoginFormPage from "./components/LoginForm";
 import SignupFormPage from "./components/SignupForm";
 import Nav from "./components/Nav";
-import Homepage from "./components/Homepage";
-import Palette from "./components/Palette";
+import Homepage from "./components/Home/Homepage";
+import Palette from "./components/Palette/Palette";
+import NewPalette from "./components/Palette/NewPalette";
 
 //* Redux
 import { useDispatch, useSelector } from "react-redux";
@@ -56,6 +57,9 @@ function App() {
 			<Nav sessionUser={sessionUser} />
 			{/* <AnimatePresence exitBeforeEnter> */}
 			<Switch location={location} key={location.pathname}>
+				<Route exact path="/palettes/create">
+					<NewPalette />
+				</Route>
 				<Route exact path="/palettes/:id">
 					<Palette />
 				</Route>
