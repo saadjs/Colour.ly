@@ -8,7 +8,10 @@ import styled from "styled-components";
 function NewPalette({ sessionUser, colorCombos, setGetNew }) {
 	const [pickedColor, setPickedColor] = useState("#57AEB0");
 	const [pickedColorName, setPickedColorName] = useState("");
-	const [createdPalette, setCreatedPalette] = useState([]);
+	const [createdPalette, setCreatedPalette] = useState([
+		{ color: "red", name: "red" },
+		{ color: "blue", name: "blue" },
+	]);
 	const [paletteTitle, setPaletteTitle] = useState("");
 
 	const history = useHistory();
@@ -133,26 +136,30 @@ function NewPalette({ sessionUser, colorCombos, setGetNew }) {
 					</form>
 				</div>
 			</ColorPickerDiv>
-			<div>
-				{createdPalette.map((color, idx) => (
-					<NewColor
-						key={idx}
-						color={color.color}
-						name={color.name}
-						deleteAddedColor={() => deleteAddedColor(color.name)}
-					/>
-				))}
-			</div>
+			<Main>
+				<div className="drawer-header">
+					{createdPalette.map((color, idx) => (
+						<NewColor
+							key={idx}
+							color={color.color}
+							name={color.name}
+							deleteAddedColor={() =>
+								deleteAddedColor(color.name)
+							}
+						/>
+					))}
+				</div>
+			</Main>
 		</div>
 	);
 }
 
 const ColorPickerDiv = styled.div`
 	position: absolute;
-	top: 6.5rem;
-	width: 25rem;
+	top: 7.1rem;
+	width: 400px;
 	left: 0;
-	bottom: 2.5rem;
+	bottom: 1rem;
 	box-shadow: 10px 10px 50px black;
 	display: flex;
 	flex-direction: column;
@@ -214,6 +221,16 @@ const AddToPaletteBtn = styled.button`
 	padding: 0.5rem;
 	font-size: 1.4rem;
 	background: pink;
+`;
+
+const Main = styled.div`
+	flex-grow: 1;
+	height: 90vh;
+	padding: 1rem;
+	margin-left: 400px;
+	.drawer-header {
+		height: 100%;
+	}
 `;
 
 export default NewPalette;

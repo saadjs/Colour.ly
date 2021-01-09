@@ -13,8 +13,8 @@ function NewColor({ color, name, deleteAddedColor }) {
 }
 
 const StyledDiv = styled.div`
-	height: 100px;
-	width: 200px;
+	height: 100%;
+	width: 20%;
 	margin: 0 auto;
 	display: inline-block;
 	position: relative;
