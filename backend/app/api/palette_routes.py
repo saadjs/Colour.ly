@@ -17,3 +17,15 @@ def one_palette(id):
     if not palette:
         abort(404, description='Resource not found')
     return jsonify(palette.to_dict())
+
+# * create a palette
+@palette_routes.route('', methods=["POST"])
+def add_palette():
+    title = request.json['title']
+    user_id = User.query.filter_by(username = request.json['createdBy']).first().id
+    colors = request.json['colors']
+    new_palette = Palette(title, colors, user_id)
+    db.session.add(new_palette)
+    db.session.commit()
+    
+    return new_palette.to_dict()
