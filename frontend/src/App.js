@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Route, Switch, useLocation } from "react-router-dom";
+import axios from "axios";
 
 //* Global Styles: styled-component
 import GlobalStyle from "./components/styles/GlobalStyle";
@@ -23,6 +24,7 @@ function App() {
 	//? Different States
 	const [authenticated, setAuthenticated] = useState(false);
 	const [loaded, setLoaded] = useState(false);
+	const [allColorDesigns, setAllColorDesigns] = useState([]);
 
 	//* Get current user
 	const sessionUser = useSelector((state) => state.session.user);
@@ -34,7 +36,13 @@ function App() {
 		dispatch(sessionActions.restoreUser()).catch((res) => {
 			if (!res.errors) setAuthenticated(true);
 		});
-		setLoaded(true);
+		(async () => {
+			const response = await axios.get("/api/palettes");
+			const data = response.data;
+			setAllColorDesigns(data);
+			console.log(data);
+			setLoaded(true);
+		})();
 	}, [authenticated, dispatch]);
 
 	//! return null if the useEffect hasn't run
