@@ -38,11 +38,12 @@ function Palette() {
 }
 
 const StyledDiv = styled.div`
-	height: 100vh;
-	display: flex;
-	flex-direction: column;
+	height: 80vh;
+	width: 80vw;
+	margin: auto;
+	padding: 1rem;
 	.color-box {
-		height: 90%;
+		height: 100%;
 	}
 `;
 

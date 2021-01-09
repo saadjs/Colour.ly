@@ -7,7 +7,7 @@ function Box({ name, background }) {
 
 	const handleCopy = () => {
 		setCopy(true);
-		setTimeout(() => setCopy(false), 1500);
+		setTimeout(() => setCopy(false), 1700);
 	};
 
 	return (
@@ -49,7 +49,7 @@ const StyledDiv = styled.div`
 	.show.overlay-show {
 		opacity: 1;
 		position: absolute;
-		transform: scaleX(9);
+		transform: scale(12);
 		z-index: 10;
 	}
 	.copy.overlay-show {
@@ -94,6 +94,7 @@ const CopyButton = styled.button`
 `;
 
 const CopiedText = styled.div`
+	opacity: 0;
 	position: fixed;
 	left: 0;
 	right: 0;
@@ -105,7 +106,6 @@ const CopiedText = styled.div`
 	flex-direction: column;
 	font-size: 4rem;
 	transform: scale(0.1);
-	opacity: 0;
 	color: white;
 	h1 {
 		text-transform: uppercase;
