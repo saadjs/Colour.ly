@@ -27,6 +27,7 @@ function App() {
 	const [authenticated, setAuthenticated] = useState(false);
 	const [loaded, setLoaded] = useState(false);
 	const [colorCombos, setColorCombos] = useState([]);
+	const [getNew, setGetNew] = useState(false);
 
 	//* Get current user
 	const sessionUser = useSelector((state) => state.session.user);
@@ -42,9 +43,10 @@ function App() {
 			const response = await axios.get("/api/palettes");
 			const data = response.data;
 			setColorCombos(data);
+			setGetNew(true);
 			setLoaded(true);
 		})();
-	}, [authenticated, dispatch]);
+	}, [authenticated, dispatch, getNew]);
 
 	//! return null if the useEffect hasn't run
 	if (!loaded) {
@@ -61,6 +63,7 @@ function App() {
 					<NewPalette
 						sessionUser={sessionUser}
 						colorCombos={colorCombos}
+						setGetNew={setGetNew}
 					/>
 				</Route>
 				<Route exact path="/palettes/:id">
