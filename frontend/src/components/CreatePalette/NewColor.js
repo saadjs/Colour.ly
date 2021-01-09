@@ -1,12 +1,21 @@
 import React from "react";
 import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
 function NewColor({ color, name, deleteAddedColor }) {
 	return (
 		<StyledDiv style={{ backgroundColor: color }}>
 			<Content>
 				<span>{name}</span>
-				<button onClick={deleteAddedColor}>Delete</button>
+				<FontAwesomeIcon
+					icon={faTrashAlt}
+					size="2x"
+					className="trash-icon"
+					onClick={deleteAddedColor}
+				>
+					<span>Delete</span>
+				</FontAwesomeIcon>
 			</Content>
 		</StyledDiv>
 	);
@@ -18,7 +27,6 @@ const StyledDiv = styled.div`
 	margin: 0 auto;
 	display: inline-block;
 	position: relative;
-	cursor: pointer;
 `;
 
 const Content = styled.div`
@@ -33,6 +41,13 @@ const Content = styled.div`
 	letter-spacing: 1px;
 	text-transform: uppercase;
 	font-size: 12px;
+	.trash-icon {
+		cursor: pointer;
+		:hover {
+			width: 40px;
+			height: 40px;
+		}
+	}
 `;
 
 export default NewColor;
