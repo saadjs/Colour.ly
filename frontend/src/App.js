@@ -3,7 +3,7 @@ import { Route, Switch, useLocation } from "react-router-dom";
 import axios from "axios";
 
 //* Global Styles: styled-component
-import GlobalStyle from "./components/styles/GlobalStyle";
+import GlobalStyle from "./styles/GlobalStyle";
 
 //* Components
 import LoginFormPage from "./components/LoginForm";

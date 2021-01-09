@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import * as sessionActions from "../store/session";
 //? page transition stuff
 import { motion } from "framer-motion";
-import { signupContainer } from "./styles/Animation";
+import { signupContainer } from "../styles/Animation";
 
 function SignupFormPage({ sessionUser }) {
 	//* redux

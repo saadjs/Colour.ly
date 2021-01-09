@@ -9,3 +9,11 @@ palette_routes = Blueprint('palettes', __name__)
 def palettes():
     palettes = Palette.query.all()
     return jsonify([palette.to_dict() for palette in palettes])
+
+# * get one palette
+@palette_routes.route('/<int:id>')
+def one_palette(id):
+    palette = Palette.query.get(id)
+    if not palette:
+        abort(404, description='Resource not found')
+    return jsonify(palette.to_dict())

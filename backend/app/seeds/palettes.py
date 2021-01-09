@@ -9,7 +9,6 @@ def seed_palettes():
                                 {"name": "Pastel Red", "color": "#ff6b6b"},
                                 {"name": "Megaman", "color": "#48dbfb"},
                                 {"name": "Wild Caribbean Green", "color": "#1dd1a1"},
-                                {"name": "Lián Hóng Lotus Pink", "color": "#f368e0"},
                                 
                          ],
                      user_id=User.query.filter_by(username='monkey').first().id
