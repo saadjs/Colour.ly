@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import CopyColor from "./CopyColor";
 import styled from "styled-components";
@@ -7,6 +7,8 @@ import styled from "styled-components";
 function Palette() {
 	const [loaded, setLoaded] = useState(false);
 	const [colorPalette, setColorPalette] = useState([]);
+	const [createdBy, setCreatedBy] = useState("");
+	const [creatorId, setCreatorId] = useState("");
 
 	const { id } = useParams();
 
@@ -14,6 +16,9 @@ function Palette() {
 		(async () => {
 			const response = await axios.get(`/api/palettes/${id}`);
 			const data = response.data;
+			console.log(data);
+			setCreatedBy(data.createdBy);
+			setCreatorId(data.userId);
 			setColorPalette(data);
 			setLoaded(true);
 		})();
@@ -33,6 +38,12 @@ function Palette() {
 	return (
 		<StyledDiv className="Palette">
 			<div className="color-box">{boxes}</div>
+			<div className="created-by">
+				<p>
+					Created By:{" "}
+					<Link to={`/users/${creatorId}`}>{createdBy}</Link>
+				</p>
+			</div>
 		</StyledDiv>
 	);
 }
@@ -44,6 +55,12 @@ const StyledDiv = styled.div`
 	padding: 1rem;
 	.color-box {
 		height: 100%;
+	}
+	.created-by {
+		padding: 1rem 0;
+		p {
+			font-size: 2rem;
+		}
 	}
 `;
 

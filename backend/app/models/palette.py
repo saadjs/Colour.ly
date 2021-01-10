@@ -22,6 +22,7 @@ class Palette(db.Model):
             "paletteId": self.id,
             "paletteTitle": self.title,
             "colors": self.colors,
-            "createdBy": self.user.username
+            "createdBy": self.user.username,
+            "userId": self.user.id
         }
         

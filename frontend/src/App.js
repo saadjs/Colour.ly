@@ -68,7 +68,7 @@ function App() {
 					/>
 				</Route>
 				<Route path="/users/:userId">
-					<User sessionUser={sessionUser} />
+					<User sessionUser={sessionUser} setGetNew={setGetNew} />
 				</Route>
 				<Route exact path="/palettes/:id">
 					<Palette />

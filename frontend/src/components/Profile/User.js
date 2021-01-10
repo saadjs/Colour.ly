@@ -6,7 +6,7 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt, faPaintBrush } from "@fortawesome/free-solid-svg-icons";
 
-function User({ sessionUser }) {
+function User({ sessionUser, setGetNew }) {
 	const [userPalettes, getUserPalettes] = useState([]);
 	const [pageReload, setPageReload] = useState(false);
 	const [user, setUser] = useState([]);
@@ -28,7 +28,8 @@ function User({ sessionUser }) {
 	if (!sessionUser) return <Redirect to="/login" />;
 
 	const handleDelete = async (id) => {
-		const response = await axios.delete(`/api/palettes/${id}`);
+		await axios.delete(`/api/palettes/${id}`);
+		setGetNew(false);
 		setPageReload(false);
 	};
 	const handleUpdate = (id) => {
