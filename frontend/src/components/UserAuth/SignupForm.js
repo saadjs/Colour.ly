@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { NavLink, Redirect } from "react-router-dom";
 //* redux stuff
 import { useDispatch } from "react-redux";
-import * as sessionActions from "../store/session";
+import * as sessionActions from "../../store/session";
 //? page transition stuff
 import { motion } from "framer-motion";
-import { signupContainer } from "../styles/Animation";
+import { signupContainer } from "../../styles/Animation";
 
 function SignupFormPage({ sessionUser }) {
 	//* redux

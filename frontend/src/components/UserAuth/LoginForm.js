@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { NavLink, Redirect } from "react-router-dom";
 //* redux stuff
-import * as sessionActions from "./../store/session";
+import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
 //? styles and page transitions
 import "./LoginForm.css";
 import { motion } from "framer-motion";
-import { loginContainer } from "../styles/Animation";
+import { loginContainer } from "../../styles/Animation";
 
 function LoginFormPage({ sessionUser }) {
 	//* redux dispatch

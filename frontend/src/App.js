@@ -6,9 +6,9 @@ import axios from "axios";
 import GlobalStyle from "./styles/GlobalStyle";
 
 //* Components
-import LoginFormPage from "./components/LoginForm";
-import SignupFormPage from "./components/SignupForm";
-import Nav from "./components/Nav";
+import LoginFormPage from "./components/UserAuth/LoginForm";
+import SignupFormPage from "./components/UserAuth/SignupForm";
+import Nav from "./components/Nav/Nav";
 import Homepage from "./components/Home/Homepage";
 import Palette from "./components/Palette/Palette";
 import NewPalette from "./components/CreatePalette/NewPalette";

@@ -1,25 +1,23 @@
 import React from "react";
-import { NavLink, Redirect, useHistory } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 // Redux stuff
 import { useDispatch } from "react-redux";
-import * as sessionActions from "../store/session";
+import * as sessionActions from "../../store/session";
 
 // style stuff
 import styled from "styled-components";
 
 function Nav({ sessionUser }) {
 	const dispatch = useDispatch();
-	const history = useHistory();
 
 	//* handle logout button press
 	const handleLogout = (e) => {
 		e.preventDefault();
 		dispatch(sessionActions.logout());
-		return <Redirect to="/login" />;
 	};
 
 	//? generate links based on user logged in status
@@ -46,8 +44,8 @@ function Nav({ sessionUser }) {
 						<FontAwesomeIcon icon={faUser} size="2x" />
 					</NavLink>
 				</li>
-				<li>
-					<button onClick={handleLogout}>Log out</button>
+				<li className="logout-li" onClick={handleLogout}>
+					Logout
 				</li>
 			</>
 		);
@@ -83,10 +81,21 @@ const StyledNav = styled.nav`
 	ul {
 		display: flex;
 		list-style: none;
+		flex-direction: row;
+		align-items: center;
+		.logout-li {
+			cursor: pointer;
+			color: #f1faee;
+			:hover {
+				color: red;
+				transform: scale(1.2);
+			}
+		}
 	}
 	li {
 		padding-left: 3rem;
 		position: relative;
+		text-align: center;
 	}
 	@media (max-width: 1300px) {
 		flex-direction: column;
