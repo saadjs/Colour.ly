@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Redirect, useHistory } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
@@ -13,11 +13,13 @@ import styled from "styled-components";
 
 function Nav({ sessionUser }) {
 	const dispatch = useDispatch();
+	const history = useHistory();
 
 	//* handle logout button press
 	const handleLogout = (e) => {
 		e.preventDefault();
 		dispatch(sessionActions.logout());
+		return <Redirect to="/login" />;
 	};
 
 	//? generate links based on user logged in status

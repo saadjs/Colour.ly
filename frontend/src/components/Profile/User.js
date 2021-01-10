@@ -12,22 +12,17 @@ function User({ sessionUser }) {
 		sessionUser &&
 			(async () => {
 				const response = await axios.get(`/api/users/${userId}`);
-				console.log(response);
 				const data = response.data;
+				const paletteData = data.palettes;
 				setUser(data.user);
-				getUserPalettes(data);
+				getUserPalettes(paletteData);
 			})();
 	}, [userId]);
 
-	if (!sessionUser) {
-		return <Redirect to="/login" />;
-	}
+	if (!sessionUser) return <Redirect to="/login" />;
 
 	return (
 		<ul>
-			<li>
-				<strong>User Id</strong> {user.id}
-			</li>
 			<li>
 				<strong>Username</strong> {user.username}
 			</li>
