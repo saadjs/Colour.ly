@@ -8,6 +8,7 @@ import { faTrashAlt, faPaintBrush } from "@fortawesome/free-solid-svg-icons";
 
 function User({ sessionUser }) {
 	const [userPalettes, getUserPalettes] = useState([]);
+	const [pageReload, setPageReload] = useState(false);
 	const [user, setUser] = useState([]);
 
 	const { userId } = useParams();
@@ -20,13 +21,15 @@ function User({ sessionUser }) {
 				const paletteData = data.palettes;
 				setUser(data.user);
 				getUserPalettes(paletteData);
+				setPageReload(true);
 			})();
-	}, [userId, sessionUser]);
+	}, [userId, sessionUser, pageReload]);
 
 	if (!sessionUser) return <Redirect to="/login" />;
 
 	const handleDelete = async (id) => {
 		const response = await axios.delete(`/api/palettes/${id}`);
+		setPageReload(false);
 	};
 	const handleUpdate = (id) => {
 		console.log("update", id);
