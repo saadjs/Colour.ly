@@ -6,7 +6,7 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 // Redux stuff
 import { useDispatch } from "react-redux";
-import * as sessionActions from "../store/session";
+import * as sessionActions from "../../store/session";
 
 // style stuff
 import styled from "styled-components";
