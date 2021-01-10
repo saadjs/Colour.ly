@@ -16,7 +16,9 @@ def users():
 @login_required
 def user(id):
     user = User.query.get(id)
-    palettes = Palette.query.filter(User.id == id)
-    return jsonify({'user': user.to_dict()},
-                   {'palettes': [palette.to_dict() for palette in palettes]}
-                   )
+    if not user:
+        return jsonify('no user found')
+    # palettes = Palette.query.join(User, Palette.user_id == User.id).filter(User.id == id)
+    palettes = Palette.query.filter(Palette.user_id == id)
+    return {'user': user.to_dict(),
+            'palettes': [palette.to_dict() for palette in palettes]}
