@@ -18,7 +18,6 @@ function Nav({ sessionUser }) {
 	const handleLogout = (e) => {
 		e.preventDefault();
 		dispatch(sessionActions.logout());
-		return <Redirect to="/login" />;
 	};
 
 	//? generate links based on user logged in status
