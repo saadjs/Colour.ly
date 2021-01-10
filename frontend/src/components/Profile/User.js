@@ -57,7 +57,7 @@ function User({ sessionUser, setGetNew }) {
 								className="clr-column-cls"
 							/>
 						</ColumnsContainerDiv>
-						{sessionUser.id == user.id ? (
+						{sessionUser.id === user.id ? (
 							<UpdateDeleteDiv>
 								<UpdateButton>
 									<FontAwesomeIcon
