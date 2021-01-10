@@ -130,8 +130,7 @@ const DeleteButton = styled.button`
 	flex-grow: 1;
 	:hover {
 		box-shadow: 10px 5px 5px #ff0000;
-		height: 40px;
-		width: 40px;
+		transform: scale(1.5);
 	}
 `;
 
@@ -140,6 +139,7 @@ const UpdateButton = styled.button`
 	border: none;
 	:hover {
 		box-shadow: 10px -5px 5px #00e5ff;
+		transform: scale(1.5);
 	}
 
 	flex-grow: 1;
