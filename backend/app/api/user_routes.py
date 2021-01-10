@@ -19,6 +19,6 @@ def user(id):
     if not user:
         return jsonify('no user found')
     # palettes = Palette.query.join(User, Palette.user_id == User.id).filter(User.id == id)
-    palettes = Palette.query.filter(Palette.user_id == id)
+    palettes = Palette.query.filter(Palette.user_id == id).order_by(Palette.id.desc())
     return {'user': user.to_dict(),
             'palettes': [palette.to_dict() for palette in palettes]}

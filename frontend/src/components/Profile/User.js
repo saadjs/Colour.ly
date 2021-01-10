@@ -4,7 +4,7 @@ import axios from "axios";
 import ColorColumns from "../Home/ColorColumns";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { faTrashAlt, faPaintBrush } from "@fortawesome/free-solid-svg-icons";
 
 function User({ sessionUser }) {
 	const [userPalettes, getUserPalettes] = useState([]);
@@ -27,6 +27,9 @@ function User({ sessionUser }) {
 
 	const handleDelete = async (id) => {
 		const response = await axios.delete(`/api/palettes/${id}`);
+	};
+	const handleUpdate = (id) => {
+		console.log("update", id);
 	};
 
 	return (
@@ -51,15 +54,26 @@ function User({ sessionUser }) {
 							/>
 						</ColumnsContainerDiv>
 						{sessionUser.id == user.id ? (
-							<DeleteButton>
-								<FontAwesomeIcon
-									icon={faTrashAlt}
-									size="2x"
-									onClick={() =>
-										handleDelete(palette.paletteId)
-									}
-								/>
-							</DeleteButton>
+							<UpdateDeleteDiv>
+								<UpdateButton>
+									<FontAwesomeIcon
+										icon={faPaintBrush}
+										size="2x"
+										onClick={() =>
+											handleUpdate(palette.paletteId)
+										}
+									/>
+								</UpdateButton>
+								<DeleteButton>
+									<FontAwesomeIcon
+										icon={faTrashAlt}
+										size="2x"
+										onClick={() =>
+											handleDelete(palette.paletteId)
+										}
+									/>
+								</DeleteButton>
+							</UpdateDeleteDiv>
 						) : (
 							""
 						)}
@@ -76,7 +90,7 @@ const MainContainer = styled.div`
 	padding: 0 2rem;
 	ul {
 		list-style-type: none;
-		box-shadow: 10px 5px 5px #e12200;
+		box-shadow: 10px 5px 5px #e88a79;
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
@@ -92,7 +106,6 @@ const MainContainer = styled.div`
 	}
 `;
 const ColumnsContainerDiv = styled.div`
-	/* border: 2px solid blue; */
 	flex-grow: 2;
 `;
 
@@ -101,9 +114,7 @@ const PaletteContainer = styled.div`
 	padding: 0 1rem;
 	display: grid;
 	width: 50%;
-	/* border: 4px solid black; */
 	.palette-delete-div {
-		border: 3px solid pink;
 		margin: 3px 0;
 		display: flex;
 		justify-content: center;
@@ -111,8 +122,30 @@ const PaletteContainer = styled.div`
 `;
 
 const DeleteButton = styled.button`
-	/* border: 2px solid red; */
-	/* margin-right: auto; */
+	outline: none;
+	border: none;
+	flex-grow: 1;
+	:hover {
+		box-shadow: 10px 5px 5px #ff0000;
+		height: 40px;
+		width: 40px;
+	}
+`;
+
+const UpdateButton = styled.button`
+	outline: none;
+	border: none;
+	:hover {
+		box-shadow: 10px -5px 5px #00e5ff;
+	}
+
+	flex-grow: 1;
+`;
+
+const UpdateDeleteDiv = styled.div`
+	display: flex;
+	padding: 1rem;
+	flex-direction: column;
 `;
 
 export default User;
