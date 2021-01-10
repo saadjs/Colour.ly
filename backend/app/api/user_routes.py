@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
-from app.models import User
+from app.models import User, Palette
 
 user_routes = Blueprint('users', __name__)
 
@@ -16,4 +16,7 @@ def users():
 @login_required
 def user(id):
     user = User.query.get(id)
-    return user.to_dict()
+    palettes = Palette.query.filter(User.id == id)
+    return jsonify({'user': user.to_dict()},
+                   {'palettes': [palette.to_dict() for palette in palettes]}
+                   )

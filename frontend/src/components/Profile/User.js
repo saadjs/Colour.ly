@@ -1,7 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { Redirect, useParams } from "react-router-dom";
+import { Redirect } from "react-router-dom";
+import axios from "axios";
 
 function User({ sessionUser }) {
+	const [userPalettes, getUserPalettes] = useState([]);
+	const userId = sessionUser.id;
+
+	useEffect(() => {
+		(async () => {
+			const response = await axios.get(`/users/${userId}`);
+			console.log(response);
+		})();
+	});
+
 	if (!sessionUser) {
 		return <Redirect to="/login" />;
 	}
