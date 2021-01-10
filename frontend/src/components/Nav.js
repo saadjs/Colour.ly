@@ -1,5 +1,8 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Redirect, useHistory } from "react-router-dom";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 // Redux stuff
 import { useDispatch } from "react-redux";
@@ -10,11 +13,13 @@ import styled from "styled-components";
 
 function Nav({ sessionUser }) {
 	const dispatch = useDispatch();
+	const history = useHistory();
 
 	//* handle logout button press
 	const handleLogout = (e) => {
 		e.preventDefault();
 		dispatch(sessionActions.logout());
+		return <Redirect to="/login" />;
 	};
 
 	//? generate links based on user logged in status
@@ -35,6 +40,11 @@ function Nav({ sessionUser }) {
 			<>
 				<li>
 					<NavLink to="/palettes/create">Create Palette</NavLink>
+				</li>
+				<li>
+					<NavLink to={`/users/${sessionUser.id}`}>
+						<FontAwesomeIcon icon={faUser} size="2x" />
+					</NavLink>
 				</li>
 				<li>
 					<button onClick={handleLogout}>Log out</button>

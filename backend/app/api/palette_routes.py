@@ -29,3 +29,12 @@ def add_palette():
     db.session.commit()
     
     return new_palette.to_dict()
+
+@palette_routes.route('/<int:id>', methods=['DELETE'])
+def delete_palette(id):
+    palette = Palette.query.get(id)
+    if not palette:
+        return jsonify('palette not found')
+    db.session.delete(palette)
+    db.session.commit()
+    return jsonify('palette deleted')

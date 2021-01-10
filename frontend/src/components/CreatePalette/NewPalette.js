@@ -127,7 +127,10 @@ function NewPalette({ sessionUser, colorCombos, setGetNew }) {
 							/>
 						</div>
 						<ButtonDiv>
-							<CreatePaletteBtn type="submit">
+							<CreatePaletteBtn
+								type="submit"
+								disabled={!isPaletteFull}
+							>
 								{isPaletteFull
 									? "Create Palette"
 									: "Please Pick 5 colours"}

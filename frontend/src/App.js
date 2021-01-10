@@ -12,6 +12,7 @@ import Nav from "./components/Nav";
 import Homepage from "./components/Home/Homepage";
 import Palette from "./components/Palette/Palette";
 import NewPalette from "./components/CreatePalette/NewPalette";
+import User from "./components/Profile/User";
 
 //* Redux
 import { useDispatch, useSelector } from "react-redux";
@@ -65,6 +66,9 @@ function App() {
 						colorCombos={colorCombos}
 						setGetNew={setGetNew}
 					/>
+				</Route>
+				<Route path="/users/:userId">
+					<User sessionUser={sessionUser} setGetNew={setGetNew} />
 				</Route>
 				<Route exact path="/palettes/:id">
 					<Palette />
