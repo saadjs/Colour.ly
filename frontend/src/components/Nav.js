@@ -1,5 +1,8 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 // Redux stuff
 import { useDispatch } from "react-redux";
@@ -35,6 +38,11 @@ function Nav({ sessionUser }) {
 			<>
 				<li>
 					<NavLink to="/palettes/create">Create Palette</NavLink>
+				</li>
+				<li>
+					<NavLink to={`/users/${sessionUser.id}`}>
+						<FontAwesomeIcon icon={faUser} size="2x" />
+					</NavLink>
 				</li>
 				<li>
 					<button onClick={handleLogout}>Log out</button>
