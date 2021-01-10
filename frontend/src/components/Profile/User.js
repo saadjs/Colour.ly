@@ -27,7 +27,6 @@ function User({ sessionUser }) {
 		<MainContainer>
 			<ul>
 				<li>
-					{/* <strong>Username:</strong>  */}
 					<span>{user.username}</span>
 				</li>
 				<li>
@@ -60,10 +59,8 @@ const MainContainer = styled.div`
 		align-items: flex-start;
 		padding: 1rem;
 		width: 50%;
-		/* margin: 0 12rem; */
 		margin: auto;
 		li {
-			/* padding: 0.5rem; */
 			font-family: cursive;
 		}
 		span {
