@@ -1,7 +1,8 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from werkzeug.exceptions import abort
-from app.models import db, Palette, User
+from app.models import db, Palette, User, Like
+from sqlalchemy import func
 
 palette_routes = Blueprint('palettes', __name__)
 
@@ -10,6 +11,12 @@ palette_routes = Blueprint('palettes', __name__)
 def palettes():
     palettes = Palette.query.order_by(Palette.id.desc()).limit(12)
     return jsonify([palette.to_dict() for palette in palettes])
+
+# * get palettes with most likes
+@palette_routes.route('/popular')
+def popular_palettes():
+    popular_palettes = Palette.query.join(Like).group_by(Palette.id).order_by(func.count().desc()).limit(12)
+    return jsonify([palette.to_dict() for palette in popular_palettes])
 
 # * get one palette
 @palette_routes.route('/<int:id>')

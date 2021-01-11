@@ -28,6 +28,7 @@ function App() {
 	const [authenticated, setAuthenticated] = useState(false);
 	const [loaded, setLoaded] = useState(false);
 	const [colorCombos, setColorCombos] = useState([]);
+	const [popularCombos, setPopularCombos] = useState([]);
 	const [getNew, setGetNew] = useState(false);
 
 	//* Get current user
@@ -42,8 +43,10 @@ function App() {
 		});
 		(async () => {
 			const response = await axios.get("/api/palettes");
+			const popRes = await axios.get("/api/palettes/popular");
 			const data = response.data;
 			setColorCombos(data);
+			setPopularCombos(popRes.data);
 			setGetNew(true);
 			setLoaded(true);
 		})();
@@ -80,7 +83,11 @@ function App() {
 					<SignupFormPage sessionUser={sessionUser} />
 				</Route>
 				<Route exact path="/">
-					<Homepage colorCombos={colorCombos} setGetNew={setGetNew} />
+					<Homepage
+						colorCombos={colorCombos}
+						popularCombos={popularCombos}
+						setGetNew={setGetNew}
+					/>
 				</Route>
 			</Switch>
 			{/* </AnimatePresence> */}

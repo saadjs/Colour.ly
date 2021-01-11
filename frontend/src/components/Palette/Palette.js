@@ -34,10 +34,7 @@ function Palette({ setGetNew }) {
 
 	const handleLike = async () => {
 		const response = await axios.post(`/api/palettes/${id}/like`);
-		// console.log(response.data);
-		// setTotalLikes(response.totalLikes);
-		const likeData = await axios.get(`/api/palettes/${id}`);
-		setTotalLikes(likeData.data.totalLikes);
+		setTotalLikes(response.data.totalLikes);
 		setGetNew(false);
 	};
 	const boxes = colorPalette.map((color) => (

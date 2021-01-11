@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import NewColor from "./NewColor";
 import axios from "axios";
 import { Redirect, useHistory } from "react-router-dom";
-import { ChromePicker } from "react-color";
+import { ChromePicker, SwatchesPicker } from "react-color";
 import styled from "styled-components";
 
 function NewPalette({ sessionUser, colorCombos, setGetNew }) {
@@ -84,6 +84,11 @@ function NewPalette({ sessionUser, colorCombos, setGetNew }) {
 						color={pickedColor}
 						onChangeComplete={(color) => setPickedColor(color.hex)}
 					/>
+					{/* <SwatchesPicker
+						className="chrome-color-picker"
+						color={pickedColor}
+						onChangeComplete={(color) => setPickedColor(color.hex)}
+					/> */}
 				</div>
 				<div>
 					<form onSubmit={addColorsToPalette}>

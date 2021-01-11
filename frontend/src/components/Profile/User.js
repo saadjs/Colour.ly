@@ -51,9 +51,7 @@ function User({ sessionUser, setGetNew }) {
 					<div key={palette.paletteId} className="palette-delete-div">
 						<ColumnsContainerDiv>
 							<ColorColumns
-								colors={palette.colors}
-								paletteTitle={palette.paletteTitle}
-								paletteId={palette.paletteId}
+								{...palette}
 								className="clr-column-cls"
 							/>
 						</ColumnsContainerDiv>
