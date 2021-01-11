@@ -57,7 +57,10 @@ function Palette() {
 					<Link to={`/users/${creatorId}`}>{createdBy}</Link>
 				</p>
 				<LikeContainer>
-					<motion.div whileTap={{ scale: 1.4, rotate: 90 }}>
+					<motion.div
+						whileTap={{ scale: 2, rotate: 90 }}
+						// whileHover={{ rotate: 360 }}
+					>
 						<FontAwesomeIcon
 							icon={faHeart}
 							size="2x"
