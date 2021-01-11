@@ -36,7 +36,7 @@ a:hover
 button {
     cursor: pointer;
     background: transparent;
-    transition: all 0.5s ease;
+    /* transition: all 0.5s ease; */
     &:hover{
         background-color: #fff3d0;
         color: #c10000;

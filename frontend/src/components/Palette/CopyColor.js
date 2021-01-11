@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import { motion } from "framer-motion";
 
 function Box({ name, background }) {
 	const [copy, setCopy] = useState(false);
@@ -27,7 +28,10 @@ function Box({ name, background }) {
 					<Content>
 						<span className="wowThatsDark">{name}</span>
 					</Content>
-					<CopyButton className="cpy-btn wowThatsLight">
+					<CopyButton
+						className="cpy-btn wowThatsLight"
+						whileHover={{ scale: 2, rotate: 360 }}
+					>
 						COPY
 					</CopyButton>
 				</div>
@@ -44,12 +48,12 @@ const StyledDiv = styled.div`
 	position: relative;
 	:hover .cpy-btn {
 		opacity: 1;
-		transition: 0.5s;
+		/* transition: 0.5s; */
 	}
 	.show.overlay-show {
 		opacity: 1;
 		position: absolute;
-		transform: scale(12);
+		transform: scaleX(5);
 		z-index: 10;
 	}
 	.copy.overlay-show {
@@ -78,7 +82,7 @@ const Content = styled.div`
 	text-transform: uppercase;
 `;
 
-const CopyButton = styled.button`
+const CopyButton = styled(motion.button)`
 	position: absolute;
 	width: 5rem;
 	height: 4rem;
@@ -93,7 +97,7 @@ const CopyButton = styled.button`
 	opacity: 0;
 `;
 
-const CopiedText = styled.div`
+const CopiedText = styled(motion.div)`
 	opacity: 0;
 	position: fixed;
 	left: 0;

@@ -10,6 +10,7 @@ import { motion } from "framer-motion";
 function Palette({ setGetNew }) {
 	const [loaded, setLoaded] = useState(false);
 	const [colorPalette, setColorPalette] = useState([]);
+	const [paletteTitle, setPaletteTitle] = useState("");
 	const [createdBy, setCreatedBy] = useState("");
 	const [totalLikes, setTotalLikes] = useState("");
 	const [creatorId, setCreatorId] = useState("");
@@ -24,6 +25,7 @@ function Palette({ setGetNew }) {
 			setCreatorId(data.userId);
 			setColorPalette(data.colors);
 			setTotalLikes(data.totalLikes);
+			setPaletteTitle(data.paletteTitle);
 			setLoaded(true);
 		})();
 	}, [id]);
@@ -49,10 +51,13 @@ function Palette({ setGetNew }) {
 		<StyledDiv className="Palette">
 			<div className="color-box">{boxes}</div>
 			<div className="created-by">
-				<p>
-					Created By:{" "}
-					<Link to={`/users/${creatorId}`}>{createdBy}</Link>
-				</p>
+				<div>
+					<h2>{paletteTitle}</h2>
+					<p>
+						Created By:{" "}
+						<Link to={`/users/${creatorId}`}>{createdBy}</Link>
+					</p>
+				</div>
 				<LikeContainer>
 					<motion.div
 						whileTap={{ scale: 2, rotate: 90 }}
@@ -83,7 +88,8 @@ const StyledDiv = styled.div`
 	.created-by {
 		display: flex;
 		justify-content: space-between;
-		padding: 1rem 0;
+		align-items: center;
+		/* padding: 1rem 0; */
 		p {
 			font-size: 2rem;
 		}
