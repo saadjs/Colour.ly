@@ -71,7 +71,7 @@ function App() {
 					<User sessionUser={sessionUser} setGetNew={setGetNew} />
 				</Route>
 				<Route exact path="/palettes/:id">
-					<Palette />
+					<Palette setGetNew={setGetNew} />
 				</Route>
 				<Route path="/login">
 					<LoginFormPage sessionUser={sessionUser} />
@@ -80,7 +80,7 @@ function App() {
 					<SignupFormPage sessionUser={sessionUser} />
 				</Route>
 				<Route exact path="/">
-					<Homepage colorCombos={colorCombos} />
+					<Homepage colorCombos={colorCombos} setGetNew={setGetNew} />
 				</Route>
 			</Switch>
 			{/* </AnimatePresence> */}

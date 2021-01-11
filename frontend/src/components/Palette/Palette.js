@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
 
-function Palette() {
+function Palette({ setGetNew }) {
 	const [loaded, setLoaded] = useState(false);
 	const [colorPalette, setColorPalette] = useState([]);
 	const [createdBy, setCreatedBy] = useState("");
@@ -20,7 +20,6 @@ function Palette() {
 		(async () => {
 			const response = await axios.get(`/api/palettes/${id}`);
 			const data = response.data;
-			console.log(data);
 			setCreatedBy(data.createdBy);
 			setCreatorId(data.userId);
 			setColorPalette(data.colors);
@@ -39,6 +38,7 @@ function Palette() {
 		// setTotalLikes(response.totalLikes);
 		const likeData = await axios.get(`/api/palettes/${id}`);
 		setTotalLikes(likeData.data.totalLikes);
+		setGetNew(false);
 	};
 	const boxes = colorPalette.map((color) => (
 		<CopyColor
