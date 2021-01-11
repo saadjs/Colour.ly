@@ -3,11 +3,15 @@ import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import CopyColor from "./CopyColor";
 import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { motion } from "framer-motion";
 
 function Palette() {
 	const [loaded, setLoaded] = useState(false);
 	const [colorPalette, setColorPalette] = useState([]);
 	const [createdBy, setCreatedBy] = useState("");
+	const [totalLikes, setTotalLikes] = useState("");
 	const [creatorId, setCreatorId] = useState("");
 
 	const { id } = useParams();
@@ -19,7 +23,8 @@ function Palette() {
 			console.log(data);
 			setCreatedBy(data.createdBy);
 			setCreatorId(data.userId);
-			setColorPalette(data);
+			setColorPalette(data.colors);
+			setTotalLikes(data.totalLikes);
 			setLoaded(true);
 		})();
 	}, [id]);
@@ -27,7 +32,15 @@ function Palette() {
 	if (!loaded) {
 		return null;
 	}
-	const boxes = colorPalette.colors.map((color) => (
+
+	const handleLike = async () => {
+		const response = await axios.post(`/api/palettes/${id}/like`);
+		// console.log(response.data);
+		// setTotalLikes(response.totalLikes);
+		const likeData = await axios.get(`/api/palettes/${id}`);
+		setTotalLikes(likeData.data.totalLikes);
+	};
+	const boxes = colorPalette.map((color) => (
 		<CopyColor
 			key={color.name}
 			name={color.name}
@@ -43,6 +56,17 @@ function Palette() {
 					Created By:{" "}
 					<Link to={`/users/${creatorId}`}>{createdBy}</Link>
 				</p>
+				<LikeContainer>
+					<motion.div whileTap={{ scale: 1.4, rotate: 90 }}>
+						<FontAwesomeIcon
+							icon={faHeart}
+							size="2x"
+							className="dil-like-btn"
+							onClick={handleLike}
+						/>
+					</motion.div>
+					<p>{totalLikes}</p>
+				</LikeContainer>
 			</div>
 		</StyledDiv>
 	);
@@ -57,9 +81,28 @@ const StyledDiv = styled.div`
 		height: 100%;
 	}
 	.created-by {
+		display: flex;
+		justify-content: space-between;
 		padding: 1rem 0;
 		p {
 			font-size: 2rem;
+		}
+	}
+`;
+
+const LikeContainer = styled.div`
+	display: flex;
+	align-items: stretch;
+	p {
+		padding-left: 1rem;
+	}
+	.dil-like-btn {
+		color: red;
+		:hover {
+			transform: scale(1.5);
+		}
+		::after {
+			color: black;
 		}
 	}
 `;
