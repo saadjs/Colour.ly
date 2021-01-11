@@ -1,4 +1,5 @@
 from flask import Blueprint, jsonify, request
+from flask_login import login_required, current_user
 from werkzeug.exceptions import abort
 from app.models import db, Palette, User
 
@@ -30,6 +31,7 @@ def add_palette():
     
     return new_palette.to_dict()
 
+# * delete palette
 @palette_routes.route('/<int:id>', methods=['DELETE'])
 def delete_palette(id):
     palette = Palette.query.get(id)
@@ -38,3 +40,19 @@ def delete_palette(id):
     db.session.delete(palette)
     db.session.commit()
     return jsonify('palette deleted')
+
+# * post like
+@palette_routes.route('/<int:id>/like', methods=['POST'])
+# @login_required
+def post_like(id):
+    palette = Palette.query.get(id)
+    user = User.query.filter_by(username = request.json['currentUser']).first()
+    # user = User.query.get(current_user.get_id())
+    if user in palette.liked_by:
+        palette.liked_by.remove(user)
+        db.session.commit()
+        return palette.to_dict()
+    else:
+        palette.liked_by.append(user)
+        db.session.commit()
+        return palette.to_dict()

@@ -1,6 +1,7 @@
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from .like import Like
 
 class User(db.Model, UserMixin):
 	__tablename__ = 'users'
@@ -11,6 +12,7 @@ class User(db.Model, UserMixin):
 	hashed_password = db.Column(db.String(255), nullable = False)
 
 	palettes = db.relationship('Palette', back_populates='user', cascade='all, delete-orphan')
+	liked_palettes = db.relationship('Palette', secondary=Like, back_populates='liked_by')
 
 	@property
 	def password(self):

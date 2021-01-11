@@ -1,6 +1,7 @@
 from .db import db
 from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.dialects.postgresql import JSON
+from .like import Like
 
 class Palette(db.Model):
     __tablename__ = 'palettes'
@@ -11,6 +12,7 @@ class Palette(db.Model):
     user_id = Column(Integer, ForeignKey('users.id'), nullable=False)
 
     user = db.relationship('User', back_populates='palettes')
+    liked_by = db.relationship('User', secondary=Like, back_populates='liked_palettes')
 
     def __init__(self, title, colors, user_id):
         self.title = title
@@ -23,6 +25,7 @@ class Palette(db.Model):
             "paletteTitle": self.title,
             "colors": self.colors,
             "createdBy": self.user.username,
-            "userId": self.user.id
+            "userId": self.user.id,
+            'likedBy': [user.to_dict() for user in self.liked_by],
+            'totalLikes': len(self.liked_by),
         }
-        
