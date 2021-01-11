@@ -29,3 +29,10 @@ class Palette(db.Model):
             'likedBy': [user.to_dict() for user in self.liked_by],
             'totalLikes': len(self.liked_by),
         }
+    
+    def to_dict_likes(self):
+        return {
+            'palettedId': self.id,
+            'likedBy': [user.to_dict() for user in self.liked_by],
+            'totalLikes': len(self.liked_by),
+        }

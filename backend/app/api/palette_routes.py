@@ -43,16 +43,16 @@ def delete_palette(id):
 
 # * post like
 @palette_routes.route('/<int:id>/like', methods=['POST'])
-# @login_required
+@login_required
 def post_like(id):
     palette = Palette.query.get(id)
-    user = User.query.filter_by(username = request.json['currentUser']).first()
-    # user = User.query.get(current_user.get_id())
+    # user = User.query.filter_by(username = request.json['currentUser']).first()
+    user = User.query.get(current_user.get_id())
     if user in palette.liked_by:
         palette.liked_by.remove(user)
         db.session.commit()
-        return palette.to_dict()
+        return palette.to_dict_likes()
     else:
         palette.liked_by.append(user)
         db.session.commit()
-        return palette.to_dict()
+        return palette.to_dict_likes()
