@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, Redirect, useHistory } from "react-router-dom";
 import axios from "axios";
 import CopyColor from "./CopyColor";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart, faClipboard } from "@fortawesome/free-solid-svg-icons";
+import {
+	faHeart,
+	faClipboard,
+	faShare,
+} from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
-function Palette({ setGetNew }) {
+function Palette({ setGetNew, sessionUser }) {
 	const [loaded, setLoaded] = useState(false);
 	const [colorPalette, setColorPalette] = useState([]);
 	const [paletteTitle, setPaletteTitle] = useState("");
@@ -17,8 +22,12 @@ function Palette({ setGetNew }) {
 	const [pComments, setPComments] = useState([]);
 	const [comment, setComment] = useState("");
 	const [showComments, setShowComments] = useState(false);
+	const [copyURL, setCopyURL] = useState("Share");
 
 	const { id } = useParams();
+	const history = useHistory();
+	const url = window.location.href;
+	console.log(url);
 
 	useEffect(() => {
 		(async () => {
@@ -37,15 +46,16 @@ function Palette({ setGetNew }) {
 	if (!loaded) {
 		return null;
 	}
-	console.log(pComments);
 
 	const handleLike = async () => {
+		if (!sessionUser) history.push("/login");
 		const response = await axios.post(`/api/palettes/${id}/like`);
 		setTotalLikes(response.data.totalLikes);
 		setGetNew(false);
 	};
 	const postComment = async (e) => {
 		e.preventDefault();
+		if (!sessionUser) history.push("/login");
 		const pcRes = await axios.post(`/api/palettes/${id}/comment`, {
 			comment,
 		});
@@ -57,6 +67,7 @@ function Palette({ setGetNew }) {
 			key={color.name}
 			name={color.name}
 			background={color.color}
+			setCopyURL={setCopyURL}
 		/>
 	));
 
@@ -97,6 +108,15 @@ function Palette({ setGetNew }) {
 							{pComments.length}
 						</p>
 					</CommentDiv>
+					<CopyToClipboard text={url}>
+						<ShareDiv
+							whileHover={{ scale: 1.5 }}
+							onClick={() => setCopyURL("Link Copied")}
+						>
+							<FontAwesomeIcon icon={faShare} size="2x" />
+							<span>{copyURL}</span>
+						</ShareDiv>
+					</CopyToClipboard>
 				</LikeContainer>
 			</div>
 			<div>
@@ -105,8 +125,8 @@ function Palette({ setGetNew }) {
 						<MainComment>
 							<div className="innner-ul-comment">
 								{pComments.map((comment, i) => (
-									<CommentContainerDiv>
-										<ul key={i}>
+									<CommentContainerDiv key={i}>
+										<ul>
 											<li>
 												<p>
 													<span className="commentor">
@@ -174,6 +194,11 @@ const CommentDiv = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
+`;
+
+const ShareDiv = styled(motion.div)`
+	cursor: pointer;
+	padding-left: 1rem;
 `;
 
 const LikeContainer = styled.div`

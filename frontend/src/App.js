@@ -74,7 +74,7 @@ function App() {
 					<User sessionUser={sessionUser} setGetNew={setGetNew} />
 				</Route>
 				<Route exact path="/palettes/:id">
-					<Palette setGetNew={setGetNew} />
+					<Palette setGetNew={setGetNew} sessionUser={sessionUser} />
 				</Route>
 				<Route path="/login">
 					<LoginFormPage sessionUser={sessionUser} />
