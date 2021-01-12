@@ -13,6 +13,7 @@ class User(db.Model, UserMixin):
 
 	palettes = db.relationship('Palette', back_populates='user', cascade='all, delete-orphan')
 	liked_palettes = db.relationship('Palette', secondary=Like, back_populates='liked_by')
+	comments = db.relationship('Comment', back_populates='user')
 
 	@property
 	def password(self):

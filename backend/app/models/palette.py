@@ -13,6 +13,7 @@ class Palette(db.Model):
 
     user = db.relationship('User', back_populates='palettes')
     liked_by = db.relationship('User', secondary=Like, back_populates='liked_palettes')
+    comments = db.relationship('Comment', back_populates='palette', cascade='all, delete-orphan')
 
     def __init__(self, title, colors, user_id):
         self.title = title
@@ -28,6 +29,7 @@ class Palette(db.Model):
             "userId": self.user.id,
             'likedBy': [user.to_dict() for user in self.liked_by],
             'totalLikes': len(self.liked_by),
+            "comments" : [comment.to_dict() for comment in self.comments]
         }
     
     def to_dict_likes(self):

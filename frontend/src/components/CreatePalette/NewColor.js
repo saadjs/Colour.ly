@@ -2,10 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { motion } from "framer-motion";
 
 function NewColor({ color, name, deleteAddedColor }) {
 	return (
-		<StyledDiv style={{ backgroundColor: color }}>
+		<StyledDiv
+			style={{ backgroundColor: color }}
+			whileHover={{ scale: 1.2 }}
+		>
 			<Content>
 				<span>{name}</span>
 				<FontAwesomeIcon
@@ -21,7 +25,7 @@ function NewColor({ color, name, deleteAddedColor }) {
 	);
 }
 
-const StyledDiv = styled.div`
+const StyledDiv = styled(motion.div)`
 	height: 100%;
 	width: 20%;
 	margin: 0 auto;

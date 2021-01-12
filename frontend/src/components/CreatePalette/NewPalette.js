@@ -145,18 +145,14 @@ function NewPalette({ sessionUser, colorCombos, setGetNew }) {
 				</div>
 			</ColorPickerDiv>
 			<Main>
-				<div className="drawer-header">
-					{createdPalette.map((color, idx) => (
-						<NewColor
-							key={idx}
-							color={color.color}
-							name={color.name}
-							deleteAddedColor={() =>
-								deleteAddedColor(color.name)
-							}
-						/>
-					))}
-				</div>
+				{createdPalette.map((color, idx) => (
+					<NewColor
+						key={idx}
+						color={color.color}
+						name={color.name}
+						deleteAddedColor={() => deleteAddedColor(color.name)}
+					/>
+				))}
 			</Main>
 		</div>
 	);

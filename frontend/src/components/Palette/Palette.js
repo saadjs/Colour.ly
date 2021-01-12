@@ -4,7 +4,7 @@ import axios from "axios";
 import CopyColor from "./CopyColor";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faHeart, faClipboard } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
 
 function Palette({ setGetNew }) {
@@ -14,6 +14,7 @@ function Palette({ setGetNew }) {
 	const [createdBy, setCreatedBy] = useState("");
 	const [totalLikes, setTotalLikes] = useState("");
 	const [creatorId, setCreatorId] = useState("");
+	const [showComments, setShowComments] = useState(true);
 
 	const { id } = useParams();
 
@@ -59,10 +60,7 @@ function Palette({ setGetNew }) {
 					</p>
 				</div>
 				<LikeContainer>
-					<motion.div
-						whileTap={{ scale: 2, rotate: 90 }}
-						// whileHover={{ rotate: 360 }}
-					>
+					<motion.div whileTap={{ scale: 2, rotate: 90 }}>
 						<FontAwesomeIcon
 							icon={faHeart}
 							size="2x"
@@ -71,7 +69,28 @@ function Palette({ setGetNew }) {
 						/>
 					</motion.div>
 					<p>{totalLikes}</p>
+					<CommentDiv>
+						<motion.div
+							whileTap={{ scale: 2, rotate: 90 }}
+							whileHover={{ scale: 1.5 }}
+						>
+							<FontAwesomeIcon
+								icon={faClipboard}
+								size="2x"
+								className="comment-icon-btn"
+								onClick={() => setShowComments(!showComments)}
+							/>
+						</motion.div>
+						<p>{1}</p>
+					</CommentDiv>
 				</LikeContainer>
+			</div>
+			<div>
+				{showComments && (
+					<CommentContainerDiv>
+						<h1>Hi</h1>
+					</CommentContainerDiv>
+				)}
 			</div>
 		</StyledDiv>
 	);
@@ -89,11 +108,16 @@ const StyledDiv = styled.div`
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		/* padding: 1rem 0; */
 		p {
 			font-size: 2rem;
 		}
 	}
+`;
+
+const CommentDiv = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
 `;
 
 const LikeContainer = styled.div`
@@ -104,6 +128,7 @@ const LikeContainer = styled.div`
 	}
 	.dil-like-btn {
 		color: red;
+		cursor: pointer;
 		:hover {
 			transform: scale(1.5);
 		}
@@ -111,6 +136,16 @@ const LikeContainer = styled.div`
 			color: black;
 		}
 	}
+	.comment-icon-btn {
+		margin-left: 1rem;
+		cursor: pointer;
+	}
+`;
+
+const CommentContainerDiv = styled.div`
+	border: 1px solid black;
+	width: 20%;
+	margin: auto;
 `;
 
 export default Palette;
