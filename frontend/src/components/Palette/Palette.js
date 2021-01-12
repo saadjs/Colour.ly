@@ -14,6 +14,8 @@ function Palette({ setGetNew }) {
 	const [createdBy, setCreatedBy] = useState("");
 	const [totalLikes, setTotalLikes] = useState("");
 	const [creatorId, setCreatorId] = useState("");
+	const [pComments, setPComments] = useState([]);
+	const [comment, setComment] = useState("");
 	const [showComments, setShowComments] = useState(true);
 
 	const { id } = useParams();
@@ -27,6 +29,7 @@ function Palette({ setGetNew }) {
 			setColorPalette(data.colors);
 			setTotalLikes(data.totalLikes);
 			setPaletteTitle(data.paletteTitle);
+			setPComments(data.comments);
 			setLoaded(true);
 		})();
 	}, [id]);
@@ -39,6 +42,14 @@ function Palette({ setGetNew }) {
 		const response = await axios.post(`/api/palettes/${id}/like`);
 		setTotalLikes(response.data.totalLikes);
 		setGetNew(false);
+	};
+	const postComment = async (e) => {
+		e.preventDefault();
+		const pcRes = await axios.post(`/api/palettes/${id}/comment`, {
+			comment,
+		});
+		setPComments(pcRes.data.comments);
+		setComment("");
 	};
 	const boxes = colorPalette.map((color) => (
 		<CopyColor
@@ -81,15 +92,27 @@ function Palette({ setGetNew }) {
 								onClick={() => setShowComments(!showComments)}
 							/>
 						</motion.div>
-						<p>{1}</p>
+						<p>{pComments.length}</p>
 					</CommentDiv>
 				</LikeContainer>
 			</div>
 			<div>
 				{showComments && (
-					<CommentContainerDiv>
-						<h1>Hi</h1>
-					</CommentContainerDiv>
+					<div>
+						<CommentContainerDiv>
+							{pComments.map((comment, i) => (
+								<p key={i}>{comment.comment}</p>
+							))}
+							<form onSubmit={postComment}>
+								<input
+									placeholder="notes"
+									value={comment}
+									onChange={(e) => setComment(e.target.value)}
+								/>
+								<button type="submit">Post note</button>
+							</form>
+						</CommentContainerDiv>
+					</div>
 				)}
 			</div>
 		</StyledDiv>

@@ -74,4 +74,4 @@ def post_comment(id):
     new_comment = Comment(comment, palette.id, user)
     db.session.add(new_comment)
     db.session.commit()
-    return jsonify(new_comment.to_dict())
+    return jsonify(palette.to_dict())
