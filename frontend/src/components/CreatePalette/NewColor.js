@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
 
 function NewColor({ color, name, deleteAddedColor }) {
@@ -10,7 +10,7 @@ function NewColor({ color, name, deleteAddedColor }) {
 			<Content>
 				<span>{name}</span>
 				<FontAwesomeIcon
-					icon={faTrashAlt}
+					icon={faTimes}
 					size="2x"
 					className="trash-icon"
 					onClick={deleteAddedColor}
