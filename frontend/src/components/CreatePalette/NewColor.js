@@ -6,10 +6,7 @@ import { motion } from "framer-motion";
 
 function NewColor({ color, name, deleteAddedColor }) {
 	return (
-		<StyledDiv
-			style={{ backgroundColor: color }}
-			whileHover={{ scale: 1.2 }}
-		>
+		<StyledDiv style={{ backgroundColor: color }}>
 			<Content>
 				<span>{name}</span>
 				<FontAwesomeIcon
