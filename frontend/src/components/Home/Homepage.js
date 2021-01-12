@@ -60,7 +60,8 @@ const ContainerDiv = styled.div`
 		text-align: center;
 		padding: 1rem;
 		border: 2px solid black;
-		background-color: #ef5777;
+		background-color: #badc58;
+		/* color: whitesmoke; */
 	}
 `;
 

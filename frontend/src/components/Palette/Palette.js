@@ -16,7 +16,7 @@ function Palette({ setGetNew }) {
 	const [creatorId, setCreatorId] = useState("");
 	const [pComments, setPComments] = useState([]);
 	const [comment, setComment] = useState("");
-	const [showComments, setShowComments] = useState(true);
+	const [showComments, setShowComments] = useState(false);
 
 	const { id } = useParams();
 
@@ -37,6 +37,7 @@ function Palette({ setGetNew }) {
 	if (!loaded) {
 		return null;
 	}
+	console.log(pComments);
 
 	const handleLike = async () => {
 		const response = await axios.post(`/api/palettes/${id}/like`);
@@ -79,7 +80,7 @@ function Palette({ setGetNew }) {
 							onClick={handleLike}
 						/>
 					</motion.div>
-					<p>{totalLikes}</p>
+					<p className="total-likes-count">{totalLikes}</p>
 					<CommentDiv>
 						<motion.div
 							whileTap={{ scale: 2, rotate: 90 }}
@@ -92,17 +93,34 @@ function Palette({ setGetNew }) {
 								onClick={() => setShowComments(!showComments)}
 							/>
 						</motion.div>
-						<p>{pComments.length}</p>
+						<p className="total-comments-count">
+							{pComments.length}
+						</p>
 					</CommentDiv>
 				</LikeContainer>
 			</div>
 			<div>
 				{showComments && (
 					<div>
-						<CommentContainerDiv>
-							{pComments.map((comment, i) => (
-								<p key={i}>{comment.comment}</p>
-							))}
+						<MainComment>
+							<div className="innner-ul-comment">
+								{pComments.map((comment, i) => (
+									<CommentContainerDiv>
+										<ul key={i}>
+											<li>
+												<p>
+													<span className="commentor">
+														{comment.user.username}
+													</span>
+													<span className="actual-comment">
+														{comment.comment}
+													</span>
+												</p>
+											</li>
+										</ul>
+									</CommentContainerDiv>
+								))}
+							</div>
 							<form onSubmit={postComment}>
 								<input
 									placeholder="notes"
@@ -111,7 +129,7 @@ function Palette({ setGetNew }) {
 								/>
 								<button type="submit">Post note</button>
 							</form>
-						</CommentContainerDiv>
+						</MainComment>
 					</div>
 				)}
 			</div>
@@ -131,9 +149,24 @@ const StyledDiv = styled.div`
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		p {
-			font-size: 2rem;
-		}
+	}
+`;
+
+const CommentContainerDiv = styled.div`
+	width: 100%;
+	ul {
+	}
+	.commentor {
+		font-size: 1.5rem;
+		color: #40407a;
+	}
+	.actual-comment {
+		all: unset;
+		font-family: cursive;
+		padding-left: 10px;
+	}
+	li {
+		list-style-type: none;
 	}
 `;
 
@@ -145,8 +178,14 @@ const CommentDiv = styled.div`
 
 const LikeContainer = styled.div`
 	display: flex;
-	align-items: stretch;
-	p {
+	.total-likes-count {
+		padding-left: 1rem;
+		display: flex;
+		align-items: center;
+		font-size: 1.5rem;
+	}
+	.total-comments-count {
+		font-size: 1.5rem;
 		padding-left: 1rem;
 	}
 	.dil-like-btn {
@@ -165,10 +204,22 @@ const LikeContainer = styled.div`
 	}
 `;
 
-const CommentContainerDiv = styled.div`
-	border: 1px solid black;
-	width: 20%;
+const MainComment = styled.div`
+	width: 50%;
 	margin: auto;
+	.innner-ul-comment {
+		padding: 0.5rem;
+	}
+	form {
+		display: flex;
+	}
+	input {
+		width: 100%;
+		border: 2px solid black;
+	}
+	button {
+		width: 10rem;
+	}
 `;
 
 export default Palette;

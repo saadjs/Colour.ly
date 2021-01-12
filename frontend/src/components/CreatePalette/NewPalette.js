@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import NewColor from "./NewColor";
 import axios from "axios";
 import { Redirect, useHistory } from "react-router-dom";
-import { ChromePicker } from "react-color";
+import { SketchPicker } from "react-color";
 import styled from "styled-components";
 
 function NewPalette({ sessionUser, colorCombos, setGetNew }) {
 	const [pickedColor, setPickedColor] = useState("#57AEB0");
 	const [pickedColorName, setPickedColorName] = useState("");
 	const [createdPalette, setCreatedPalette] = useState([
-		{ color: "red", name: "red" },
-		{ color: "blue", name: "blue" },
+		{ color: "#fd9644", name: "orange hibiscus" },
+		{ color: "#3F51B5", name: "indigo" },
 	]);
 	const [paletteTitle, setPaletteTitle] = useState("");
 
@@ -79,16 +79,11 @@ function NewPalette({ sessionUser, colorCombos, setGetNew }) {
 					</ButtonDiv>
 				</div>
 				<div className="chrome-color-picker">
-					<ChromePicker
+					<SketchPicker
 						className="chrome-color-picker"
 						color={pickedColor}
 						onChangeComplete={(color) => setPickedColor(color.hex)}
 					/>
-					{/* <SwatchesPicker
-						className="chrome-color-picker"
-						color={pickedColor}
-						onChangeComplete={(color) => setPickedColor(color.hex)}
-					/> */}
 				</div>
 				<div>
 					<form onSubmit={addColorsToPalette}>
@@ -163,9 +158,7 @@ const ColorPickerDiv = styled.div`
 	top: 10%;
 	bottom: 20%;
 	height: 90vh;
-	/* padding: 1rem; */
 	width: 400px;
-	/* left: 0; */
 	bottom: 1rem;
 	box-shadow: 10px 10px 50px black;
 	display: flex;
@@ -196,8 +189,6 @@ const ColorPickerDiv = styled.div`
 const ButtonDiv = styled.div`
 	display: flex;
 	justify-content: center;
-	/* margin: 4px; */
-	/* padding: 4px; */
 `;
 
 const ResetColorBtn = styled.button`

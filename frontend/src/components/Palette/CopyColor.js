@@ -24,9 +24,11 @@ function Box({ name, background }) {
 					<p>{background}</p>
 				</CopiedText>
 
-				<div>
+				<div className="color-name-copy-btn">
 					<Content>
 						<span className="wowThatsDark">{name}</span>
+						<br />
+						<span>{background}</span>
 					</Content>
 					<CopyButton
 						className="cpy-btn wowThatsLight"
@@ -48,12 +50,11 @@ const StyledDiv = styled.div`
 	position: relative;
 	:hover .cpy-btn {
 		opacity: 1;
-		/* transition: 0.5s; */
 	}
 	.show.overlay-show {
 		opacity: 1;
 		position: absolute;
-		transform: scaleX(5);
+		transform: rotate(1turn);
 		z-index: 10;
 	}
 	.copy.overlay-show {
@@ -76,19 +77,24 @@ const Content = styled.div`
 	position: absolute;
 	width: 100%;
 	left: 0;
-	bottom: 0;
+	bottom: 1rem;
 	padding: 10px;
-	color: black;
 	text-transform: uppercase;
+	text-align: center;
+	span {
+		color: black;
+	}
 `;
 
 const CopyButton = styled(motion.button)`
+	border: 1px solid black;
 	position: absolute;
-	width: 5rem;
+	display: inline-block;
+	width: 8rem;
 	height: 4rem;
 	top: 50%;
 	left: 50%;
-	margin-left: -50px;
+	margin-left: -60px;
 	margin-top: -15px;
 	text-align: center;
 	background: rgba(69, 50, 50, 0.3);
@@ -99,11 +105,11 @@ const CopyButton = styled(motion.button)`
 
 const CopiedText = styled(motion.div)`
 	opacity: 0;
+
 	position: fixed;
 	left: 0;
 	right: 0;
 	top: 0;
-	bottom: 0;
 	display: flex;
 	align-items: center;
 	justify-content: center;

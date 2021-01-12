@@ -6,10 +6,7 @@ import { motion } from "framer-motion";
 
 function NewColor({ color, name, deleteAddedColor }) {
 	return (
-		<StyledDiv
-			style={{ backgroundColor: color }}
-			whileHover={{ scale: 1.2 }}
-		>
+		<StyledDiv style={{ backgroundColor: color }}>
 			<Content>
 				<span>{name}</span>
 				<FontAwesomeIcon
@@ -47,10 +44,13 @@ const Content = styled.div`
 	font-size: 12px;
 	.trash-icon {
 		cursor: pointer;
-		:hover {
-			width: 40px;
-			height: 40px;
-		}
+		background-color: whitesmoke;
+		padding: 5px;
+	}
+	span {
+		color: black;
+		background-color: whitesmoke;
+		padding: 5px;
 	}
 `;
 

@@ -9,13 +9,13 @@ palette_routes = Blueprint('palettes', __name__)
 # * get all the color palettes
 @palette_routes.route('/')
 def palettes():
-    palettes = Palette.query.order_by(Palette.id.desc()).limit(12)
+    palettes = Palette.query.order_by(Palette.id.desc()).limit(8)
     return jsonify([palette.to_dict() for palette in palettes])
 
 # * get palettes with most likes
 @palette_routes.route('/popular')
 def popular_palettes():
-    popular_palettes = Palette.query.join(Like).group_by(Palette.id).order_by(func.count().desc()).limit(12)
+    popular_palettes = Palette.query.join(Like).group_by(Palette.id).order_by(func.count().desc()).limit(8)
     return jsonify([palette.to_dict() for palette in popular_palettes])
 
 # * get one palette
