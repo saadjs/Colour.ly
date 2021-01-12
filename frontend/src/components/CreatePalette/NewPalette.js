@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import NewColor from "./NewColor";
 import axios from "axios";
 import { Redirect, useHistory } from "react-router-dom";
-import { ChromePicker } from "react-color";
+import { SketchPicker } from "react-color";
 import styled from "styled-components";
 
 function NewPalette({ sessionUser, colorCombos, setGetNew }) {
@@ -79,7 +79,7 @@ function NewPalette({ sessionUser, colorCombos, setGetNew }) {
 					</ButtonDiv>
 				</div>
 				<div className="chrome-color-picker">
-					<ChromePicker
+					<SketchPicker
 						className="chrome-color-picker"
 						color={pickedColor}
 						onChangeComplete={(color) => setPickedColor(color.hex)}
