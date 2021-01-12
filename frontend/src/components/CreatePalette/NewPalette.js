@@ -160,9 +160,12 @@ function NewPalette({ sessionUser, colorCombos, setGetNew }) {
 
 const ColorPickerDiv = styled.div`
 	position: absolute;
-	top: 7.1rem;
+	top: 10%;
+	bottom: 20%;
+	height: 90vh;
+	/* padding: 1rem; */
 	width: 400px;
-	left: 0;
+	/* left: 0; */
 	bottom: 1rem;
 	box-shadow: 10px 10px 50px black;
 	display: flex;
@@ -193,7 +196,8 @@ const ColorPickerDiv = styled.div`
 const ButtonDiv = styled.div`
 	display: flex;
 	justify-content: center;
-	margin-top: 4px;
+	/* margin: 4px; */
+	/* padding: 4px; */
 `;
 
 const ResetColorBtn = styled.button`
@@ -228,6 +232,7 @@ const AddToPaletteBtn = styled.button`
 `;
 
 const Main = styled.div`
+	position: relative;
 	flex-grow: 1;
 	height: 90vh;
 	padding: 1rem;
