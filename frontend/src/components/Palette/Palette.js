@@ -94,7 +94,9 @@ function Palette({ setGetNew, sessionUser }) {
 					<p className="total-likes-count">{totalLikes}</p>
 					<CommentDiv>
 						<motion.div
-							whileTap={{ scale: 2, rotate: 90 }}
+							whileTap={{
+								scale: 2,
+							}}
 							whileHover={{ scale: 1.5 }}
 						>
 							<FontAwesomeIcon
