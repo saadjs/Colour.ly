@@ -53,6 +53,10 @@ function Palette({ setGetNew, sessionUser }) {
 		setTotalLikes(response.data.totalLikes);
 		setGetNew(false);
 	};
+	const handleShowComments = () => {
+		if (!sessionUser) history.push("/login");
+		setShowComments(!showComments);
+	};
 	const postComment = async (e) => {
 		e.preventDefault();
 		if (!sessionUser) history.push("/login");
@@ -103,7 +107,7 @@ function Palette({ setGetNew, sessionUser }) {
 								icon={faClipboard}
 								size="2x"
 								className="comment-icon-btn"
-								onClick={() => setShowComments(!showComments)}
+								onClick={handleShowComments}
 							/>
 						</motion.div>
 						<p className="total-comments-count">
