@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from werkzeug.exceptions import abort
-from app.models import db, Palette, User, Like
+from app.models import db, Palette, User, Like, Comment
 from sqlalchemy import func
 
 palette_routes = Blueprint('palettes', __name__)
@@ -63,3 +63,15 @@ def post_like(id):
         palette.liked_by.append(user)
         db.session.commit()
         return palette.to_dict_likes()
+    
+# * post a comment
+@palette_routes.route('/<int:id>/comment', methods=["POST"])
+@login_required
+def post_comment(id):
+    user = User.query.get(current_user.get_id()).id
+    palette = Palette.query.get(id)
+    comment = request.json['comment']
+    new_comment = Comment(comment, palette.id, user)
+    db.session.add(new_comment)
+    db.session.commit()
+    return jsonify(new_comment.to_dict())

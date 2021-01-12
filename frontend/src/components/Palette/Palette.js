@@ -4,7 +4,7 @@ import axios from "axios";
 import CopyColor from "./CopyColor";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart, faCommentAlt } from "@fortawesome/free-solid-svg-icons";
+import { faHeart, faClipboard } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
 
 function Palette({ setGetNew }) {
@@ -75,7 +75,7 @@ function Palette({ setGetNew }) {
 							whileHover={{ scale: 1.5 }}
 						>
 							<FontAwesomeIcon
-								icon={faCommentAlt}
+								icon={faClipboard}
 								size="2x"
 								className="comment-icon-btn"
 								onClick={() => setShowComments(!showComments)}
@@ -115,7 +115,6 @@ const StyledDiv = styled.div`
 `;
 
 const CommentDiv = styled.div`
-	/* border: 1px solid black; */
 	display: flex;
 	justify-content: center;
 	align-items: center;
