@@ -32,9 +32,9 @@ function User({ sessionUser, setGetNew }) {
 		setGetNew(false);
 		setPageReload(false);
 	};
-	const handleUpdate = (id) => {
-		console.log("update", id);
-	};
+	// const handleUpdate = (id) => {
+	// 	console.log("update", id);
+	// };
 
 	return (
 		<MainContainer>
@@ -57,7 +57,7 @@ function User({ sessionUser, setGetNew }) {
 						</ColumnsContainerDiv>
 						{sessionUser.id === user.id ? (
 							<UpdateDeleteDiv>
-								<UpdateButton>
+								{/* <UpdateButton>
 									<FontAwesomeIcon
 										icon={faPaintBrush}
 										size="2x"
@@ -65,7 +65,7 @@ function User({ sessionUser, setGetNew }) {
 											handleUpdate(palette.paletteId)
 										}
 									/>
-								</UpdateButton>
+								</UpdateButton> */}
 								<DeleteButton>
 									<FontAwesomeIcon
 										icon={faTrashAlt}
