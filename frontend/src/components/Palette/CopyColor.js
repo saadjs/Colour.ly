@@ -32,7 +32,7 @@ function Box({ name, background }) {
 					</Content>
 					<CopyButton
 						className="cpy-btn wowThatsLight"
-						// whileHover={{ scale: 2, rotate: 360 }}
+						whileHover={{ scale: 2, rotate: 360 }}
 					>
 						COPY
 					</CopyButton>
@@ -50,12 +50,11 @@ const StyledDiv = styled.div`
 	position: relative;
 	:hover .cpy-btn {
 		opacity: 1;
-		/* transition: 0.5s; */
 	}
 	.show.overlay-show {
 		opacity: 1;
 		position: absolute;
-		transform: scaleX(5);
+		transform: rotate(1turn);
 		z-index: 10;
 	}
 	.copy.overlay-show {
@@ -64,9 +63,6 @@ const StyledDiv = styled.div`
 		z-index: 10;
 		transition-delay: 0.3s;
 	}
-	/* .color-name-copy-btn {
-		border: 3px solid black;
-	} */
 `;
 
 const Overlay = styled.div`

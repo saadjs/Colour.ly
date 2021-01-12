@@ -16,7 +16,7 @@ function Palette({ setGetNew }) {
 	const [creatorId, setCreatorId] = useState("");
 	const [pComments, setPComments] = useState([]);
 	const [comment, setComment] = useState("");
-	const [showComments, setShowComments] = useState(true);
+	const [showComments, setShowComments] = useState(false);
 
 	const { id } = useParams();
 
