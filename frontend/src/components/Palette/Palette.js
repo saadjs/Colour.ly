@@ -22,7 +22,7 @@ function Palette({ setGetNew, sessionUser }) {
 	const [pComments, setPComments] = useState([]);
 	const [comment, setComment] = useState("");
 	const [showComments, setShowComments] = useState(false);
-	const [copyURL, setCopyURL] = useState("Share");
+	const [copyURL, setCopyURL] = useState("");
 
 	const { id } = useParams();
 	const history = useHistory();
@@ -66,12 +66,16 @@ function Palette({ setGetNew, sessionUser }) {
 		setPComments(pcRes.data.comments);
 		setComment("");
 	};
+	const handleCopyURL = () => {
+		setCopyURL("Link Copied");
+		setTimeout(() => setCopyURL(""), 750);
+	};
 	const boxes = colorPalette.map((color) => (
 		<CopyColor
 			key={color.name}
 			name={color.name}
 			background={color.color}
-			setCopyURL={setCopyURL}
+			handleCopyURL={handleCopyURL}
 		/>
 	));
 
@@ -117,7 +121,7 @@ function Palette({ setGetNew, sessionUser }) {
 					<CopyToClipboard text={url}>
 						<ShareDiv
 							whileHover={{ scale: 1.5 }}
-							onClick={() => setCopyURL("Link Copied")}
+							onClick={handleCopyURL}
 						>
 							<FontAwesomeIcon icon={faShare} size="2x" />
 							<span>{copyURL}</span>

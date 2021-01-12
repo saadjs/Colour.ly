@@ -3,11 +3,10 @@ import styled from "styled-components";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { motion } from "framer-motion";
 
-function Box({ name, background, setCopyURL }) {
+function Box({ name, background }) {
 	const [copy, setCopy] = useState(false);
 
 	const handleCopy = () => {
-		setCopyURL("SHARE");
 		setCopy(true);
 
 		setTimeout(() => setCopy(false), 1700);
