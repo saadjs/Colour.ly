@@ -19,7 +19,7 @@ import { useDispatch, useSelector } from "react-redux";
 import * as sessionActions from "./store/session";
 
 //* Page Transitions
-import { AnimatePresence } from "framer-motion";
+// import { AnimatePresence } from "framer-motion";
 
 function App() {
 	const dispatch = useDispatch();
