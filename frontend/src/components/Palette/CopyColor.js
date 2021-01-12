@@ -8,6 +8,7 @@ function Box({ name, background }) {
 
 	const handleCopy = () => {
 		setCopy(true);
+
 		setTimeout(() => setCopy(false), 1700);
 	};
 

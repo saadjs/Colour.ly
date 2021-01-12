@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useHistory } from "react-router-dom";
 import axios from "axios";
 import CopyColor from "./CopyColor";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart, faClipboard } from "@fortawesome/free-solid-svg-icons";
+import {
+	faHeart,
+	faClipboard,
+	faShare,
+} from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
-function Palette({ setGetNew }) {
+function Palette({ setGetNew, sessionUser }) {
 	const [loaded, setLoaded] = useState(false);
 	const [colorPalette, setColorPalette] = useState([]);
 	const [paletteTitle, setPaletteTitle] = useState("");
@@ -17,8 +22,12 @@ function Palette({ setGetNew }) {
 	const [pComments, setPComments] = useState([]);
 	const [comment, setComment] = useState("");
 	const [showComments, setShowComments] = useState(false);
+	const [copyURL, setCopyURL] = useState("");
 
 	const { id } = useParams();
+	const history = useHistory();
+	const url = window.location.href;
+	console.log(url);
 
 	useEffect(() => {
 		(async () => {
@@ -37,26 +46,36 @@ function Palette({ setGetNew }) {
 	if (!loaded) {
 		return null;
 	}
-	console.log(pComments);
 
 	const handleLike = async () => {
+		if (!sessionUser) history.push("/login");
 		const response = await axios.post(`/api/palettes/${id}/like`);
 		setTotalLikes(response.data.totalLikes);
 		setGetNew(false);
 	};
+	const handleShowComments = () => {
+		if (!sessionUser) history.push("/login");
+		setShowComments(!showComments);
+	};
 	const postComment = async (e) => {
 		e.preventDefault();
+		if (!sessionUser) history.push("/login");
 		const pcRes = await axios.post(`/api/palettes/${id}/comment`, {
 			comment,
 		});
 		setPComments(pcRes.data.comments);
 		setComment("");
 	};
+	const handleCopyURL = () => {
+		setCopyURL("Link Copied");
+		setTimeout(() => setCopyURL(""), 750);
+	};
 	const boxes = colorPalette.map((color) => (
 		<CopyColor
 			key={color.name}
 			name={color.name}
 			background={color.color}
+			handleCopyURL={handleCopyURL}
 		/>
 	));
 
@@ -83,20 +102,31 @@ function Palette({ setGetNew }) {
 					<p className="total-likes-count">{totalLikes}</p>
 					<CommentDiv>
 						<motion.div
-							whileTap={{ scale: 2, rotate: 90 }}
+							whileTap={{
+								scale: 2,
+							}}
 							whileHover={{ scale: 1.5 }}
 						>
 							<FontAwesomeIcon
 								icon={faClipboard}
 								size="2x"
 								className="comment-icon-btn"
-								onClick={() => setShowComments(!showComments)}
+								onClick={handleShowComments}
 							/>
 						</motion.div>
 						<p className="total-comments-count">
 							{pComments.length}
 						</p>
 					</CommentDiv>
+					<CopyToClipboard text={url}>
+						<ShareDiv
+							whileHover={{ scale: 1.5 }}
+							onClick={handleCopyURL}
+						>
+							<FontAwesomeIcon icon={faShare} size="2x" />
+							<span>{copyURL}</span>
+						</ShareDiv>
+					</CopyToClipboard>
 				</LikeContainer>
 			</div>
 			<div>
@@ -105,8 +135,8 @@ function Palette({ setGetNew }) {
 						<MainComment>
 							<div className="innner-ul-comment">
 								{pComments.map((comment, i) => (
-									<CommentContainerDiv>
-										<ul key={i}>
+									<CommentContainerDiv key={i}>
+										<ul>
 											<li>
 												<p>
 													<span className="commentor">
@@ -174,6 +204,11 @@ const CommentDiv = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
+`;
+
+const ShareDiv = styled(motion.div)`
+	cursor: pointer;
+	padding-left: 1rem;
 `;
 
 const LikeContainer = styled.div`
