@@ -12,7 +12,7 @@ function User({ sessionUser, setGetNew }) {
 	const [pageReload, setPageReload] = useState(false);
 	const [user, setUser] = useState([]);
 	const [userBio, setUserBio] = useState("");
-	const [showAbout, setShowAbout] = useState(true);
+	const [showAbout, setShowAbout] = useState(false);
 	const [aboutMe, setAboutMe] = useState("");
 
 	const { userId } = useParams();
@@ -154,6 +154,7 @@ const UserInfoContainer = styled.div`
 		padding: 0.5rem;
 		width: 200px;
 		font-size: 1rem;
+		margin-top: 0.5rem;
 	}
 	.update-bio-form-container {
 		textarea {
