@@ -75,7 +75,7 @@ function App() {
 					<User sessionUser={sessionUser} setGetNew={setGetNew} />
 				</Route>
 				<Route path="/users/:userId/favorites">
-					<Favorite sessionUser={sessionUser} />
+					<Favorite />
 				</Route>
 				<Route exact path="/palettes/:id">
 					<Palette setGetNew={setGetNew} sessionUser={sessionUser} />
@@ -90,7 +90,6 @@ function App() {
 					<Homepage
 						colorCombos={colorCombos}
 						popularCombos={popularCombos}
-						setGetNew={setGetNew}
 					/>
 				</Route>
 			</Switch>
