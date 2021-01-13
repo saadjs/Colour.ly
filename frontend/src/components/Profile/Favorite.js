@@ -4,7 +4,7 @@ import axios from "axios";
 import ColorColumns from "./../Home/ColorColumns";
 import styled from "styled-components";
 
-function Favorite({ sessionUser }) {
+function Favorite() {
 	const [likedPalettes, setLikedPalettes] = useState([]);
 
 	const { userId } = useParams();
