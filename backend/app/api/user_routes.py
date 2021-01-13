@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
-from app.models import User, Palette
+from app.models import User, Palette, Like
 
 user_routes = Blueprint('users', __name__)
 
@@ -22,3 +22,10 @@ def user(id):
     palettes = Palette.query.filter(Palette.user_id == id).order_by(Palette.id.desc())
     return {'user': user.to_dict(),
             'palettes': [palette.to_dict() for palette in palettes]}
+    
+
+@user_routes.route('/<int:id>/favorites')
+# @login_required
+def fvrt_palettes(id):
+    user = User.query.get(id)
+    return jsonify(user.to_dict_full())

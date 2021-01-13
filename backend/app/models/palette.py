@@ -38,3 +38,11 @@ class Palette(db.Model):
             'likedBy': [user.to_dict() for user in self.liked_by],
             'totalLikes': len(self.liked_by),
         }
+        
+    def for_user_liked(self):
+        return {
+            "paletteId": self.id,
+            "paletteTitle": self.title,
+            "colors": self.colors,
+            "createdBy": self.user.username,
+        }
