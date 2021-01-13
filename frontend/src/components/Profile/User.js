@@ -84,6 +84,7 @@ function User({ sessionUser, setGetNew }) {
 					<div className="update-bio-form-container">
 						<form onSubmit={handleSubmit}>
 							<textarea
+								required
 								type="text"
 								value={aboutMe}
 								onChange={(e) => setAboutMe(e.target.value)}
@@ -93,7 +94,7 @@ function User({ sessionUser, setGetNew }) {
 								type="submit"
 								className="show-about-form-btn"
 							>
-								Update About me
+								Submit
 							</button>
 						</form>
 					</div>

@@ -8,10 +8,7 @@ import styled from "styled-components";
 function NewPalette({ sessionUser, colorCombos, setGetNew }) {
 	const [pickedColor, setPickedColor] = useState("#57AEB0");
 	const [pickedColorName, setPickedColorName] = useState("");
-	const [createdPalette, setCreatedPalette] = useState([
-		{ color: "#fd9644", name: "orange hibiscus" },
-		{ color: "#3F51B5", name: "indigo" },
-	]);
+	const [createdPalette, setCreatedPalette] = useState([]);
 	const [paletteTitle, setPaletteTitle] = useState("");
 
 	const history = useHistory();
