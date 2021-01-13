@@ -4,7 +4,7 @@ import axios from "axios";
 import ColorColumns from "../Home/ColorColumns";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashAlt, faPaintBrush } from "@fortawesome/free-solid-svg-icons";
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
 function User({ sessionUser, setGetNew }) {
 	const [userPalettes, getUserPalettes] = useState([]);
@@ -32,9 +32,6 @@ function User({ sessionUser, setGetNew }) {
 		setGetNew(false);
 		setPageReload(false);
 	};
-	// const handleUpdate = (id) => {
-	// 	console.log("update", id);
-	// };
 
 	return (
 		<MainContainer>
@@ -57,15 +54,6 @@ function User({ sessionUser, setGetNew }) {
 						</ColumnsContainerDiv>
 						{sessionUser.id === user.id ? (
 							<UpdateDeleteDiv>
-								{/* <UpdateButton>
-									<FontAwesomeIcon
-										icon={faPaintBrush}
-										size="2x"
-										onClick={() =>
-											handleUpdate(palette.paletteId)
-										}
-									/>
-								</UpdateButton> */}
 								<DeleteButton>
 									<FontAwesomeIcon
 										icon={faTrashAlt}
@@ -131,17 +119,6 @@ const DeleteButton = styled.button`
 		box-shadow: 10px 5px 5px #ff0000;
 		transform: scale(1.5);
 	}
-`;
-
-const UpdateButton = styled.button`
-	outline: none;
-	border: none;
-	:hover {
-		box-shadow: 10px -5px 5px #00e5ff;
-		transform: scale(1.5);
-	}
-
-	flex-grow: 1;
 `;
 
 const UpdateDeleteDiv = styled.div`

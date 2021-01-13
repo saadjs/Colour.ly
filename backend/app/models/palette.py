@@ -45,4 +45,5 @@ class Palette(db.Model):
             "paletteTitle": self.title,
             "colors": self.colors,
             "createdBy": self.user.username,
+            'totalLikes': len(self.liked_by),
         }

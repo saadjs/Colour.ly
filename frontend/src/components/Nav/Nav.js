@@ -40,6 +40,11 @@ function Nav({ sessionUser }) {
 					<NavLink to="/palettes/create">Create Palette</NavLink>
 				</li>
 				<li>
+					<NavLink to={`/users/${sessionUser.id}/favorites`}>
+						Favorites
+					</NavLink>
+				</li>
+				<li>
 					<NavLink to={`/users/${sessionUser.id}`}>
 						<FontAwesomeIcon icon={faUser} size="2x" />
 					</NavLink>
