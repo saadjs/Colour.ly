@@ -4,7 +4,7 @@ from app.models import User, Palette, Like
 
 user_routes = Blueprint('users', __name__)
 
-
+# * get list of all users
 @user_routes.route('/')
 @login_required
 def users():
@@ -12,6 +12,7 @@ def users():
     return {"users": [user.to_dict() for user in users]}
 
 
+# * get info of one user
 @user_routes.route('/<int:id>')
 @login_required
 def user(id):
@@ -24,8 +25,11 @@ def user(id):
             'palettes': [palette.to_dict() for palette in palettes]}
     
 
+# * get list of liked palettes by user
 @user_routes.route('/<int:id>/favorites')
-# @login_required
+@login_required
 def fvrt_palettes(id):
     user = User.query.get(id)
     return jsonify(user.to_dict_full())
+
+
