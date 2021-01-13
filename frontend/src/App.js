@@ -13,6 +13,7 @@ import Homepage from "./components/Home/Homepage";
 import Palette from "./components/Palette/Palette";
 import NewPalette from "./components/CreatePalette/NewPalette";
 import User from "./components/Profile/User";
+import Favorite from "./components/Profile/Favorite";
 
 //* Redux
 import { useDispatch, useSelector } from "react-redux";
@@ -70,8 +71,11 @@ function App() {
 						setGetNew={setGetNew}
 					/>
 				</Route>
-				<Route path="/users/:userId">
+				<Route exact path="/users/:userId">
 					<User sessionUser={sessionUser} setGetNew={setGetNew} />
+				</Route>
+				<Route path="/users/:userId/favorites">
+					<Favorite sessionUser={sessionUser} />
 				</Route>
 				<Route exact path="/palettes/:id">
 					<Palette setGetNew={setGetNew} sessionUser={sessionUser} />

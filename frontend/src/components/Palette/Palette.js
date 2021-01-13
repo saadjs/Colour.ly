@@ -27,7 +27,6 @@ function Palette({ setGetNew, sessionUser }) {
 	const { id } = useParams();
 	const history = useHistory();
 	const url = window.location.href;
-	console.log(url);
 
 	useEffect(() => {
 		(async () => {

@@ -157,7 +157,7 @@ const ColorPickerDiv = styled.div`
 	position: absolute;
 	top: 10%;
 	bottom: 20%;
-	height: 90vh;
+	/* height: 90vh; */
 	width: 400px;
 	bottom: 1rem;
 	box-shadow: 10px 10px 50px black;
