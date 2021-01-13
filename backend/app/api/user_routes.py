@@ -1,6 +1,7 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
+from flask.wrappers import Request
 from flask_login import login_required
-from app.models import User, Palette, Like
+from app.models import User, Palette, db
 
 user_routes = Blueprint('users', __name__)
 
@@ -33,3 +34,14 @@ def fvrt_palettes(id):
     return jsonify(user.to_dict_full())
 
 
+# * user about_me
+@user_routes.route('/<int:id>/about', methods=['PUT'])
+@login_required
+def about_me(id):
+    user = User.query.get(id)
+    if not user:
+        return jsonify('user not found')
+    user.about_me = request.json['aboutMe']
+    db.session.add(user)
+    db.session.commit()
+    return jsonify(user.to_dict())
