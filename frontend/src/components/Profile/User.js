@@ -11,6 +11,9 @@ function User({ sessionUser, setGetNew }) {
 	const [userPalettes, getUserPalettes] = useState([]);
 	const [pageReload, setPageReload] = useState(false);
 	const [user, setUser] = useState([]);
+	const [userBio, setUserBio] = useState("");
+	const [showAbout, setShowAbout] = useState(true);
+	const [aboutMe, setAboutMe] = useState("");
 
 	const { userId } = useParams();
 
@@ -21,6 +24,8 @@ function User({ sessionUser, setGetNew }) {
 				const data = response.data;
 				const paletteData = data.palettes;
 				setUser(data.user);
+				setUserBio(data.user.aboutMe);
+				setAboutMe(data.user.aboutMe);
 				getUserPalettes(paletteData);
 				setPageReload(true);
 			})();
@@ -32,6 +37,12 @@ function User({ sessionUser, setGetNew }) {
 		await axios.delete(`/api/palettes/${id}`);
 		setGetNew(false);
 		setPageReload(false);
+	};
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		const res = await axios.put(`/api/users/${userId}/about`, { aboutMe });
+		setUserBio(res.data.aboutMe);
+		setShowAbout(!showAbout);
 	};
 
 	return (
@@ -54,16 +65,39 @@ function User({ sessionUser, setGetNew }) {
 					<li>
 						<strong>About Me:</strong>
 						<br />
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-						<br /> sed do eiusmod tempor incididunt ut labore et
-						dolore magna aliqua.
-						<br />
-						Ut enim ad minim veniam, quis nostrud exercitation
-						ullamco laboris
-						<br />
-						nisi ut aliquip ex ea commodo consequat.
+						{userBio}
 					</li>
+					{!showAbout && (
+						<li>
+							{sessionUser.id === parseInt(userId, 10) && (
+								<button
+									onClick={() => setShowAbout(!showAbout)}
+									className="show-about-form-btn"
+								>
+									Update About me
+								</button>
+							)}
+						</li>
+					)}
 				</ul>
+				{showAbout && (
+					<div className="update-bio-form-container">
+						<form onSubmit={handleSubmit}>
+							<textarea
+								type="text"
+								value={aboutMe}
+								onChange={(e) => setAboutMe(e.target.value)}
+							/>
+							<br />
+							<button
+								type="submit"
+								className="show-about-form-btn"
+							>
+								Update About me
+							</button>
+						</form>
+					</div>
+				)}
 			</UserInfoContainer>
 			<PaletteContainer>
 				<h1>My Palettes</h1>
@@ -115,6 +149,17 @@ const UserInfoContainer = styled.div`
 	}
 	.avatar-container {
 		width: 100%;
+	}
+	.show-about-form-btn {
+		padding: 0.5rem;
+		width: 200px;
+		font-size: 1rem;
+	}
+	.update-bio-form-container {
+		textarea {
+			width: 300px;
+			height: 300px;
+		}
 	}
 	strong {
 		text-decoration: underline;
