@@ -15,7 +15,6 @@ function Favorite() {
 	useEffect(() => {
 		(async () => {
 			const response = await axios.get(`/api/users/${userId}/favorites`);
-			console.log(response.data);
 			setLikedPalettes(response.data.liked_palettes);
 		})();
 	}, [userId]);
@@ -29,8 +28,8 @@ function Favorite() {
 		>
 			<h1>My Favorites</h1>
 			{likedPalettes &&
-				likedPalettes.map((palette) => (
-					<div className="fvrt-plt-container">
+				likedPalettes.map((palette, i) => (
+					<div className="fvrt-plt-container" key={i}>
 						<ColorColumns
 							colors={palette.colors}
 							paletteId={palette.paletteId}
