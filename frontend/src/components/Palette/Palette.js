@@ -10,6 +10,8 @@ import {
 	faShare,
 } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
+import { pageAnimation, slider, sliderContainer } from "../../styles/Animation";
+
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
 function Palette({ setGetNew, sessionUser }) {
@@ -79,7 +81,21 @@ function Palette({ setGetNew, sessionUser }) {
 	));
 
 	return (
-		<StyledDiv className="Palette">
+		<StyledDiv
+			className="Palette"
+			variants={pageAnimation}
+			initial="hidden"
+			animate="show"
+			exit="exit"
+		>
+			<motion.div variants={sliderContainer}>
+				<Frame1 variants={slider}></Frame1>
+				<Frame2 variants={slider}></Frame2>
+				<Frame3 variants={slider}></Frame3>
+				<Frame4 variants={slider}></Frame4>
+				<Frame5 variants={slider}></Frame5>
+				<Frame6 variants={slider}></Frame6>
+			</motion.div>
 			<div className="color-box">{boxes}</div>
 			<div className="created-by">
 				<div>
@@ -166,7 +182,7 @@ function Palette({ setGetNew, sessionUser }) {
 	);
 }
 
-const StyledDiv = styled.div`
+const StyledDiv = styled(motion.div)`
 	height: 80vh;
 	width: 80vw;
 	margin: auto;
@@ -254,6 +270,33 @@ const MainComment = styled.div`
 	button {
 		width: 10rem;
 	}
+`;
+const Frame1 = styled(motion.div)`
+	position: fixed;
+	left: 0;
+	top: 10%;
+	width: 100%;
+	height: 100vh;
+	background: #fffa65;
+	z-index: 2;
+`;
+
+const Frame2 = styled(Frame1)`
+	background: #ffaf40;
+`;
+
+const Frame3 = styled(Frame1)`
+	background: #ff4d4d;
+`;
+
+const Frame4 = styled(Frame1)`
+	background: #26de81;
+`;
+const Frame5 = styled(Frame1)`
+	background: #dfe6e9;
+`;
+const Frame6 = styled(Frame1)`
+	background: #74b9ff;
 `;
 
 export default Palette;

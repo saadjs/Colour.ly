@@ -4,6 +4,9 @@ import axios from "axios";
 import ColorColumns from "./../Home/ColorColumns";
 import styled from "styled-components";
 
+import { motion } from "framer-motion";
+import { pageAnimation } from "../../styles/Animation";
+
 function Favorite() {
 	const [likedPalettes, setLikedPalettes] = useState([]);
 
@@ -18,7 +21,12 @@ function Favorite() {
 	}, [userId]);
 
 	return (
-		<FvrtPalettes>
+		<FvrtPalettes
+			variants={pageAnimation}
+			initial="hidden"
+			animate="show"
+			exit="exit"
+		>
 			<h1>My Favorites</h1>
 			{likedPalettes &&
 				likedPalettes.map((palette) => (
@@ -35,7 +43,7 @@ function Favorite() {
 	);
 }
 
-const FvrtPalettes = styled.div`
+const FvrtPalettes = styled(motion.div)`
 	padding: 2rem;
 	h1 {
 		text-align: center;

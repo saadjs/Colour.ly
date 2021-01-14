@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory, useLocation } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
@@ -10,14 +10,19 @@ import * as sessionActions from "../../store/session";
 
 // style stuff
 import styled from "styled-components";
+import { motion } from "framer-motion";
+import colourly from "./../../styles/images/colourly.jpeg";
 
 function Nav({ sessionUser }) {
 	const dispatch = useDispatch();
+	const history = useHistory();
+	const { pathname } = useLocation();
 
 	//* handle logout button press
 	const handleLogout = (e) => {
 		e.preventDefault();
 		dispatch(sessionActions.logout());
+		history.push("/login");
 	};
 
 	//? generate links based on user logged in status
@@ -27,9 +32,23 @@ function Nav({ sessionUser }) {
 			<>
 				<li>
 					<NavLink to="/login">Log In</NavLink>
+					<ActivePath
+						transition={{ duration: 0.75 }}
+						initial={{ width: "0%" }}
+						animate={{
+							width: pathname === "/login" ? "45px" : "0%",
+						}}
+					/>
 				</li>
 				<li>
 					<NavLink to="/signup">Sign Up</NavLink>
+					<ActivePath
+						transition={{ duration: 0.75 }}
+						initial={{ width: "0%" }}
+						animate={{
+							width: pathname === "/signup" ? "55px" : "0%",
+						}}
+					/>
 				</li>
 			</>
 		);
@@ -38,16 +57,45 @@ function Nav({ sessionUser }) {
 			<>
 				<li>
 					<NavLink to="/palettes/create">Create Palette</NavLink>
+					<ActivePath
+						transition={{ duration: 0.75 }}
+						initial={{ width: "0%" }}
+						animate={{
+							width:
+								pathname === "/palettes/create" ? "95px" : "0%",
+						}}
+					/>
 				</li>
 				<li>
 					<NavLink to={`/users/${sessionUser.id}/favorites`}>
 						Favorites
 					</NavLink>
+					<ActivePath
+						transition={{ duration: 0.75 }}
+						initial={{ width: "0%" }}
+						animate={{
+							width:
+								pathname ===
+								`/users/${sessionUser.id}/favorites`
+									? "63px"
+									: "0%",
+						}}
+					/>
 				</li>
 				<li>
 					<NavLink to={`/users/${sessionUser.id}`}>
 						<FontAwesomeIcon icon={faUser} size="2x" />
 					</NavLink>
+					<ActivePath
+						transition={{ duration: 0.75 }}
+						initial={{ width: "0%" }}
+						animate={{
+							width:
+								pathname === `/users/${sessionUser.id}`
+									? "30px"
+									: "0%",
+						}}
+					/>
 				</li>
 				<li className="logout-li" onClick={handleLogout}>
 					Logout
@@ -58,9 +106,15 @@ function Nav({ sessionUser }) {
 
 	return (
 		<StyledNav>
-			<h1>
-				<NavLink to="/">Home</NavLink>
-			</h1>
+			<NavLink to="/">
+				<motion.img
+					src={colourly}
+					alt=""
+					style={{ width: 150 }}
+					whileHover={{ scale: 2 }}
+					whileTap={{ rotate: -90 }}
+				/>
+			</NavLink>
 			<ul>{sessionLinks}</ul>
 		</StyledNav>
 	);
@@ -114,6 +168,14 @@ const StyledNav = styled.nav`
 			}
 		}
 	}
+`;
+
+const ActivePath = styled(motion.div)`
+	height: 0.3rem;
+	background: #23d997;
+	width: 0;
+	position: absolute;
+	bottom: -80%;
 `;
 
 export default Nav;

@@ -5,6 +5,9 @@ import { Redirect, useHistory } from "react-router-dom";
 import { SketchPicker } from "react-color";
 import styled from "styled-components";
 
+import { motion } from "framer-motion";
+import { pageAnimation } from "../../styles/Animation";
+
 function NewPalette({ sessionUser, colorCombos, setGetNew }) {
 	const [pickedColor, setPickedColor] = useState("#57AEB0");
 	const [pickedColorName, setPickedColorName] = useState("");
@@ -55,7 +58,12 @@ function NewPalette({ sessionUser, colorCombos, setGetNew }) {
 	};
 
 	return (
-		<div>
+		<motion.div
+			variants={pageAnimation}
+			initial="hidden"
+			animate="show"
+			exit="exit"
+		>
 			<ColorPickerDiv>
 				<div>
 					<h1>Create Palette</h1>
@@ -146,7 +154,7 @@ function NewPalette({ sessionUser, colorCombos, setGetNew }) {
 					/>
 				))}
 			</Main>
-		</div>
+		</motion.div>
 	);
 }
 
