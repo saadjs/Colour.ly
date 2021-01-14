@@ -50,10 +50,10 @@ function User({ sessionUser, setGetNew }) {
 
 	return (
 		<MainContainer
-			// variants={pageAnimation}
-			// initial="hidden"
-			// animate="show"
-			exit="exit"
+		// variants={pageAnimation}
+		// initial="hidden"
+		// animate="show"
+		// exit="exit"
 		>
 			<UserInfoContainer>
 				<ul>
@@ -86,14 +86,16 @@ function User({ sessionUser, setGetNew }) {
 						{userBio}
 					</li>
 					{!showAbout && (
-						<li>
+						<li className="btn-container-li">
 							{sessionUser.id === parseInt(userId, 10) && (
-								<button
-									onClick={() => setShowAbout(!showAbout)}
-									className="show-about-form-btn"
-								>
-									Update About me
-								</button>
+								<UpdateBioDiv>
+									<button
+										onClick={() => setShowAbout(!showAbout)}
+										className="show-about-form-btn"
+									>
+										Update About me
+									</button>
+								</UpdateBioDiv>
 							)}
 						</li>
 					)}
@@ -118,7 +120,12 @@ function User({ sessionUser, setGetNew }) {
 					</div>
 				)}
 			</UserInfoContainer>
-			<PaletteContainer>
+			<PaletteContainer
+				variants={pageAnimation}
+				initial="hidden"
+				animate="show"
+				exit="exit"
+			>
 				<h1>My Palettes</h1>
 				{userPalettes.map((palette) => (
 					<div key={palette.paletteId} className="palette-delete-div">
@@ -151,7 +158,7 @@ function User({ sessionUser, setGetNew }) {
 }
 
 const MainContainer = styled(motion.div)`
-	width: 100%;
+	width: 90vw;
 	margin: auto;
 	padding: 0 2rem;
 `;
@@ -160,12 +167,9 @@ const ColumnsContainerDiv = styled.div`
 `;
 const UserInfoContainer = styled(motion.div)`
 	position: absolute;
-	top: 10%;
+	left: 0;
 	width: 20%;
 	box-shadow: 10px 5px 5px #000000;
-	display: flex;
-	justify-content: center;
-	align-items: center;
 	flex-direction: column;
 	.username-container {
 		width: 100%;
@@ -176,7 +180,7 @@ const UserInfoContainer = styled(motion.div)`
 	}
 	.show-about-form-btn {
 		padding: 0.5rem;
-		width: 200px;
+
 		font-size: 1rem;
 		margin-top: 0.5rem;
 	}
@@ -189,7 +193,7 @@ const UserInfoContainer = styled(motion.div)`
 			flex-direction: column;
 		}
 		textarea {
-			width: 300px;
+			width: 100%;
 			height: 300px;
 			resize: none;
 		}
@@ -205,9 +209,11 @@ const UserInfoContainer = styled(motion.div)`
 		align-items: flex-start;
 		justify-content: center;
 		padding: 1rem;
+		width: 100%;
 		li {
 			font-family: cursive;
 			color: #706fd3;
+			width: 100%;
 			img {
 				width: 100%;
 				height: 100%;
@@ -215,16 +221,13 @@ const UserInfoContainer = styled(motion.div)`
 				align-items: center;
 				border-radius: 50%;
 			}
-			button {
-				margin-left: 4.5rem;
-			}
 		}
 		span {
 			font-size: 1.5rem;
 		}
 	}
 `;
-const PaletteContainer = styled.div`
+const PaletteContainer = styled(motion.div)`
 	margin: auto;
 	padding: 0 1rem;
 	display: grid;
@@ -238,6 +241,12 @@ const PaletteContainer = styled.div`
 		border-bottom: 2px solid black;
 		text-align: center;
 	}
+`;
+
+const UpdateBioDiv = styled.div`
+	display: flex;
+	align-content: center;
+	justify-content: center;
 `;
 
 const DeleteButton = styled.button`
