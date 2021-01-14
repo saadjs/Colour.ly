@@ -160,11 +160,8 @@ function NewPalette({ sessionUser, colorCombos, setGetNew }) {
 
 const ColorPickerDiv = styled.div`
 	position: absolute;
-	top: 10%;
-	bottom: 20%;
-	/* height: 90vh; */
+	left: 0;
 	width: 400px;
-	bottom: 1rem;
 	box-shadow: 10px 10px 50px black;
 	display: flex;
 	flex-direction: column;

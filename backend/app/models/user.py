@@ -35,7 +35,7 @@ class User(db.Model, UserMixin):
 			"id": self.id,
 			"username": self.username,
 			"email": self.email,
-			'aboutMe': self.about_me
+			'aboutMe': self.about_me,
 		}
   
 	def to_dict_full(self):
