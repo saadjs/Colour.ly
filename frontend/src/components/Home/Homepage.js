@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { pageAnimation } from "../../styles/Animation";
 import styled from "styled-components";
 
-
 function Homepage({ colorCombos, popularCombos }) {
 	return (
 		<MotionDiv

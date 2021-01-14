@@ -8,7 +8,7 @@ import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import avatar from "./../../styles/images/avatar.jpeg";
 
 import { motion } from "framer-motion";
-import { pageAnimation } from "../../styles/Animation";
+import { pageAnimation, titleAnim, photoAnim } from "../../styles/Animation";
 
 function User({ sessionUser, setGetNew }) {
 	const [userPalettes, getUserPalettes] = useState([]);
@@ -50,15 +50,25 @@ function User({ sessionUser, setGetNew }) {
 
 	return (
 		<MainContainer
-			variants={pageAnimation}
-			initial="hidden"
-			animate="show"
+			// variants={pageAnimation}
+			// initial="hidden"
+			// animate="show"
 			exit="exit"
 		>
 			<UserInfoContainer>
 				<ul>
 					<li className="avatar-container">
-						<img src={avatar} alt="avatar" />
+						<motion.img
+							src={avatar}
+							alt="avatar"
+							initial={{ scale: 0 }}
+							animate={{ rotate: 360, scale: 1 }}
+							transition={{
+								type: "spring",
+								stiffness: 120,
+								damping: 20,
+							}}
+						/>
 					</li>
 					<li className="username-container">
 						<span>{user.username}</span>
@@ -148,7 +158,7 @@ const MainContainer = styled(motion.div)`
 const ColumnsContainerDiv = styled.div`
 	flex-grow: 2;
 `;
-const UserInfoContainer = styled.div`
+const UserInfoContainer = styled(motion.div)`
 	position: absolute;
 	top: 10%;
 	width: 20%;
