@@ -144,7 +144,7 @@ function Palette({ setGetNew, sessionUser }) {
 					</CopyToClipboard>
 				</LikeContainer>
 			</div>
-			<div>
+			<MainCommentDiv>
 				{showComments && (
 					<div>
 						<MainComment>
@@ -169,6 +169,7 @@ function Palette({ setGetNew, sessionUser }) {
 							<form onSubmit={postComment}>
 								<input
 									placeholder="notes"
+									required
 									value={comment}
 									onChange={(e) => setComment(e.target.value)}
 								/>
@@ -177,7 +178,7 @@ function Palette({ setGetNew, sessionUser }) {
 						</MainComment>
 					</div>
 				)}
-			</div>
+			</MainCommentDiv>
 		</StyledDiv>
 	);
 }
@@ -196,9 +197,20 @@ const StyledDiv = styled(motion.div)`
 		align-items: center;
 	}
 `;
+const MainCommentDiv = styled.div`
+	box-shadow: 10px 5px 5px #575fcf;
+	position: fixed;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	left: 50%;
+	background-color: #dff9fb;
+	/* width: 40%; */
+`;
 
 const CommentContainerDiv = styled.div`
 	width: 100%;
+	/* background-color: #ef5777; */
+
 	ul {
 	}
 	.commentor {
@@ -212,6 +224,7 @@ const CommentContainerDiv = styled.div`
 	}
 	li {
 		list-style-type: none;
+		margin-top: 5px;
 	}
 `;
 
@@ -255,10 +268,10 @@ const LikeContainer = styled.div`
 `;
 
 const MainComment = styled.div`
-	width: 50%;
-	margin: auto;
+	/* width: 50%; */
+	/* margin: auto; */
 	.innner-ul-comment {
-		padding: 0.5rem;
+		padding: 5px;
 	}
 	form {
 		display: flex;
@@ -268,7 +281,7 @@ const MainComment = styled.div`
 		border: 2px solid black;
 	}
 	button {
-		width: 10rem;
+		width: 8rem;
 	}
 `;
 const Frame1 = styled(motion.div)`
