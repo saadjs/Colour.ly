@@ -6,7 +6,7 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import iAmWinking from "./../../styles/images/avatar.jpeg";
-import angryPuppy from "./../../styles/images/angryPuppy.jpg";
+// import angryPuppy from "./../../styles/images/angryPuppy.jpg";
 import excitedMonkey from "./../../styles/images/excitedMonkey.jpg";
 import hooterWink from "./../../styles/images/hooterWink.jpg";
 import mindBlown from "./../../styles/images/mindBlown.jpg";
@@ -14,7 +14,11 @@ import roboHeart from "./../../styles/images/roboHeart.jpg";
 import skullWinking from "./../../styles/images/skullWinking.jpg";
 
 import { motion } from "framer-motion";
-import { pageAnimation, titleAnim, photoAnim } from "../../styles/Animation";
+import {
+	pageAnimation,
+	// titleAnim,
+	// photoAnim
+} from "../../styles/Animation";
 
 function User({ sessionUser, setGetNew }) {
 	const [userPalettes, getUserPalettes] = useState([]);
