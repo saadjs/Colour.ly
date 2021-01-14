@@ -11,7 +11,6 @@ class User(db.Model, UserMixin):
 	about_me = db.Column(db.Text)
 	email = db.Column(db.String(255), nullable = False, unique = True)
 	hashed_password = db.Column(db.String(255), nullable = False)
-	avatar_url = db.Column(db.String)
 
 	palettes = db.relationship('Palette', back_populates='user', cascade='all, delete-orphan')
 	liked_palettes = db.relationship('Palette', secondary=Like, back_populates='liked_by')
@@ -37,7 +36,6 @@ class User(db.Model, UserMixin):
 			"username": self.username,
 			"email": self.email,
 			'aboutMe': self.about_me,
-			'avatarURL': self.avatar_url,
 		}
   
 	def to_dict_full(self):

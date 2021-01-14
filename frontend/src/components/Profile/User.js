@@ -5,7 +5,13 @@ import ColorColumns from "../Home/ColorColumns";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
-import avatar from "./../../styles/images/avatar.jpeg";
+import iAmWinking from "./../../styles/images/avatar.jpeg";
+import angryPuppy from "./../../styles/images/angryPuppy.jpg";
+import excitedMonkey from "./../../styles/images/excitedMonkey.jpg";
+import hooterWink from "./../../styles/images/hooterWink.jpg";
+import mindBlown from "./../../styles/images/mindBlown.jpg";
+import roboHeart from "./../../styles/images/roboHeart.jpg";
+import skullWinking from "./../../styles/images/skullWinking.jpg";
 
 import { motion } from "framer-motion";
 import { pageAnimation, titleAnim, photoAnim } from "../../styles/Animation";
@@ -47,6 +53,22 @@ function User({ sessionUser, setGetNew }) {
 		setUserBio(res.data.aboutMe);
 		setShowAbout(!showAbout);
 	};
+
+	let avatar;
+	const currentUser = user.username;
+	if (currentUser === "Demo") {
+		avatar = iAmWinking;
+	} else if (currentUser === "saad") {
+		avatar = skullWinking;
+	} else if (currentUser === "bob") {
+		avatar = hooterWink;
+	} else if (currentUser === "cow") {
+		avatar = mindBlown;
+	} else if (currentUser === "monkey") {
+		avatar = roboHeart;
+	} else {
+		avatar = excitedMonkey;
+	}
 
 	return (
 		<MainContainer
