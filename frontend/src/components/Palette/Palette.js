@@ -10,6 +10,8 @@ import {
 	faShare,
 } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
+import { pageAnimation } from "../../styles/Animation";
+
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
 function Palette({ setGetNew, sessionUser }) {
@@ -79,7 +81,13 @@ function Palette({ setGetNew, sessionUser }) {
 	));
 
 	return (
-		<StyledDiv className="Palette">
+		<StyledDiv
+			className="Palette"
+			variants={pageAnimation}
+			initial="hidden"
+			animate="show"
+			exit="exit"
+		>
 			<div className="color-box">{boxes}</div>
 			<div className="created-by">
 				<div>
@@ -166,7 +174,7 @@ function Palette({ setGetNew, sessionUser }) {
 	);
 }
 
-const StyledDiv = styled.div`
+const StyledDiv = styled(motion.div)`
 	height: 80vh;
 	width: 80vw;
 	margin: auto;

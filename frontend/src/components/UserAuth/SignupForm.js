@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink, Redirect } from "react-router-dom";
+import { NavLink, Redirect, useHistory } from "react-router-dom";
 //* redux stuff
 import { useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
@@ -10,6 +10,7 @@ import { signupContainer } from "../../styles/Animation";
 function SignupFormPage({ sessionUser }) {
 	//* redux
 	const dispatch = useDispatch();
+	const history = useHistory();
 
 	//? all the states for user login and errors
 	const [email, setEmail] = useState("");
@@ -26,12 +27,15 @@ function SignupFormPage({ sessionUser }) {
 		e.preventDefault();
 		if (password === confirmPassword) {
 			setErrors([]);
+			history.push("/");
+
 			return dispatch(
 				sessionActions.signup({ email, username, password })
 			).catch((res) => {
 				if (res.errors) setErrors(res.errors);
 			});
 		}
+
 		return setErrors([
 			"Confirm Password field must be the same as the Password field",
 		]);

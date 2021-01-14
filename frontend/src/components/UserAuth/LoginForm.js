@@ -1,16 +1,17 @@
 import React, { useState } from "react";
-import { NavLink, Redirect } from "react-router-dom";
+import { NavLink, Redirect, useHistory } from "react-router-dom";
 //* redux stuff
 import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
 //? styles and page transitions
 import "./LoginForm.css";
 import { motion } from "framer-motion";
-import { loginContainer } from "../../styles/Animation";
+import { pageAnimation } from "../../styles/Animation";
 
 function LoginFormPage({ sessionUser }) {
 	//* redux dispatch
 	const dispatch = useDispatch();
+	const history = useHistory();
 
 	//* user input states
 	const [email, setEmail] = useState("");
@@ -39,12 +40,13 @@ function LoginFormPage({ sessionUser }) {
 				password: "password",
 			})
 		);
+		history.push("/");
 	};
 
 	return (
 		<motion.div
 			className="LoginForm"
-			variants={loginContainer}
+			variants={pageAnimation}
 			initial="hidden"
 			animate="show"
 			exit="exit"

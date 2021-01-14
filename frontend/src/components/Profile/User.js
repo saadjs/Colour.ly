@@ -7,6 +7,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import avatar from "./../../styles/images/avatar.jpeg";
 
+import { motion } from "framer-motion";
+import { pageAnimation } from "../../styles/Animation";
+
 function User({ sessionUser, setGetNew }) {
 	const [userPalettes, getUserPalettes] = useState([]);
 	const [pageReload, setPageReload] = useState(false);
@@ -46,7 +49,12 @@ function User({ sessionUser, setGetNew }) {
 	};
 
 	return (
-		<MainContainer>
+		<MainContainer
+			variants={pageAnimation}
+			initial="hidden"
+			animate="show"
+			exit="exit"
+		>
 			<UserInfoContainer>
 				<ul>
 					<li className="avatar-container">
@@ -132,7 +140,7 @@ function User({ sessionUser, setGetNew }) {
 	);
 }
 
-const MainContainer = styled.div`
+const MainContainer = styled(motion.div)`
 	width: 100%;
 	margin: auto;
 	padding: 0 2rem;
@@ -144,6 +152,11 @@ const UserInfoContainer = styled.div`
 	position: absolute;
 	top: 10%;
 	width: 20%;
+	box-shadow: 10px 5px 5px #000000;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 	.username-container {
 		width: 100%;
 		text-align: center;
@@ -158,9 +171,17 @@ const UserInfoContainer = styled.div`
 		margin-top: 0.5rem;
 	}
 	.update-bio-form-container {
+		form {
+			width: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+		}
 		textarea {
 			width: 300px;
 			height: 300px;
+			resize: none;
 		}
 	}
 	strong {
@@ -172,6 +193,7 @@ const UserInfoContainer = styled.div`
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
+		justify-content: center;
 		padding: 1rem;
 		li {
 			font-family: cursive;
@@ -182,6 +204,9 @@ const UserInfoContainer = styled.div`
 				display: flex;
 				align-items: center;
 				border-radius: 50%;
+			}
+			button {
+				margin-left: 4.5rem;
 			}
 		}
 		span {

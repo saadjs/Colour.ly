@@ -1,8 +1,8 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { faUser, faPaintBrush } from "@fortawesome/free-solid-svg-icons";
 
 // Redux stuff
 import { useDispatch } from "react-redux";
@@ -10,14 +10,17 @@ import * as sessionActions from "../../store/session";
 
 // style stuff
 import styled from "styled-components";
+import { motion } from "framer-motion";
+import colourly from "./../../styles/images/colourly.jpeg";
 
 function Nav({ sessionUser }) {
 	const dispatch = useDispatch();
-
+	const history = useHistory();
 	//* handle logout button press
 	const handleLogout = (e) => {
 		e.preventDefault();
 		dispatch(sessionActions.logout());
+		history.push("/login");
 	};
 
 	//? generate links based on user logged in status
@@ -59,7 +62,22 @@ function Nav({ sessionUser }) {
 	return (
 		<StyledNav>
 			<h1>
-				<NavLink to="/">Home</NavLink>
+				<NavLink to="/">
+					{/* <motion.span
+						style={{ fontFamily: "cursive" }}
+						whileHover={{ scale: 2 }}
+					>
+						Colour.ly
+					</motion.span>{" "}
+					<FontAwesomeIcon icon={faPaintBrush} size="2x" /> */}
+					<motion.img
+						src={colourly}
+						alt=""
+						style={{ width: 150 }}
+						whileHover={{ scale: 2 }}
+						whileTap={{ rotate: -90 }}
+					/>
+				</NavLink>
 			</h1>
 			<ul>{sessionLinks}</ul>
 		</StyledNav>

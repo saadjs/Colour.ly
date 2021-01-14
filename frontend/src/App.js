@@ -20,7 +20,7 @@ import { useDispatch, useSelector } from "react-redux";
 import * as sessionActions from "./store/session";
 
 //* Page Transitions
-// import { AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 
 function App() {
 	const dispatch = useDispatch();
@@ -62,38 +62,41 @@ function App() {
 		<>
 			<GlobalStyle />
 			<Nav sessionUser={sessionUser} />
-			{/* <AnimatePresence exitBeforeEnter> */}
-			<Switch location={location} key={location.pathname}>
-				<Route exact path="/palettes/create">
-					<NewPalette
-						sessionUser={sessionUser}
-						colorCombos={colorCombos}
-						setGetNew={setGetNew}
-					/>
-				</Route>
-				<Route exact path="/users/:userId">
-					<User sessionUser={sessionUser} setGetNew={setGetNew} />
-				</Route>
-				<Route path="/users/:userId/favorites">
-					<Favorite />
-				</Route>
-				<Route exact path="/palettes/:id">
-					<Palette setGetNew={setGetNew} sessionUser={sessionUser} />
-				</Route>
-				<Route path="/login">
-					<LoginFormPage sessionUser={sessionUser} />
-				</Route>
-				<Route path="/signup">
-					<SignupFormPage sessionUser={sessionUser} />
-				</Route>
-				<Route exact path="/">
-					<Homepage
-						colorCombos={colorCombos}
-						popularCombos={popularCombos}
-					/>
-				</Route>
-			</Switch>
-			{/* </AnimatePresence> */}
+			<AnimatePresence exitBeforeEnter>
+				<Switch location={location} key={location.pathname}>
+					<Route exact path="/palettes/create">
+						<NewPalette
+							sessionUser={sessionUser}
+							colorCombos={colorCombos}
+							setGetNew={setGetNew}
+						/>
+					</Route>
+					<Route exact path="/users/:userId">
+						<User sessionUser={sessionUser} setGetNew={setGetNew} />
+					</Route>
+					<Route exact path="/users/:userId/favorites">
+						<Favorite />
+					</Route>
+					<Route exact path="/palettes/:id">
+						<Palette
+							setGetNew={setGetNew}
+							sessionUser={sessionUser}
+						/>
+					</Route>
+					<Route exact path="/login">
+						<LoginFormPage sessionUser={sessionUser} />
+					</Route>
+					<Route exact path="/signup">
+						<SignupFormPage sessionUser={sessionUser} />
+					</Route>
+					<Route exact path="/">
+						<Homepage
+							colorCombos={colorCombos}
+							popularCombos={popularCombos}
+						/>
+					</Route>
+				</Switch>
+			</AnimatePresence>
 		</>
 	);
 }
