@@ -31,6 +31,18 @@ function Nav({ sessionUser }) {
 		sessionLinks = (
 			<>
 				<li>
+					<NavLink exact to="/palettes">
+						Explore Palettes
+					</NavLink>
+					<ActivePath
+						transition={{ duration: 0.75 }}
+						initial={{ width: "0%" }}
+						animate={{
+							width: pathname === "/palettes" ? "105px" : "0%",
+						}}
+					/>
+				</li>
+				<li>
 					<NavLink to="/login">Log In</NavLink>
 					<ActivePath
 						transition={{ duration: 0.75 }}
@@ -63,7 +75,7 @@ function Nav({ sessionUser }) {
 						transition={{ duration: 0.75 }}
 						initial={{ width: "0%" }}
 						animate={{
-							width: pathname === "/palettes" ? "95px" : "0%",
+							width: pathname === "/palettes" ? "105px" : "0%",
 						}}
 					/>
 				</li>
