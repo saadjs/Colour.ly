@@ -36,9 +36,7 @@ function ColorColumns({
 }
 
 const StyledContainerDiv = styled.div`
-	/* box-shadow: 10px 5px 5px #d0b64d; */
-	border: 3px solid red;
-
+	box-shadow: 10px 5px 5px #d0b64d;
 	padding: 10px;
 	:hover {
 		cursor: pointer;

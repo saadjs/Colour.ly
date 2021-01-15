@@ -47,15 +47,12 @@ const MotionDiv = styled(motion.div)`
 
 const Colors = styled.div`
 	display: grid;
-	border: 5px solid pink;
-
 	grid-template-columns: repeat(4, 22%);
 	grid-gap: 4%;
 	width: 100%;
 `;
 
 const ContainerDiv = styled.div`
-	border: 5px solid black;
 	width: 100%;
 	padding: 2rem 2rem;
 	margin-bottom: 2rem;
