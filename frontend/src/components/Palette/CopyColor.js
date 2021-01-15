@@ -44,7 +44,7 @@ function CopyColor({ name, background }) {
 }
 
 const StyledDiv = styled.div`
-	cursor: pointer;
+	cursor: copy;
 	height: 100%;
 	width: 20%;
 	display: inline-block;

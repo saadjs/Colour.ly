@@ -6,6 +6,7 @@ import colors from "./util";
 import "./Home.css";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import styled from "styled-components";
+import colourlyImg from "./../../styles/images/colourly.jpeg";
 
 const masonryOptions = {
 	fitWidth: false,
@@ -33,6 +34,10 @@ function DefaultHome() {
 			<CopiedText className={`copy ${copy && "overlay-show"}`}>
 				<h1>Color Copied!</h1>
 			</CopiedText>
+			<div className="logo-container">
+				<h1>Welcome to Colour.ly</h1>
+			</div>
+
 			<Masony
 				className="masony-container"
 				elementType={"ul"}
@@ -49,7 +54,6 @@ function DefaultHome() {
 								whileTap={{
 									scale: 0.8,
 									rotate: -90,
-									borderRadius: "100%",
 								}}
 								style={{
 									background: color.color,
@@ -67,8 +71,34 @@ function DefaultHome() {
 	);
 }
 const StyledDiv = styled(motion.div)`
-	cursor: pointer;
+	cursor: copy;
 	background-color: #fdf5e6;
+	.logo-container {
+		cursor: initial;
+		height: 10rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: linear-gradient(
+				217deg,
+				rgba(255, 0, 0, 0.8),
+				rgba(255, 0, 0, 0) 70.71%
+			),
+			linear-gradient(
+				127deg,
+				rgba(0, 255, 0, 0.8),
+				rgba(0, 255, 0, 0) 70.71%
+			),
+			linear-gradient(
+				336deg,
+				rgba(0, 0, 255, 0.8),
+				rgba(0, 0, 255, 0) 70.71%
+			);
+		h1 {
+			text-align: center;
+			font-size: 3rem;
+		}
+	}
 	.show.overlay-show {
 		opacity: 1;
 		z-index: 10;
@@ -82,8 +112,6 @@ const StyledDiv = styled(motion.div)`
 	.masony-container {
 		width: 90%;
 		margin: 1rem auto;
-	}
-	#mapped-li {
 	}
 `;
 
