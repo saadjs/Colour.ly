@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { pageAnimation } from "../../styles/Animation";
 import styled from "styled-components";
 
-function Homepage({ colorCombos, popularCombos }) {
+function PaletteHome({ colorCombos, popularCombos }) {
 	return (
 		<MotionDiv
 			variants={pageAnimation}
@@ -61,7 +61,6 @@ const ContainerDiv = styled.div`
 		padding: 1rem;
 		border: 2px solid black;
 		background-color: #badc58;
-		/* color: whitesmoke; */
 	}
 `;
 
@@ -71,4 +70,4 @@ const MainOuterDiv = styled.div`
 	flex-direction: column;
 `;
 
-export default Homepage;
+export default PaletteHome;

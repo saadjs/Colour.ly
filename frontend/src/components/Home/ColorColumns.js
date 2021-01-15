@@ -2,11 +2,17 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faHeart, faClipboard } from "@fortawesome/free-solid-svg-icons";
 
-function ColorColumns({ paletteTitle, colors, paletteId, totalLikes }) {
+function ColorColumns({
+	paletteTitle,
+	colors,
+	paletteId,
+	totalLikes,
+	comments,
+	createdBy,
+}) {
 	const history = useHistory();
-
 	const handleClick = () => {
 		history.push(`/palettes/${paletteId}`);
 	};
@@ -21,8 +27,17 @@ function ColorColumns({ paletteTitle, colors, paletteId, totalLikes }) {
 				<LikesContainer>
 					<FontAwesomeIcon icon={faHeart} className="home-dil" />
 					<p>{totalLikes}</p>
+					{comments && (
+						<>
+							<FontAwesomeIcon icon={faClipboard} />
+							<p>{comments.length}</p>
+						</>
+					)}
 				</LikesContainer>
 			</PaletteInfoDiv>
+			<CreatorInfoDiv>
+				Created By: <span>{createdBy}</span>
+			</CreatorInfoDiv>
 		</StyledContainerDiv>
 	);
 }
@@ -63,12 +78,23 @@ const PaletteInfoDiv = styled.div`
 const LikesContainer = styled.div`
 	display: flex;
 	padding: 0.5rem;
+	box-shadow: 5px 5px 10px 1px rgba(0, 0, 255, 0.2);
 	p {
-		padding-left: 3px;
+		padding-left: 5px;
+		padding-right: 5px;
 	}
 	.home-dil {
 		color: red;
 	}
 `;
 
+const CreatorInfoDiv = styled.div`
+	padding-left: 0.5rem;
+	span {
+		font-family: cursive;
+		color: #575fcf;
+		font-size: 1.5rem;
+	}
+	/* border: 5px solid red; */
+`;
 export default ColorColumns;

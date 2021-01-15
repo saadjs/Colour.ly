@@ -51,6 +51,7 @@ function User({ sessionUser, setGetNew }) {
 		setGetNew(false);
 		setPageReload(false);
 	};
+	
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		const res = await axios.put(`/api/users/${userId}/about`, { aboutMe });

@@ -31,6 +31,18 @@ function Nav({ sessionUser }) {
 		sessionLinks = (
 			<>
 				<li>
+					<NavLink exact to="/palettes">
+						Explore Palettes
+					</NavLink>
+					<ActivePath
+						transition={{ duration: 0.75 }}
+						initial={{ width: "0%" }}
+						animate={{
+							width: pathname === "/palettes" ? "105px" : "0%",
+						}}
+					/>
+				</li>
+				<li>
 					<NavLink to="/login">Log In</NavLink>
 					<ActivePath
 						transition={{ duration: 0.75 }}
@@ -56,7 +68,21 @@ function Nav({ sessionUser }) {
 		sessionLinks = (
 			<>
 				<li>
-					<NavLink to="/palettes/create">Create Palette</NavLink>
+					<NavLink exact to="/palettes">
+						Explore Palettes
+					</NavLink>
+					<ActivePath
+						transition={{ duration: 0.75 }}
+						initial={{ width: "0%" }}
+						animate={{
+							width: pathname === "/palettes" ? "105px" : "0%",
+						}}
+					/>
+				</li>
+				<li>
+					<NavLink exact to="/palettes/create">
+						Create Palette
+					</NavLink>
 					<ActivePath
 						transition={{ duration: 0.75 }}
 						initial={{ width: "0%" }}
@@ -67,7 +93,7 @@ function Nav({ sessionUser }) {
 					/>
 				</li>
 				<li>
-					<NavLink to={`/users/${sessionUser.id}/favorites`}>
+					<NavLink exact to={`/users/${sessionUser.id}/favorites`}>
 						Favorites
 					</NavLink>
 					<ActivePath
