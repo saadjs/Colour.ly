@@ -15,6 +15,7 @@ import NewPalette from "./components/CreatePalette/NewPalette";
 import User from "./components/Profile/User";
 import Favorite from "./components/Profile/Favorite";
 import DefaultHome from "./components/Home/DefaultHome";
+import NotFoundPage from "./components/Home/NotFoundPage";
 
 //* Redux
 import { useDispatch, useSelector } from "react-redux";
@@ -98,6 +99,9 @@ function App() {
 					</Route>
 					<Route exact path="/">
 						<DefaultHome />
+					</Route>
+					<Route path="*">
+						<NotFoundPage />
 					</Route>
 				</Switch>
 			</AnimatePresence>
