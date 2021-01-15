@@ -23,7 +23,7 @@ function Palette({ setGetNew, sessionUser }) {
 	const [creatorId, setCreatorId] = useState("");
 	const [pComments, setPComments] = useState([]);
 	const [comment, setComment] = useState("");
-	const [showComments, setShowComments] = useState(false);
+	const [showComments, setShowComments] = useState(true);
 	const [copyURL, setCopyURL] = useState("");
 
 	const { id } = useParams();
@@ -143,42 +143,48 @@ function Palette({ setGetNew, sessionUser }) {
 						</ShareDiv>
 					</CopyToClipboard>
 				</LikeContainer>
+
+				<MainCommentDiv>
+					{showComments && (
+						<div>
+							<MainComment>
+								<div className="innner-ul-comment">
+									{pComments.map((comment, i) => (
+										<CommentContainerDiv key={i}>
+											<ul>
+												<li>
+													<p>
+														<span className="commentor">
+															{
+																comment.user
+																	.username
+															}
+														</span>
+														<span className="actual-comment">
+															{comment.comment}
+														</span>
+													</p>
+												</li>
+											</ul>
+										</CommentContainerDiv>
+									))}
+								</div>
+								<form onSubmit={postComment}>
+									<input
+										placeholder="notes"
+										required
+										value={comment}
+										onChange={(e) =>
+											setComment(e.target.value)
+										}
+									/>
+									<button type="submit">Post note</button>
+								</form>
+							</MainComment>
+						</div>
+					)}
+				</MainCommentDiv>
 			</div>
-			<MainCommentDiv>
-				{showComments && (
-					<div>
-						<MainComment>
-							<div className="innner-ul-comment">
-								{pComments.map((comment, i) => (
-									<CommentContainerDiv key={i}>
-										<ul>
-											<li>
-												<p>
-													<span className="commentor">
-														{comment.user.username}
-													</span>
-													<span className="actual-comment">
-														{comment.comment}
-													</span>
-												</p>
-											</li>
-										</ul>
-									</CommentContainerDiv>
-								))}
-							</div>
-							<form onSubmit={postComment}>
-								<input
-									placeholder="notes"
-									required
-									value={comment}
-									onChange={(e) => setComment(e.target.value)}
-								/>
-								<button type="submit">Post note</button>
-							</form>
-						</MainComment>
-					</div>
-				)}
-			</MainCommentDiv>
 		</StyledDiv>
 	);
 }
@@ -186,31 +192,30 @@ function Palette({ setGetNew, sessionUser }) {
 const StyledDiv = styled(motion.div)`
 	height: 80vh;
 	width: 80vw;
-	margin: auto;
 	padding: 1rem;
 	.color-box {
 		height: 100%;
 	}
 	.created-by {
+		position: absolute;
+		box-shadow: -10px 0px 10px black;
+		right: 0;
+		width: 20%;
+		top: 10%;
 		display: flex;
+		flex-direction: column;
 		justify-content: space-between;
 		align-items: center;
+		padding: 1rem;
 	}
 `;
 const MainCommentDiv = styled.div`
-	box-shadow: 10px 5px 5px #575fcf;
-	position: fixed;
-	top: 50%;
-	transform: translate(-50%, -50%);
-	left: 50%;
+	box-shadow: -10px 0px 10px #575fcf;
 	background-color: #dff9fb;
-	/* width: 40%; */
 `;
 
 const CommentContainerDiv = styled.div`
 	width: 100%;
-	/* background-color: #ef5777; */
-
 	ul {
 	}
 	.commentor {
@@ -241,6 +246,7 @@ const ShareDiv = styled(motion.div)`
 
 const LikeContainer = styled.div`
 	display: flex;
+	padding: 1rem;
 	.total-likes-count {
 		padding-left: 1rem;
 		display: flex;
@@ -268,8 +274,6 @@ const LikeContainer = styled.div`
 `;
 
 const MainComment = styled.div`
-	/* width: 50%; */
-	/* margin: auto; */
 	.innner-ul-comment {
 		padding: 5px;
 	}
@@ -278,10 +282,12 @@ const MainComment = styled.div`
 	}
 	input {
 		width: 100%;
+		height: 1rem;
 		border: 2px solid black;
 	}
 	button {
 		width: 8rem;
+		height: 2.5rem;
 	}
 `;
 const Frame1 = styled(motion.div)`
