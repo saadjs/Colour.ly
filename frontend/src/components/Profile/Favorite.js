@@ -18,7 +18,7 @@ function Favorite() {
 			setLikedPalettes(response.data.liked_palettes);
 		})();
 	}, [userId]);
-
+	console.log(likedPalettes);
 	return (
 		<FvrtPalettes
 			variants={pageAnimation}

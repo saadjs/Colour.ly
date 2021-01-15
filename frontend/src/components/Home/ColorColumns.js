@@ -27,8 +27,12 @@ function ColorColumns({
 				<LikesContainer>
 					<FontAwesomeIcon icon={faHeart} className="home-dil" />
 					<p>{totalLikes}</p>
-					<FontAwesomeIcon icon={faClipboard} />
-					<p>{comments.length}</p>
+					{comments && (
+						<>
+							<FontAwesomeIcon icon={faClipboard} />
+							<p>{comments.length}</p>
+						</>
+					)}
 				</LikesContainer>
 			</PaletteInfoDiv>
 		</StyledContainerDiv>

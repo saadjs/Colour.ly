@@ -9,11 +9,12 @@ import GlobalStyle from "./styles/GlobalStyle";
 import LoginFormPage from "./components/UserAuth/LoginForm";
 import SignupFormPage from "./components/UserAuth/SignupForm";
 import Nav from "./components/Nav/Nav";
-import Homepage from "./components/Home/Homepage";
+import PaletteHome from "./components/Home/PaletteHome";
 import Palette from "./components/Palette/Palette";
 import NewPalette from "./components/CreatePalette/NewPalette";
 import User from "./components/Profile/User";
 import Favorite from "./components/Profile/Favorite";
+import DefaultHome from "./components/Home/DefaultHome";
 
 //* Redux
 import { useDispatch, useSelector } from "react-redux";
@@ -64,6 +65,12 @@ function App() {
 			<Nav sessionUser={sessionUser} />
 			<AnimatePresence exitBeforeEnter>
 				<Switch location={location} key={location.pathname}>
+					<Route exact path="/palettes">
+						<PaletteHome
+							colorCombos={colorCombos}
+							popularCombos={popularCombos}
+						/>
+					</Route>
 					<Route exact path="/palettes/create">
 						<NewPalette
 							sessionUser={sessionUser}
@@ -90,10 +97,7 @@ function App() {
 						<SignupFormPage sessionUser={sessionUser} />
 					</Route>
 					<Route exact path="/">
-						<Homepage
-							colorCombos={colorCombos}
-							popularCombos={popularCombos}
-						/>
+						<DefaultHome />
 					</Route>
 				</Switch>
 			</AnimatePresence>
