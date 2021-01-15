@@ -43,6 +43,7 @@ function DefaultHome() {
 					<li className={`photo-item`}>
 						<CopyToClipboard text={color.color} onCopy={handleCopy}>
 							<EachColor
+								whileHover={{ scale: 1.5, zIndex: 1 }}
 								style={{
 									background: color.color,
 									height: color.heigth,
@@ -60,9 +61,6 @@ function DefaultHome() {
 }
 const StyledDiv = styled(motion.div)`
 	cursor: pointer;
-	:hover .cpy-btn {
-		opacity: 1;
-	}
 	.show.overlay-show {
 		opacity: 1;
 		position: absolute;
@@ -104,13 +102,9 @@ const CopiedText = styled(motion.div)`
 		width: 100%;
 		text-align: center;
 	}
-	p {
-		font-size: 2rem;
-		text-transform: uppercase;
-	}
 `;
 
-const EachColor = styled.div`
+const EachColor = styled(motion.div)`
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;

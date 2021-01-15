@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { motion } from "framer-motion";
 
-function Box({ name, background }) {
+function CopyColor({ name, background }) {
 	const [copy, setCopy] = useState(false);
 
 	const handleCopy = () => {
@@ -134,4 +134,4 @@ const CopiedText = styled(motion.div)`
 	}
 `;
 
-export default Box;
+export default CopyColor;
