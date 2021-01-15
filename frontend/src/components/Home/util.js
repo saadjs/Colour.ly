@@ -12,7 +12,7 @@ const colors = [];
 for (var i = 0; i < 150; i++) {
 	colors[i] = {
 		color: getRandomColor(),
-		heigth: `${Math.floor(Math.random() * 600)}px`,
+		heigth: `${Math.random() * 600 + 50}px`,
 		width: "300px",
 	};
 }
