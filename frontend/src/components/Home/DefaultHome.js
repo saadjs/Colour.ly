@@ -6,10 +6,10 @@ import { pageAnimation } from "../../styles/Animation";
 import { PHOTOS } from "./util";
 
 const masonryOptions = {
-	fitWidth: false,
-	columnWidth: 300,
-	gutter: 1,
-	itemSelector: ".photo-item",
+	// fitWidth: false,
+	columnWidth: 1,
+	// gutter: 1,
+	// itemSelector: ".photo-item",
 };
 
 function DefaultHome() {
@@ -29,18 +29,12 @@ function DefaultHome() {
 				updateOnEachImageLoad={false}
 			>
 				{PHOTOS.map((photo, i) => (
-					<motion.li
-						className={`photo-item`}
-						key={i}
-						initial={{ scale: 0 }}
-						animate={{ rotate: 360, scale: 1 }}
-						transition={{
-							type: "spring",
-							// stiffness: 20,
-							damping: 50,
-						}}
-					>
-						<img src={photo.imageUrl} alt="pic" />
+					<motion.li className={`photo-item`} key={i}>
+						<img
+							src={photo.imageUrl}
+							alt="pic"
+							style={{ border: "5px solid black" }}
+						/>
 					</motion.li>
 				))}
 			</Masony>
