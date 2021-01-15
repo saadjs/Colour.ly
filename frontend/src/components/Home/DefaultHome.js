@@ -7,8 +7,7 @@ import "./Home.css";
 
 const masonryOptions = {
 	fitWidth: false,
-	// columnWidth: 200,
-	// gutter: 30,
+	gutter: 10,
 	itemSelector: ".photo-item",
 };
 
