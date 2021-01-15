@@ -44,6 +44,11 @@ function DefaultHome() {
 						<CopyToClipboard text={color.color} onCopy={handleCopy}>
 							<EachColor
 								whileHover={{ scale: 1.5, zIndex: 1 }}
+								whileTap={{
+									scale: 0.8,
+									rotate: -90,
+									borderRadius: "100%",
+								}}
 								style={{
 									background: color.color,
 									height: color.heigth,
@@ -63,8 +68,6 @@ const StyledDiv = styled(motion.div)`
 	cursor: pointer;
 	.show.overlay-show {
 		opacity: 1;
-		position: absolute;
-		transform: rotate(1turn);
 		z-index: 10;
 	}
 	.copy.overlay-show {
