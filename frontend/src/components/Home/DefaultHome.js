@@ -46,7 +46,7 @@ function DefaultHome() {
 				updateOnEachImageLoad={false}
 			>
 				{colors.map((color) => (
-					<li className="photo-item" id="mapped-li">
+					<li className="photo-item" id="mapped-li" key={color.color}>
 						<CopyToClipboard text={color.color} onCopy={handleCopy}>
 							<EachColor
 								whileHover={{ scale: 1.2, zIndex: 1 }}
