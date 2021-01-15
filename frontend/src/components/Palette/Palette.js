@@ -10,7 +10,12 @@ import {
 	faShare,
 } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
-import { pageAnimation, slider, sliderContainer } from "../../styles/Animation";
+import {
+	pageAnimation,
+	slider,
+	sliderContainer,
+	detailContainer,
+} from "../../styles/Animation";
 
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
@@ -23,7 +28,7 @@ function Palette({ setGetNew, sessionUser }) {
 	const [creatorId, setCreatorId] = useState("");
 	const [pComments, setPComments] = useState([]);
 	const [comment, setComment] = useState("");
-	const [showComments, setShowComments] = useState(true);
+	const [showComments, setShowComments] = useState(false);
 	const [copyURL, setCopyURL] = useState("");
 
 	const { id } = useParams();
@@ -97,7 +102,13 @@ function Palette({ setGetNew, sessionUser }) {
 				<Frame6 variants={slider}></Frame6>
 			</motion.div>
 			<div className="color-box">{boxes}</div>
-			<div className="created-by">
+			<motion.div
+				className="created-by"
+				variants={detailContainer}
+				initial="hidden"
+				animate="show"
+				exit="exit"
+			>
 				<div>
 					<h2>{paletteTitle}</h2>
 					<p>
@@ -184,7 +195,7 @@ function Palette({ setGetNew, sessionUser }) {
 						</div>
 					)}
 				</MainCommentDiv>
-			</div>
+			</motion.div>
 		</StyledDiv>
 	);
 }
@@ -193,6 +204,7 @@ const StyledDiv = styled(motion.div)`
 	height: 80vh;
 	width: 80vw;
 	padding: 1rem;
+
 	.color-box {
 		height: 100%;
 	}
