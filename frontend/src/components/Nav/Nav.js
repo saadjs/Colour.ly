@@ -36,7 +36,7 @@ function Nav({ sessionUser }) {
 						transition={{ duration: 0.75 }}
 						initial={{ width: "0%" }}
 						animate={{
-							width: pathname === "/login" ? "3rem" : "0%",
+							width: pathname === "/login" ? "3.75rem" : "0%",
 						}}
 					/>
 				</li>
@@ -46,7 +46,7 @@ function Nav({ sessionUser }) {
 						transition={{ duration: 0.75 }}
 						initial={{ width: "0%" }}
 						animate={{
-							width: pathname === "/signup" ? "4rem" : "0%",
+							width: pathname === "/signup" ? "5rem" : "0%",
 						}}
 					/>
 				</li>
@@ -55,7 +55,6 @@ function Nav({ sessionUser }) {
 	} else {
 		sessionLinks = (
 			<>
-				<li></li>
 				<li>
 					<NavLink exact to="/palettes/create">
 						Create Palette
@@ -65,9 +64,7 @@ function Nav({ sessionUser }) {
 						initial={{ width: "0%" }}
 						animate={{
 							width:
-								pathname === "/palettes/create"
-									? "7.5rem"
-									: "0%",
+								pathname === "/palettes/create" ? "9rem" : "0%",
 						}}
 					/>
 				</li>
@@ -82,7 +79,7 @@ function Nav({ sessionUser }) {
 							width:
 								pathname ===
 								`/users/${sessionUser.id}/favorites`
-									? "5rem"
+									? "5.5rem"
 									: "0%",
 						}}
 					/>
@@ -97,7 +94,7 @@ function Nav({ sessionUser }) {
 						animate={{
 							width:
 								pathname === `/users/${sessionUser.id}`
-									? "1.60rem"
+									? "1.70rem"
 									: "0%",
 						}}
 					/>
@@ -129,7 +126,7 @@ function Nav({ sessionUser }) {
 						transition={{ duration: 0.75 }}
 						initial={{ width: "0%" }}
 						animate={{
-							width: pathname === "/palettes" ? "8rem" : "0%",
+							width: pathname === "/palettes" ? "9.75rem" : "0%",
 						}}
 					/>
 				</li>
