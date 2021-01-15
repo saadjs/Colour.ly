@@ -31,18 +31,6 @@ function Nav({ sessionUser }) {
 		sessionLinks = (
 			<>
 				<li>
-					<NavLink exact to="/palettes">
-						Explore Palettes
-					</NavLink>
-					<ActivePath
-						transition={{ duration: 0.75 }}
-						initial={{ width: "0%" }}
-						animate={{
-							width: pathname === "/palettes" ? "8rem" : "0%",
-						}}
-					/>
-				</li>
-				<li>
 					<NavLink to="/login">Log In</NavLink>
 					<ActivePath
 						transition={{ duration: 0.75 }}
@@ -67,18 +55,7 @@ function Nav({ sessionUser }) {
 	} else {
 		sessionLinks = (
 			<>
-				<li>
-					<NavLink exact to="/palettes">
-						Explore Palettes
-					</NavLink>
-					<ActivePath
-						transition={{ duration: 0.75 }}
-						initial={{ width: "0%" }}
-						animate={{
-							width: pathname === "/palettes" ? "8rem" : "0%",
-						}}
-					/>
-				</li>
+				<li></li>
 				<li>
 					<NavLink exact to="/palettes/create">
 						Create Palette
@@ -143,7 +120,21 @@ function Nav({ sessionUser }) {
 					whileTap={{ rotate: -90 }}
 				/>
 			</NavLink>
-			<ul>{sessionLinks}</ul>
+			<ul>
+				<li>
+					<NavLink exact to="/palettes">
+						Explore Palettes
+					</NavLink>
+					<ActivePath
+						transition={{ duration: 0.75 }}
+						initial={{ width: "0%" }}
+						animate={{
+							width: pathname === "/palettes" ? "8rem" : "0%",
+						}}
+					/>
+				</li>
+				{sessionLinks}
+			</ul>
 		</StyledNav>
 	);
 }
@@ -157,7 +148,7 @@ const StyledNav = styled.nav`
 	align-items: center;
 	padding: 1rem 10rem;
 	background-color: #23d997;
-	font-size: 1.25rem;
+	font-size: 1.5rem;
 	button {
 		padding: 2px;
 		color: #487eb0;
