@@ -6,7 +6,6 @@ import colors from "./util";
 import "./Home.css";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import styled from "styled-components";
-import colourlyImg from "./../../styles/images/colourly.jpeg";
 
 const masonryOptions = {
 	fitWidth: false,
@@ -97,6 +96,7 @@ const StyledDiv = styled(motion.div)`
 		h1 {
 			text-align: center;
 			font-size: 3rem;
+			font-family: cursive;
 		}
 	}
 	.show.overlay-show {
