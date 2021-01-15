@@ -14,9 +14,7 @@ import Palette from "./components/Palette/Palette";
 import NewPalette from "./components/CreatePalette/NewPalette";
 import User from "./components/Profile/User";
 import Favorite from "./components/Profile/Favorite";
-// import DefaultHome from "./components/Home/DefaultHome";
-import TestMason from "./components/Home/TestMason";
-import { myImages } from "./components/Home/util";
+import DefaultHome from "./components/Home/DefaultHome";
 
 //* Redux
 import { useDispatch, useSelector } from "react-redux";
@@ -60,13 +58,6 @@ function App() {
 	if (!loaded) {
 		return null;
 	}
-	let brakePoints = [350, 500, 750];
-	// let images = [];
-	// const imgId = [1011, 883, 1074, 823, 64, 65, 839, 314, 256, 316, 92, 643];
-	// for (let i = 0; i < imgId.length; i++) {
-	// 	const ih = 200 + Math.floor(Math.random() * 10) * 15;
-	// 	images.push("https://unsplash.it/250/" + ih + "?image=" + imgId[i]);
-	// }
 
 	return (
 		<>
@@ -106,11 +97,7 @@ function App() {
 						<SignupFormPage sessionUser={sessionUser} />
 					</Route>
 					<Route exact path="/">
-						{/* <DefaultHome /> */}
-						<TestMason
-							images={myImages}
-							brakePoints={brakePoints}
-						/>
+						<DefaultHome />
 					</Route>
 				</Switch>
 			</AnimatePresence>
