@@ -35,6 +35,7 @@ function Favorite() {
 							paletteId={palette.paletteId}
 							paletteTitle={palette.paletteTitle}
 							totalLikes={palette.totalLikes}
+							createdBy={palette.createdBy}
 						/>
 					</div>
 				))}

@@ -3,32 +3,30 @@ import "./TestMason.css";
 import { motion } from "framer-motion";
 import { pageAnimation } from "../../styles/Animation";
 
-export default class TestMason extends React.Component {
-	render() {
-		return (
-			<motion.div
-				className="container"
-				variants={pageAnimation}
-				initial="hidden"
-				animate="show"
-				exit="exit"
-			>
-				<div className="masonry-container">
-					<Masonry brakePoints={this.props.brakePoints}>
-						{this.props.images.map((image, id) => {
-							return <Tile src={image} key={id} />;
-						})}
-					</Masonry>
-				</div>
-			</motion.div>
-		);
-	}
+export default function TestMason({ images, brakePoints }) {
+	return (
+		<motion.div
+			className="container"
+			variants={pageAnimation}
+			initial="hidden"
+			animate="show"
+			exit="exit"
+		>
+			<div className="masonry-container">
+				<Masonry brakePoints={brakePoints}>
+					{images.map((image, id) => {
+						return <Tile src={image} key={id} />;
+					})}
+				</Masonry>
+			</div>
+		</motion.div>
+	);
 }
 
 const Tile = ({ src }) => {
 	return (
 		<div className="tile">
-			<img src={src} />
+			<img src={src} alt="" />
 		</div>
 	);
 };
