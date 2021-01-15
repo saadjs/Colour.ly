@@ -21,6 +21,7 @@ function DefaultHome() {
 
 		setTimeout(() => setCopy(false), 1700);
 	};
+
 	return (
 		<StyledDiv
 			variants={pageAnimation}
@@ -33,7 +34,7 @@ function DefaultHome() {
 				<h1>Color Copied!</h1>
 			</CopiedText>
 			<Masony
-				className={"photo-list"}
+				className="masony-container"
 				elementType={"ul"}
 				gutter={0}
 				options={masonryOptions}
@@ -41,7 +42,7 @@ function DefaultHome() {
 				updateOnEachImageLoad={false}
 			>
 				{colors.map((color) => (
-					<li className={`photo-item`}>
+					<li className="photo-item" id="mapped-li">
 						<CopyToClipboard text={color.color} onCopy={handleCopy}>
 							<EachColor
 								whileHover={{ scale: 1.2, zIndex: 1 }}
@@ -77,6 +78,12 @@ const StyledDiv = styled(motion.div)`
 		transform: scale(1);
 		z-index: 10;
 		transition-delay: 0.3s;
+	}
+	.masony-container {
+		width: 90%;
+		margin: 1rem auto;
+	}
+	#mapped-li {
 	}
 `;
 

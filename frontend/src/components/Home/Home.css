@@ -1,9 +1,3 @@
-.photo-list {
-	width: 90%;
-	list-style: none;
-	margin: 1rem auto;
-}
-
 .photo-item {
 	display: flex;
 	border-radius: 10px;
