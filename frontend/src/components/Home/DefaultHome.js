@@ -35,6 +35,7 @@ function DefaultHome() {
 			<Masony
 				className={"photo-list"}
 				elementType={"ul"}
+				gutter={0}
 				options={masonryOptions}
 				disableImagesLoaded={false}
 				updateOnEachImageLoad={false}
@@ -43,7 +44,7 @@ function DefaultHome() {
 					<li className={`photo-item`}>
 						<CopyToClipboard text={color.color} onCopy={handleCopy}>
 							<EachColor
-								whileHover={{ scale: 1.5, zIndex: 1 }}
+								whileHover={{ scale: 1.2, zIndex: 1 }}
 								whileTap={{
 									scale: 0.8,
 									rotate: -90,
@@ -66,6 +67,7 @@ function DefaultHome() {
 }
 const StyledDiv = styled(motion.div)`
 	cursor: pointer;
+	background-color: #fdf5e6;
 	.show.overlay-show {
 		opacity: 1;
 		z-index: 10;
@@ -109,6 +111,7 @@ const CopiedText = styled(motion.div)`
 
 const EachColor = styled(motion.div)`
 	display: flex;
+	border-radius: 10px;
 	flex-direction: column;
 	justify-content: flex-end;
 	p {
