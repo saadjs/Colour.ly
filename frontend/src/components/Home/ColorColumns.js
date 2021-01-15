@@ -2,9 +2,15 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faHeart, faClipboard } from "@fortawesome/free-solid-svg-icons";
 
-function ColorColumns({ paletteTitle, colors, paletteId, totalLikes }) {
+function ColorColumns({
+	paletteTitle,
+	colors,
+	paletteId,
+	totalLikes,
+	comments,
+}) {
 	const history = useHistory();
 
 	const handleClick = () => {
@@ -21,6 +27,8 @@ function ColorColumns({ paletteTitle, colors, paletteId, totalLikes }) {
 				<LikesContainer>
 					<FontAwesomeIcon icon={faHeart} className="home-dil" />
 					<p>{totalLikes}</p>
+					<FontAwesomeIcon icon={faClipboard} />
+					<p>{comments.length}</p>
 				</LikesContainer>
 			</PaletteInfoDiv>
 		</StyledContainerDiv>
@@ -28,7 +36,9 @@ function ColorColumns({ paletteTitle, colors, paletteId, totalLikes }) {
 }
 
 const StyledContainerDiv = styled.div`
-	box-shadow: 10px 5px 5px #d0b64d;
+	/* box-shadow: 10px 5px 5px #d0b64d; */
+	border: 3px solid red;
+
 	padding: 10px;
 	:hover {
 		cursor: pointer;
@@ -65,10 +75,10 @@ const LikesContainer = styled.div`
 	padding: 0.5rem;
 	p {
 		padding-left: 3px;
+		padding-right: 3px;
 	}
 	.home-dil {
 		color: red;
 	}
 `;
-
 export default ColorColumns;

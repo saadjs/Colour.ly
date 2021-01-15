@@ -220,6 +220,12 @@ const StyledDiv = styled(motion.div)`
 		align-items: center;
 		padding: 1rem;
 	}
+	@media (max-width: 1300px) {
+		.created-by {
+			top: 25%;
+			margin-top: 5rem;
+		}
+	}
 `;
 const MainCommentDiv = styled.div`
 	box-shadow: -10px 0px 10px #575fcf;
