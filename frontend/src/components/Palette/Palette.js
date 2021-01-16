@@ -204,7 +204,6 @@ const StyledDiv = styled(motion.div)`
 	height: 80vh;
 	width: 80vw;
 	padding: 1rem;
-
 	.color-box {
 		height: 100%;
 	}

@@ -14,7 +14,7 @@ function CopyColor({ name, background }) {
 
 	return (
 		<CopyToClipboard text={background} onCopy={handleCopy}>
-			<StyledDiv className="Box" style={{ background }}>
+			<ColorColumnDiv className="Box" style={{ background }}>
 				<Overlay
 					style={{ background }}
 					className={`show ${copy && "overlay-show"}`}
@@ -38,12 +38,12 @@ function CopyColor({ name, background }) {
 						COPY
 					</CopyButton>
 				</div>
-			</StyledDiv>
+			</ColorColumnDiv>
 		</CopyToClipboard>
 	);
 }
 
-const StyledDiv = styled.div`
+const ColorColumnDiv = styled.div`
 	cursor: copy;
 	height: 100%;
 	width: 20%;
@@ -60,7 +60,7 @@ const StyledDiv = styled.div`
 	}
 	.copy.overlay-show {
 		opacity: 1;
-		transform: scale(1);
+		transform: scale(2);
 		z-index: 10;
 		transition-delay: 0.3s;
 	}
@@ -105,23 +105,22 @@ const CopyButton = styled(motion.button)`
 	opacity: 0;
 `;
 
-const CopiedText = styled(motion.div)`
+const CopiedText = styled.div`
 	opacity: 0;
-
 	position: fixed;
 	left: 0;
 	right: 0;
-	top: 0;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	font-size: 4rem;
 	transform: scale(0.1);
-	color: white;
+	background-color: red;
+	color: whitesmoke;
 	h1 {
 		text-transform: uppercase;
 		background: #0227f7;
+		font-family: "Kaushan Script", cursive;
 		width: 100%;
 		text-align: center;
 	}

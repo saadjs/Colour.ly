@@ -34,7 +34,7 @@ function DefaultHome() {
 				<h1>Color Copied!</h1>
 			</CopiedText>
 			<div className="logo-container">
-				<h1>Hey there!</h1>
+				<HeyThereh1>Hey there!</HeyThereh1>
 				<p>The best colour in the world is your favorite one!!!</p>
 				<p>
 					Let's find that..... <span>Shall We?</span>
@@ -78,17 +78,10 @@ const StyledDiv = styled(motion.div)`
 	background-color: #fdf5e6;
 	.logo-container {
 		cursor: initial;
-		height: 10rem;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		flex-direction: column;
-		h1 {
-			color: #42309c;
-			text-align: center;
-			font-size: 3rem;
-			font-family: "Kaushan Script", cursive;
-		}
 		p {
 			color: #0c798e;
 			font-size: 2rem;
@@ -112,6 +105,13 @@ const StyledDiv = styled(motion.div)`
 		width: 90%;
 		margin: 1rem auto;
 	}
+`;
+
+const HeyThereh1 = styled.h1`
+	color: #42309c;
+	text-align: center;
+	font-size: 3rem;
+	font-family: "Kaushan Script", cursive;
 `;
 
 const Overlay = styled.div`
@@ -138,6 +138,7 @@ const CopiedText = styled(motion.div)`
 		text-transform: uppercase;
 		background: #a600bf;
 		width: 100%;
+		font-size: 10rem;
 		text-align: center;
 	}
 `;
