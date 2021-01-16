@@ -72,6 +72,28 @@ function Nav({ sessionUser }) {
 	} else {
 		sessionLinks = (
 			<>
+				<li className="search-form-container">
+					<form onSubmit={handleSearch} className="search-form">
+						<input
+							type="text"
+							placeholder="search palettes or users"
+							value={searchWords}
+							onChange={(e) => setSearchWords(e.target.value)}
+						/>
+					</form>
+				</li>
+				<li>
+					<NavLink exact to="/palettes">
+						Explore Palettes
+					</NavLink>
+					<ActivePath
+						transition={{ duration: 0.75 }}
+						initial={{ width: "0%" }}
+						animate={{
+							width: pathname === "/palettes" ? "9.75rem" : "0%",
+						}}
+					/>
+				</li>
 				<li>
 					<NavLink exact to="/palettes/create">
 						Create Palette
@@ -134,32 +156,8 @@ function Nav({ sessionUser }) {
 					whileTap={{ rotate: -90 }}
 				/>
 			</NavLink>
-			<div className="search-form-container">
-				<form onSubmit={handleSearch} className="search-form">
-					<input
-						type="text"
-						placeholder="search palettes or users"
-						value={searchWords}
-						onChange={(e) => setSearchWords(e.target.value)}
-					/>
-				</form>
-			</div>
 
-			<ul>
-				<li>
-					<NavLink exact to="/palettes">
-						Explore Palettes
-					</NavLink>
-					<ActivePath
-						transition={{ duration: 0.75 }}
-						initial={{ width: "0%" }}
-						animate={{
-							width: pathname === "/palettes" ? "9.75rem" : "0%",
-						}}
-					/>
-				</li>
-				{sessionLinks}
-			</ul>
+			<ul>{sessionLinks}</ul>
 			<>
 				<Modal
 					size="lg"
@@ -200,7 +198,10 @@ function Nav({ sessionUser }) {
 							</div>
 							{searchResults.palettes.length > 0 ? (
 								searchResults.palettes.map((palette) => (
-									<Link to={`/palettes/${palette.paletteId}`}>
+									<Link
+										to={`/palettes/${palette.paletteId}`}
+										key={palette.paletteId}
+									>
 										<h2>{palette.paletteTitle}</h2>
 									</Link>
 								))
@@ -226,7 +227,10 @@ function Nav({ sessionUser }) {
 							</div>
 							{searchResults.users.length > 0 ? (
 								searchResults.users.map((user) => (
-									<Link to={`/users/${user.id}`}>
+									<Link
+										to={`/users/${user.id}`}
+										key={user.id}
+									>
 										<h2>{user.username}</h2>
 									</Link>
 								))
@@ -247,7 +251,7 @@ const StyledNav = styled.nav`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 1rem 10rem;
+	padding: 1rem 5rem;
 	background-color: #fffa65;
 	font-size: 1.5rem;
 	.search-form-container {
@@ -274,12 +278,14 @@ const StyledNav = styled.nav`
 		font-family: "Kaushan Script", cursive;
 	}
 	ul {
+		margin: 0;
 		display: flex;
 		list-style: none;
-		flex-direction: row;
 		align-items: center;
 		.logout-li {
+			all: unset;
 			cursor: pointer;
+			margin-left: 3rem;
 			color: #487eb0;
 			font-family: "Kaushan Script", cursive;
 			:hover {
@@ -290,12 +296,9 @@ const StyledNav = styled.nav`
 	}
 	li {
 		padding-left: 3rem;
-		padding-right: 5px;
-		position: relative;
-		text-align: center;
 		font-family: "Kaushan Script", cursive;
 	}
-	@media (max-width: 1300px) {
+	@media (max-width: 1500px) {
 		flex-direction: column;
 		padding: 2rem 1rem;
 		ul {

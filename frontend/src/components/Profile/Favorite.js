@@ -26,10 +26,10 @@ function Favorite() {
 			animate="show"
 			exit="exit"
 		>
-			<h1>My Favorites</h1>
-			{likedPalettes &&
+			{likedPalettes.length > 0 ? (
 				likedPalettes.map((palette, i) => (
 					<div className="fvrt-plt-container" key={i}>
+						<h1>My Favorites</h1>
 						<ColorColumns
 							colors={palette.colors}
 							paletteId={palette.paletteId}
@@ -38,7 +38,10 @@ function Favorite() {
 							createdBy={palette.createdBy}
 						/>
 					</div>
-				))}
+				))
+			) : (
+				<h2 style={{ textAlign: "center" }}>Such Emptiness!</h2>
+			)}
 		</FvrtPalettes>
 	);
 }
