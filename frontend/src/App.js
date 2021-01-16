@@ -25,6 +25,7 @@ import * as sessionActions from "./store/session";
 
 //* Page Transitions
 import { AnimatePresence } from "framer-motion";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
 	const dispatch = useDispatch();
@@ -86,12 +87,6 @@ function App() {
 					</Route>
 					<Route exact path="/users/:userId/favorites">
 						<Favorite />
-					</Route>
-					<Route exact path="/users/:userId/followers">
-						<Followers />
-					</Route>
-					<Route exact path="/users/:userId/following">
-						<Following />
 					</Route>
 					<Route exact path="/palettes/:id">
 						<Palette

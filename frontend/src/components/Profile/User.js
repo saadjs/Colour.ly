@@ -11,6 +11,8 @@ import hooterWink from "./../../styles/images/hooterWink.jpg";
 import mindBlown from "./../../styles/images/mindBlown.jpg";
 import roboHeart from "./../../styles/images/roboHeart.jpg";
 import skullWinking from "./../../styles/images/skullWinking.jpg";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
 
 import { motion } from "framer-motion";
 import { pageAnimation } from "../../styles/Animation";
@@ -26,6 +28,8 @@ function User({ sessionUser, setGetNew }) {
 	const [totalFollowers, setTotalFollowers] = useState(null);
 	const [following, setFollowing] = useState([]);
 	const [totalFollowing, setTotalFollowing] = useState(null);
+	const [followersShow, setFollowersShow] = useState(false);
+	const [followingShow, setFollowingShow] = useState(false);
 
 	const { userId } = useParams();
 
@@ -34,7 +38,6 @@ function User({ sessionUser, setGetNew }) {
 			(async () => {
 				const response = await axios.get(`/api/users/${userId}`);
 				const data = response.data;
-				// console.log(data);
 				const paletteData = data.palettes;
 				setUser(data.user);
 				setUserBio(data.user.aboutMe);
@@ -131,17 +134,78 @@ function User({ sessionUser, setGetNew }) {
 						{showFollowButton}
 					</li>
 					<FollowInfoDiv>
-						<Link to={`/users/${userId}/followers`}>
-							<p className="follow-li follow-user">
-								<span>{totalFollowers} </span>Followers
-							</p>
-						</Link>
-						<Link to={`/users/${userId}/following`}>
-							<p className="follow-li follow-user">
-								<span>{totalFollowing}</span> Following
-							</p>
-						</Link>
+						<Button
+							variant="success"
+							onClick={() => setFollowersShow(true)}
+						>
+							<span>{totalFollowers} </span>Followers
+						</Button>
+
+						<Button
+							variant="primary"
+							onClick={() => setFollowingShow(true)}
+						>
+							<span>{totalFollowing}</span> Following
+						</Button>
 					</FollowInfoDiv>
+					<>
+						<Modal
+							size="lg"
+							show={followersShow}
+							onHide={() => setFollowersShow(false)}
+							aria-labelledby="example-modal-sizes-title-lg"
+						>
+							<Modal.Header closeButton>
+								<Modal.Title id="example-modal-sizes-title-lg">
+									Followers
+								</Modal.Title>
+							</Modal.Header>
+							<Modal.Body>
+								{followers.length > 0 ? (
+									followers.map((follower) => (
+										<div key={follower.id}>
+											<Link to={`/users/${follower.id}`}>
+												<h2>{follower.username}</h2>
+											</Link>
+											<p>{follower.email}</p>
+											<p>{follower.aboutMe}</p>
+										</div>
+									))
+								) : (
+									<h1>No followers for you! {":("}</h1>
+								)}
+							</Modal.Body>
+						</Modal>
+					</>
+					<>
+						<Modal
+							size="lg"
+							show={followingShow}
+							onHide={() => setFollowingShow(false)}
+							aria-labelledby="example-modal-sizes-title-lg"
+						>
+							<Modal.Header closeButton>
+								<Modal.Title id="example-modal-sizes-title-lg">
+									Following
+								</Modal.Title>
+							</Modal.Header>
+							<Modal.Body>
+								{following.length > 0 ? (
+									following.map((user) => (
+										<div key={user.id}>
+											<Link to={`/users/${user.id}`}>
+												<h2>{user.username}</h2>
+											</Link>
+											<p>{user.email}</p>
+											<p>{user.aboutMe}</p>
+										</div>
+									))
+								) : (
+									<h1>Y u no following anyone?</h1>
+								)}
+							</Modal.Body>
+						</Modal>
+					</>
 					<li>
 						<strong>Email:</strong>
 						<a href={`mailto:${user.email}`}>
@@ -350,12 +414,6 @@ const FollowInfoDiv = styled.div`
 	justify-content: space-between;
 	align-items: center;
 	width: 100%;
-	.follow-li.follow-user {
-		padding: 10px;
-		span {
-			font-size: 3rem;
-		}
-	}
 `;
 
 const FollowButton = styled(motion.button)`
