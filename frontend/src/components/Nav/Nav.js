@@ -144,7 +144,7 @@ const StyledNav = styled.nav`
 	justify-content: space-between;
 	align-items: center;
 	padding: 1rem 10rem;
-	background-color: #23d997;
+	background-color: #fffa65;
 	font-size: 1.5rem;
 	button {
 		padding: 2px;

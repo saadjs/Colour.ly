@@ -34,7 +34,11 @@ function DefaultHome() {
 				<h1>Color Copied!</h1>
 			</CopiedText>
 			<div className="logo-container">
-				<h1>Welcome to Colour.ly</h1>
+				<h1>Hey there!</h1>
+				<p>The best colour in the world is your favorite one!!!</p>
+				<p>
+					Let's find that..... <span>Shall We?</span>
+				</p>
 			</div>
 
 			<Masony
@@ -78,25 +82,20 @@ const StyledDiv = styled(motion.div)`
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		background: linear-gradient(
-				217deg,
-				rgba(255, 0, 0, 0.8),
-				rgba(255, 0, 0, 0) 70.71%
-			),
-			linear-gradient(
-				127deg,
-				rgba(0, 255, 0, 0.8),
-				rgba(0, 255, 0, 0) 70.71%
-			),
-			linear-gradient(
-				336deg,
-				rgba(0, 0, 255, 0.8),
-				rgba(0, 0, 255, 0) 70.71%
-			);
+		flex-direction: column;
 		h1 {
+			color: #42309c;
 			text-align: center;
 			font-size: 3rem;
-			font-family: cursive;
+			font-family: "Kaushan Script", cursive;
+		}
+		P {
+			color: #0c798e;
+			font-size: 2rem;
+			font-family: "Kaushan Script", cursive;
+			span {
+				color: #42309c;
+			}
 		}
 	}
 	.show.overlay-show {
