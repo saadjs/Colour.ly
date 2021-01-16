@@ -73,6 +73,7 @@ function User({ sessionUser, setGetNew }) {
 			const data = response.data;
 			setTotalFollowers(data.totalFollowers);
 			setFollowers(data.followers);
+			setPageReload(false);
 		}
 	};
 
@@ -152,6 +153,7 @@ function User({ sessionUser, setGetNew }) {
 						<Modal
 							size="lg"
 							show={followersShow}
+							animation={false}
 							onHide={() => setFollowersShow(false)}
 							aria-labelledby="example-modal-sizes-title-lg"
 						>
@@ -180,6 +182,7 @@ function User({ sessionUser, setGetNew }) {
 					<>
 						<Modal
 							size="lg"
+							animation={false}
 							show={followingShow}
 							onHide={() => setFollowingShow(false)}
 							aria-labelledby="example-modal-sizes-title-lg"
