@@ -78,10 +78,12 @@ const PaletteInfoDiv = styled.div`
 const LikesContainer = styled.div`
 	display: flex;
 	padding: 0.5rem;
+	justify-content: center;
+	align-items: center;
 	box-shadow: 5px 5px 10px 1px rgba(0, 0, 255, 0.2);
 	p {
 		padding-left: 5px;
-		padding-right: 5px;
+		padding-right: 8px;
 	}
 	.home-dil {
 		color: red;
@@ -95,6 +97,5 @@ const CreatorInfoDiv = styled.div`
 		color: #575fcf;
 		font-size: 1.5rem;
 	}
-	/* border: 5px solid red; */
 `;
 export default ColorColumns;
