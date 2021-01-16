@@ -20,7 +20,7 @@ def user(id):
     if not user:
         return jsonify('no user found')
     palettes = Palette.query.filter(Palette.user_id == id).order_by(Palette.id.desc())
-    return {'user': user.to_dict(),
+    return {'user': user.to_dict_full(),
             'palettes': [palette.to_dict() for palette in palettes]}
     
 
@@ -49,7 +49,6 @@ def about_me(id):
 @user_routes.route('/<int:id>/follow', methods=["POST"])
 @login_required
 def follow_user(id):
-    # follower = User.query.filter(User.id  == request.json['follower_id']).first()
     follower = User.query.get(current_user.get_id())
     leader = User.query.get(id)
     if follower == leader:
@@ -74,4 +73,3 @@ def unfollow_user(id):
         return leader.to_dict_followers()
     else:
         return {"error": "can't unfollow someone whom you are not following"}
-        
