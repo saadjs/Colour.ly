@@ -194,7 +194,6 @@ const ActivePath = styled(motion.div)`
 	background: #bb3b2c;
 	width: 0;
 	position: absolute;
-	bottom: -80%;
 `;
 
 export default Nav;
