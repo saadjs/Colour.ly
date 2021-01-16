@@ -4,7 +4,7 @@ WORKDIR /frontend
 COPY frontend/. .
 
 # You have to set this because it should be set during build time.
-ENV REACT_APP_BASE_URL=NiceTry:D
+ENV REACT_APP_BASE_URL=https://new-colors.herokuapp.com/
 
 # Build our React App
 RUN npm install
