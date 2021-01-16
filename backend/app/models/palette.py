@@ -29,6 +29,7 @@ class Palette(db.Model):
             "userId": self.user.id,
             'likedBy': [user.to_dict() for user in self.liked_by],
             'totalLikes': len(self.liked_by),
+            "totalComments": len(self.comments),
             "comments" : [comment.to_dict() for comment in self.comments]
         }
     
@@ -38,7 +39,7 @@ class Palette(db.Model):
             'likedBy': [user.to_dict() for user in self.liked_by],
             'totalLikes': len(self.liked_by),
         }
-        
+    
     def for_user_liked(self):
         return {
             "paletteId": self.id,
@@ -46,4 +47,13 @@ class Palette(db.Model):
             "colors": self.colors,
             "createdBy": self.user.username,
             'totalLikes': len(self.liked_by),
+        }
+        
+    def to_dict_search(self):
+        return {
+            "paletteId": self.id,
+            "paletteTitle": self.title,
+            "createdBy": self.user.username,
+            "totalLikes": len(self.liked_by),
+            "totalComments": len(self.comments),
         }
