@@ -162,7 +162,7 @@ const ColorPickerDiv = styled.div`
 	position: absolute;
 	left: 0;
 	width: 400px;
-	box-shadow: 10px 10px 50px black;
+	box-shadow: 10px 10px 50px #d5abab;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -211,7 +211,7 @@ const RandomColorBtn = styled.button`
 
 const CreatePaletteBtn = styled.button`
 	width: 20rem;
-	height: 5rem;
+	height: 3rem;
 	font-size: 2rem;
 	margin-bottom: 10px;
 	background: #5f9aed;
@@ -231,6 +231,9 @@ const Main = styled.div`
 	margin-left: 400px;
 	.drawer-header {
 		height: 100%;
+	}
+	@media (max-width: 1400px) {
+		height: 80vh;
 	}
 `;
 
