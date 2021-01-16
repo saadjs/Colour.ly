@@ -262,31 +262,38 @@ function User({ sessionUser, setGetNew }) {
 				exit="exit"
 			>
 				<h1>My Palettes</h1>
-				{userPalettes.map((palette) => (
-					<div key={palette.paletteId} className="palette-delete-div">
-						<ColumnsContainerDiv>
-							<ColorColumns
-								{...palette}
-								className="clr-column-cls"
-							/>
-						</ColumnsContainerDiv>
-						{sessionUser.id === user.id ? (
-							<UpdateDeleteDiv>
-								<DeleteButton>
-									<FontAwesomeIcon
-										icon={faTrashAlt}
-										size="2x"
-										onClick={() =>
-											handleDelete(palette.paletteId)
-										}
-									/>
-								</DeleteButton>
-							</UpdateDeleteDiv>
-						) : (
-							""
-						)}
-					</div>
-				))}
+				{userPalettes.length > 0 ? (
+					userPalettes.map((palette) => (
+						<div
+							key={palette.paletteId}
+							className="palette-delete-div"
+						>
+							<ColumnsContainerDiv>
+								<ColorColumns
+									{...palette}
+									className="clr-column-cls"
+								/>
+							</ColumnsContainerDiv>
+							{sessionUser.id === user.id ? (
+								<UpdateDeleteDiv>
+									<DeleteButton>
+										<FontAwesomeIcon
+											icon={faTrashAlt}
+											size="2x"
+											onClick={() =>
+												handleDelete(palette.paletteId)
+											}
+										/>
+									</DeleteButton>
+								</UpdateDeleteDiv>
+							) : (
+								""
+							)}
+						</div>
+					))
+				) : (
+					<h2 style={{ textAlign: "center" }}>Such Emptiness!</h2>
+				)}
 			</PaletteContainer>
 		</MainContainer>
 	);
