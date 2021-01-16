@@ -173,7 +173,7 @@ function User({ sessionUser, setGetNew }) {
 										</div>
 									))
 								) : (
-									<h1>No followers for you! {":("}</h1>
+									<h1>...</h1>
 								)}
 							</Modal.Body>
 						</Modal>
@@ -203,7 +203,7 @@ function User({ sessionUser, setGetNew }) {
 										</div>
 									))
 								) : (
-									<h1>Y u no following anyone?</h1>
+									<h1>...</h1>
 								)}
 							</Modal.Body>
 						</Modal>
