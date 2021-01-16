@@ -56,10 +56,10 @@ h4 {
     font-weight: bold;
 }
 
-/* span {
-    font-weight: bold;
-    color: #B65906;
-} */
+p {
+    margin: 0;
+    padding: 0;
+}
 `;
 
 export default GlobalStyle;
