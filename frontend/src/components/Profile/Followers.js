@@ -5,12 +5,17 @@ import styled from "styled-components";
 
 function Followers() {
 	return (
-		<ContainerDiv>
+		<ContainerDiv
+			variants={pageAnimation}
+			initial="hidden"
+			animate="show"
+			exit="exit"
+		>
 			<h1>Followers</h1>
 		</ContainerDiv>
 	);
 }
 
-const ContainerDiv = styled.div``;
+const ContainerDiv = styled(motion.div)``;
 
 export default Followers;

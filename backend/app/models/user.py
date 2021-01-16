@@ -63,7 +63,9 @@ class User(db.Model, UserMixin):
 			"totalFollowers": len(self.followers),
 			"totalFollowing": len(self.following),
 			"followers": [follower.to_dict() for follower in self.followers],
-			"following": [following.to_dict() for following in self.following]
+			# "followersIdList": self.followers,
+			"following": [following.to_dict() for following in self.following],
+			# "followingIdList": self.following
 		}
 
 	def to_dict_min(self):

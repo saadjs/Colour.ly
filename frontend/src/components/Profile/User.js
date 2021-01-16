@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Redirect, useParams } from "react-router-dom";
+import { Link, Redirect, useParams } from "react-router-dom";
 import axios from "axios";
 import ColorColumns from "../Home/ColorColumns";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import iAmWinking from "./../../styles/images/avatar.jpeg";
-// import angryPuppy from "./../../styles/images/angryPuppy.jpg";
 import excitedMonkey from "./../../styles/images/excitedMonkey.jpg";
 import hooterWink from "./../../styles/images/hooterWink.jpg";
 import mindBlown from "./../../styles/images/mindBlown.jpg";
@@ -23,9 +22,9 @@ function User({ sessionUser, setGetNew }) {
 	const [userBio, setUserBio] = useState("");
 	const [showAbout, setShowAbout] = useState(false);
 	const [aboutMe, setAboutMe] = useState("");
-	const [followers, setFollowers] = useState(null);
+	const [followers, setFollowers] = useState([]);
 	const [totalFollowers, setTotalFollowers] = useState(null);
-	const [following, setFollowing] = useState(null);
+	const [following, setFollowing] = useState([]);
 	const [totalFollowing, setTotalFollowing] = useState(null);
 
 	const { userId } = useParams();
@@ -35,6 +34,7 @@ function User({ sessionUser, setGetNew }) {
 			(async () => {
 				const response = await axios.get(`/api/users/${userId}`);
 				const data = response.data;
+				// console.log(data);
 				const paletteData = data.palettes;
 				setUser(data.user);
 				setUserBio(data.user.aboutMe);
@@ -42,6 +42,8 @@ function User({ sessionUser, setGetNew }) {
 				getUserPalettes(paletteData);
 				setTotalFollowers(data.user.totalFollowers);
 				setTotalFollowing(data.user.totalFollowing);
+				setFollowers(data.user.followers);
+				setFollowing(data.user.following);
 				setPageReload(true);
 			})();
 	}, [userId, sessionUser, pageReload]);
@@ -61,6 +63,36 @@ function User({ sessionUser, setGetNew }) {
 		setShowAbout(!showAbout);
 	};
 
+	const followHandler = async (e) => {
+		e.preventDefault();
+		const response = await axios.post(`/api/users/${userId}/follow`);
+		if (!response.errors) {
+			const data = response.data;
+			setTotalFollowers(data.totalFollowers);
+			setFollowers(data.followers);
+		}
+	};
+
+	let showFollowButton;
+	let result =
+		followers && followers.some((user) => user.id === sessionUser.id);
+	if (result) {
+		showFollowButton = (
+			<FollowButton onClick={followHandler} whileHover={{ scale: 1.5 }}>
+				Unfollow
+			</FollowButton>
+		);
+	} else {
+		showFollowButton = (
+			<FollowButton onClick={followHandler} whileHover={{ scale: 1.5 }}>
+				Follow
+			</FollowButton>
+		);
+	}
+	if (sessionUser.id === parseInt(userId, 10)) {
+		showFollowButton = "";
+	}
+
 	let avatar;
 	const currentUser = user.username;
 	if (currentUser === "Demo") {
@@ -78,12 +110,7 @@ function User({ sessionUser, setGetNew }) {
 	}
 
 	return (
-		<MainContainer
-		// variants={pageAnimation}
-		// initial="hidden"
-		// animate="show"
-		// exit="exit"
-		>
+		<MainContainer>
 			<UserInfoContainer>
 				<ul>
 					<li className="avatar-container">
@@ -101,14 +128,19 @@ function User({ sessionUser, setGetNew }) {
 					</li>
 					<li className="username-container">
 						<span>{user.username}</span>
+						{showFollowButton}
 					</li>
 					<FollowInfoDiv>
-						<li className="follow-li follow-user">
-							<span>{totalFollowers} </span>Followers
-						</li>
-						<li className="follow-li follow-user">
-							<span>{totalFollowing}</span> Following
-						</li>
+						<Link to={`/users/${userId}/followers`}>
+							<p className="follow-li follow-user">
+								<span>{totalFollowers} </span>Followers
+							</p>
+						</Link>
+						<Link to={`/users/${userId}/following`}>
+							<p className="follow-li follow-user">
+								<span>{totalFollowing}</span> Following
+							</p>
+						</Link>
 					</FollowInfoDiv>
 					<li>
 						<strong>Email:</strong>
@@ -120,7 +152,7 @@ function User({ sessionUser, setGetNew }) {
 					<li>
 						<strong>About Me:</strong>
 						<br />
-						{userBio}
+						<p>{userBio}</p>
 					</li>
 					{!showAbout && (
 						<li className="btn-container-li">
@@ -211,6 +243,12 @@ const UserInfoContainer = styled(motion.div)`
 	.username-container {
 		width: 100%;
 		text-align: center;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		span {
+			font-size: 2.5rem;
+		}
 	}
 	.avatar-container {
 		width: 100%;
@@ -251,6 +289,9 @@ const UserInfoContainer = styled(motion.div)`
 			font-family: cursive;
 			color: #706fd3;
 			width: 100%;
+			p {
+				font-size: 1.75rem;
+			}
 			img {
 				width: 100%;
 				height: 100%;
@@ -306,18 +347,29 @@ const FollowInfoDiv = styled.div`
 	margin: 0;
 	padding: 0;
 	display: flex;
-	justify-content: space-around;
+	justify-content: space-between;
 	align-items: center;
-	border: 2px solid black;
 	width: 100%;
 	.follow-li.follow-user {
-		padding: 1rem;
-		color: black;
-		width: auto;
+		padding: 10px;
 		span {
-			font-size: 2rem;
-			color: black;
+			font-size: 3rem;
 		}
 	}
 `;
+
+const FollowButton = styled(motion.button)`
+	color: white;
+	border-radius: 10px;
+	font-size: 1rem;
+	border: none;
+	outline: none;
+	background-color: #0095f6;
+	width: 7rem;
+	height: 3rem;
+	:hover {
+		background-color: #34ace0;
+	}
+`;
+
 export default User;
