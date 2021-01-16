@@ -111,7 +111,6 @@ const HeyThereh1 = styled.h1`
 	color: #42309c;
 	text-align: center;
 	font-size: 3rem;
-	border: 1px solid black;
 	font-family: "Kaushan Script", cursive;
 `;
 
