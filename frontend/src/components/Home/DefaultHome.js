@@ -153,8 +153,12 @@ const EachColor = styled(motion.div)`
 	p {
 		align-self: center;
 		background: whitesmoke;
+		border-radius: 5px;
+		-webkit-box-shadow: 0 0 15px 2px black;
+		-moz-box-shadow: 0 0 15px 2px black;
+		box-shadow: 0 0 15px 2px black;
 		padding: 2px;
-		font-size: 12px;
+		font-size: 14px;
 	}
 `;
 
