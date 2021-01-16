@@ -9,7 +9,7 @@ import styled from "styled-components";
 
 const masonryOptions = {
 	fitWidth: false,
-	gutter: 10,
+	gutter: 5,
 	itemSelector: ".photo-item",
 };
 
@@ -145,13 +145,16 @@ const CopiedText = styled(motion.div)`
 
 const EachColor = styled(motion.div)`
 	display: flex;
+	left: auto;
+	right: auto;
 	border-radius: 10px;
 	flex-direction: column;
 	justify-content: flex-end;
 	p {
 		align-self: center;
 		background: whitesmoke;
-		padding: 5px;
+		padding: 2px;
+		font-size: 12px;
 	}
 `;
 
