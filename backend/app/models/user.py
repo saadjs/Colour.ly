@@ -49,7 +49,7 @@ class User(db.Model, UserMixin):
 			"id": self.id,
 			"username": self.username,
 			"email": self.email,
-			'aboutMe': self.about_me,
+			"aboutMe": self.about_me,
 		}
   
 	def to_dict_full(self):
@@ -58,14 +58,24 @@ class User(db.Model, UserMixin):
 			"username": self.username,
 			"email": self.email,
 			"liked_palettes": [palette.for_user_liked() for palette in self.liked_palettes],
-			'totalLikedPalettesByUser': len(self.liked_palettes)
+			"totalLikedPalettesByUser": len(self.liked_palettes),
+			"followers": [follower.to_dict() for follower in self.followers],
+			"following": [following.to_dict() for following in self.following]
+		}
+
+	def to_dict_min(self):
+		return {
+			"id": self.id,
+			"username": self.username,
 		}
 
 	def to_dict_followers(self):
 		return {
-			'currentUserId': self.id,
-			'username': self.username,
-			'email': self.email,
-			'followers': [follower.to_dict() for follower in self.followers],
-			"following": [following.to_dict() for following in self.following]
+			"currentUserId": self.id,
+			"username": self.username,
+			"email": self.email,
+			"followers": [follower.to_dict_min() for follower in self.followers],
+			"following": [following.to_dict_min() for following in self.following],
+			"totalFollowers": len(self.followers),
+			"totalFollowing": len(self.following)
 		}

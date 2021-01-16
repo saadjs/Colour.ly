@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
+from .auth_routes import validation_errors_to_error_messages
 from app.models import User, Palette, db
-from app.forms import FollowForm
 
 user_routes = Blueprint('users', __name__)
 
@@ -50,4 +50,14 @@ def about_me(id):
 @user_routes.route('/<int:id>/follow', methods=["POST"])
 @login_required
 def follow_user(id):
-    
+    follower = User.query.filter(User.id  == request.json['follower_id']).first()
+    leader = User.query.get(id)
+    if follower in leader.followers:
+        leader.followers.remove(follower)
+        db.session.commit()
+        return leader.to_dict_followers()
+    elif follower not in leader.followers:
+        leader.followers.append(follower)
+        db.session.commit()
+        return leader.to_dict_followers()
+    return {'error': validation_errors_to_error_messages(form.errors)}

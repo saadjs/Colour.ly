@@ -2,8 +2,8 @@
 	display: flex;
 	border-radius: 10px;
 	margin-bottom: 0.75rem;
-	box-shadow: 0 5px 10px #c6f8c4;
+	/* box-shadow: 0 5px 10px #c6f8c4;
 	-webkit-box-shadow: 0 0 15px 2px #c6f8c4;
 	-moz-box-shadow: 0 0 15px 2px #c6f8c4;
-	box-shadow: 0 0 15px 2px #c6f8c4;
+	box-shadow: 0 0 15px 2px #c6f8c4; */
 }
