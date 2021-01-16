@@ -68,7 +68,7 @@ const StyledDiv = styled.div`
 
 const Overlay = styled.div`
 	width: 100%;
-	height: 100%;
+	height: 20rem;
 	opacity: 0;
 	z-index: 0;
 	transition: transform 0.75s ease-in-out;
@@ -82,10 +82,7 @@ const Content = styled.div`
 	padding: 10px;
 	text-transform: uppercase;
 	text-align: center;
-
-	/* width: 100%; */
 	background-color: blanchedalmond;
-
 	span {
 		color: black;
 	}

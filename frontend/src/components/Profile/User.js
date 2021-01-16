@@ -135,14 +135,14 @@ function User({ sessionUser, setGetNew }) {
 					</li>
 					<FollowInfoDiv>
 						<Button
-							variant="success"
+							variant="outline-info"
 							onClick={() => setFollowersShow(true)}
 						>
 							<span>{totalFollowers} </span>Followers
 						</Button>
 
 						<Button
-							variant="primary"
+							variant="outline-info"
 							onClick={() => setFollowingShow(true)}
 						>
 							<span>{totalFollowing}</span> Following
@@ -353,6 +353,7 @@ const UserInfoContainer = styled(motion.div)`
 			font-family: cursive;
 			color: #706fd3;
 			width: 100%;
+			padding: 10px 0;
 			p {
 				font-size: 1.75rem;
 			}

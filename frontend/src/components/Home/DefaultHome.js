@@ -123,7 +123,6 @@ const Overlay = styled.div`
 `;
 const CopiedText = styled(motion.div)`
 	opacity: 0;
-
 	position: fixed;
 	left: 0;
 	right: 0;
