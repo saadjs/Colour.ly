@@ -27,6 +27,10 @@ function User({ sessionUser, setGetNew }) {
 	const [userBio, setUserBio] = useState("");
 	const [showAbout, setShowAbout] = useState(false);
 	const [aboutMe, setAboutMe] = useState("");
+	const [followers, setFollowers] = useState(null);
+	const [totalFollowers, setTotalFollowers] = useState(null);
+	const [following, setFollowing] = useState(null);
+	const [totalfollowing, setTotalFollowing] = useState(null);
 
 	const { userId } = useParams();
 
