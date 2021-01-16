@@ -16,6 +16,8 @@ import User from "./components/Profile/User";
 import Favorite from "./components/Profile/Favorite";
 import DefaultHome from "./components/Home/DefaultHome";
 import NotFoundPage from "./components/Home/NotFoundPage";
+import Followers from "./components/Profile/Followers";
+import Following from "./components/Profile/Following";
 
 //* Redux
 import { useDispatch, useSelector } from "react-redux";
@@ -84,6 +86,12 @@ function App() {
 					</Route>
 					<Route exact path="/users/:userId/favorites">
 						<Favorite />
+					</Route>
+					<Route exact path="/users/:userId/followers">
+						<Followers />
+					</Route>
+					<Route exact path="/users/:userId/following">
+						<Following />
 					</Route>
 					<Route exact path="/palettes/:id">
 						<Palette
