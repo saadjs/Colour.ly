@@ -93,14 +93,14 @@ function Palette({ setGetNew, sessionUser }) {
 			animate="show"
 			exit="exit"
 		>
-			{/* <motion.div variants={sliderContainer}>
+			<motion.div variants={sliderContainer}>
 				<Frame1 variants={slider}></Frame1>
 				<Frame2 variants={slider}></Frame2>
 				<Frame3 variants={slider}></Frame3>
 				<Frame4 variants={slider}></Frame4>
 				<Frame5 variants={slider}></Frame5>
 				<Frame6 variants={slider}></Frame6>
-			</motion.div> */}
+			</motion.div>
 			<div className="color-box">{boxes}</div>
 			<motion.div
 				className="created-by"
@@ -204,7 +204,6 @@ const StyledDiv = styled(motion.div)`
 	height: 80vh;
 	width: 80vw;
 	padding: 1rem;
-
 	.color-box {
 		height: 100%;
 	}
