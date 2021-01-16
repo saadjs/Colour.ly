@@ -13,7 +13,6 @@ import roboHeart from "./../../styles/images/roboHeart.jpg";
 import skullWinking from "./../../styles/images/skullWinking.jpg";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-
 import { motion } from "framer-motion";
 import { pageAnimation } from "../../styles/Animation";
 

@@ -16,8 +16,6 @@ import User from "./components/Profile/User";
 import Favorite from "./components/Profile/Favorite";
 import DefaultHome from "./components/Home/DefaultHome";
 import NotFoundPage from "./components/Home/NotFoundPage";
-import Followers from "./components/Profile/Followers";
-import Following from "./components/Profile/Following";
 
 //* Redux
 import { useDispatch, useSelector } from "react-redux";
