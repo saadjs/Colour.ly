@@ -60,6 +60,8 @@ class User(db.Model, UserMixin):
 			"aboutMe": self.about_me,
 			"liked_palettes": [palette.for_user_liked() for palette in self.liked_palettes],
 			"totalLikedPalettesByUser": len(self.liked_palettes),
+			"totalFollowers": len(self.followers),
+			"totalFollowing": len(self.following),
 			"followers": [follower.to_dict() for follower in self.followers],
 			"following": [following.to_dict() for following in self.following]
 		}

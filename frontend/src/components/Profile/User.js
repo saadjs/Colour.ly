@@ -14,11 +14,7 @@ import roboHeart from "./../../styles/images/roboHeart.jpg";
 import skullWinking from "./../../styles/images/skullWinking.jpg";
 
 import { motion } from "framer-motion";
-import {
-	pageAnimation,
-	// titleAnim,
-	// photoAnim
-} from "../../styles/Animation";
+import { pageAnimation } from "../../styles/Animation";
 
 function User({ sessionUser, setGetNew }) {
 	const [userPalettes, getUserPalettes] = useState([]);
@@ -30,7 +26,7 @@ function User({ sessionUser, setGetNew }) {
 	const [followers, setFollowers] = useState(null);
 	const [totalFollowers, setTotalFollowers] = useState(null);
 	const [following, setFollowing] = useState(null);
-	const [totalfollowing, setTotalFollowing] = useState(null);
+	const [totalFollowing, setTotalFollowing] = useState(null);
 
 	const { userId } = useParams();
 
@@ -38,13 +34,14 @@ function User({ sessionUser, setGetNew }) {
 		sessionUser &&
 			(async () => {
 				const response = await axios.get(`/api/users/${userId}`);
-				console.log(response.data);
 				const data = response.data;
 				const paletteData = data.palettes;
 				setUser(data.user);
 				setUserBio(data.user.aboutMe);
 				setAboutMe(data.user.aboutMe);
 				getUserPalettes(paletteData);
+				setTotalFollowers(data.user.totalFollowers);
+				setTotalFollowing(data.user.totalFollowing);
 				setPageReload(true);
 			})();
 	}, [userId, sessionUser, pageReload]);
@@ -105,6 +102,14 @@ function User({ sessionUser, setGetNew }) {
 					<li className="username-container">
 						<span>{user.username}</span>
 					</li>
+					<FollowInfoDiv>
+						<li className="follow-li follow-user">
+							<span>{totalFollowers} </span>Followers
+						</li>
+						<li className="follow-li follow-user">
+							<span>{totalFollowing}</span> Following
+						</li>
+					</FollowInfoDiv>
 					<li>
 						<strong>Email:</strong>
 						<a href={`mailto:${user.email}`}>
@@ -297,4 +302,22 @@ const UpdateDeleteDiv = styled.div`
 	flex-direction: column;
 `;
 
+const FollowInfoDiv = styled.div`
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	border: 2px solid black;
+	width: 100%;
+	.follow-li.follow-user {
+		padding: 1rem;
+		color: black;
+		width: auto;
+		span {
+			font-size: 2rem;
+			color: black;
+		}
+	}
+`;
 export default User;
