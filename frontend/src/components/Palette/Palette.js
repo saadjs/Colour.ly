@@ -264,15 +264,17 @@ const ShareDiv = styled(motion.div)`
 
 const LikeContainer = styled.div`
 	display: flex;
+	justify-content: space-between;
+	align-items: center;
 	padding: 1rem;
 	.total-likes-count {
 		padding-left: 1rem;
-		display: flex;
-		align-items: center;
+		margin: 0;
 		font-size: 1.5rem;
 	}
 	.total-comments-count {
 		font-size: 1.5rem;
+		margin: 0;
 		padding-left: 1rem;
 	}
 	.dil-like-btn {

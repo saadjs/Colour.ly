@@ -1,24 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { Redirect, useParams } from "react-router-dom";
+import { Link, Redirect, useParams } from "react-router-dom";
 import axios from "axios";
 import ColorColumns from "../Home/ColorColumns";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import iAmWinking from "./../../styles/images/avatar.jpeg";
-// import angryPuppy from "./../../styles/images/angryPuppy.jpg";
 import excitedMonkey from "./../../styles/images/excitedMonkey.jpg";
 import hooterWink from "./../../styles/images/hooterWink.jpg";
 import mindBlown from "./../../styles/images/mindBlown.jpg";
 import roboHeart from "./../../styles/images/roboHeart.jpg";
 import skullWinking from "./../../styles/images/skullWinking.jpg";
-
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
 import { motion } from "framer-motion";
-import {
-	pageAnimation,
-	// titleAnim,
-	// photoAnim
-} from "../../styles/Animation";
+import { pageAnimation } from "../../styles/Animation";
 
 function User({ sessionUser, setGetNew }) {
 	const [userPalettes, getUserPalettes] = useState([]);
@@ -27,6 +23,12 @@ function User({ sessionUser, setGetNew }) {
 	const [userBio, setUserBio] = useState("");
 	const [showAbout, setShowAbout] = useState(false);
 	const [aboutMe, setAboutMe] = useState("");
+	const [followers, setFollowers] = useState([]);
+	const [totalFollowers, setTotalFollowers] = useState(null);
+	const [following, setFollowing] = useState([]);
+	const [totalFollowing, setTotalFollowing] = useState(null);
+	const [followersShow, setFollowersShow] = useState(false);
+	const [followingShow, setFollowingShow] = useState(false);
 
 	const { userId } = useParams();
 
@@ -40,6 +42,10 @@ function User({ sessionUser, setGetNew }) {
 				setUserBio(data.user.aboutMe);
 				setAboutMe(data.user.aboutMe);
 				getUserPalettes(paletteData);
+				setTotalFollowers(data.user.totalFollowers);
+				setTotalFollowing(data.user.totalFollowing);
+				setFollowers(data.user.followers);
+				setFollowing(data.user.following);
 				setPageReload(true);
 			})();
 	}, [userId, sessionUser, pageReload]);
@@ -51,13 +57,44 @@ function User({ sessionUser, setGetNew }) {
 		setGetNew(false);
 		setPageReload(false);
 	};
-	
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		const res = await axios.put(`/api/users/${userId}/about`, { aboutMe });
 		setUserBio(res.data.aboutMe);
 		setShowAbout(!showAbout);
 	};
+
+	const followHandler = async (e) => {
+		e.preventDefault();
+		const response = await axios.post(`/api/users/${userId}/follow`);
+		if (!response.errors) {
+			const data = response.data;
+			setTotalFollowers(data.totalFollowers);
+			setFollowers(data.followers);
+			setPageReload(false);
+		}
+	};
+
+	let showFollowButton;
+	let result =
+		followers && followers.some((user) => user.id === sessionUser.id);
+	if (result) {
+		showFollowButton = (
+			<FollowButton onClick={followHandler} whileHover={{ scale: 1.5 }}>
+				Unfollow
+			</FollowButton>
+		);
+	} else {
+		showFollowButton = (
+			<FollowButton onClick={followHandler} whileHover={{ scale: 1.5 }}>
+				Follow
+			</FollowButton>
+		);
+	}
+	if (sessionUser.id === parseInt(userId, 10)) {
+		showFollowButton = "";
+	}
 
 	let avatar;
 	const currentUser = user.username;
@@ -76,12 +113,7 @@ function User({ sessionUser, setGetNew }) {
 	}
 
 	return (
-		<MainContainer
-		// variants={pageAnimation}
-		// initial="hidden"
-		// animate="show"
-		// exit="exit"
-		>
+		<MainContainer>
 			<UserInfoContainer>
 				<ul>
 					<li className="avatar-container">
@@ -99,7 +131,83 @@ function User({ sessionUser, setGetNew }) {
 					</li>
 					<li className="username-container">
 						<span>{user.username}</span>
+						{showFollowButton}
 					</li>
+					<FollowInfoDiv>
+						<Button
+							variant="outline-info"
+							onClick={() => setFollowersShow(true)}
+						>
+							<span>{totalFollowers} </span>Followers
+						</Button>
+
+						<Button
+							variant="outline-info"
+							onClick={() => setFollowingShow(true)}
+						>
+							<span>{totalFollowing}</span> Following
+						</Button>
+					</FollowInfoDiv>
+					<>
+						<Modal
+							size="lg"
+							show={followersShow}
+							animation={false}
+							onHide={() => setFollowersShow(false)}
+							aria-labelledby="example-modal-sizes-title-lg"
+						>
+							<Modal.Header closeButton>
+								<Modal.Title id="example-modal-sizes-title-lg">
+									Followers
+								</Modal.Title>
+							</Modal.Header>
+							<Modal.Body>
+								{followers.length > 0 ? (
+									followers.map((follower) => (
+										<div key={follower.id}>
+											<Link to={`/users/${follower.id}`}>
+												<h2>{follower.username}</h2>
+											</Link>
+											<p>{follower.email}</p>
+											<p>{follower.aboutMe}</p>
+										</div>
+									))
+								) : (
+									<h1>No followers for you! {":("}</h1>
+								)}
+							</Modal.Body>
+						</Modal>
+					</>
+					<>
+						<Modal
+							size="lg"
+							animation={false}
+							show={followingShow}
+							onHide={() => setFollowingShow(false)}
+							aria-labelledby="example-modal-sizes-title-lg"
+						>
+							<Modal.Header closeButton>
+								<Modal.Title id="example-modal-sizes-title-lg">
+									Following
+								</Modal.Title>
+							</Modal.Header>
+							<Modal.Body>
+								{following.length > 0 ? (
+									following.map((user) => (
+										<div key={user.id}>
+											<Link to={`/users/${user.id}`}>
+												<h2>{user.username}</h2>
+											</Link>
+											<p>{user.email}</p>
+											<p>{user.aboutMe}</p>
+										</div>
+									))
+								) : (
+									<h1>Y u no following anyone?</h1>
+								)}
+							</Modal.Body>
+						</Modal>
+					</>
 					<li>
 						<strong>Email:</strong>
 						<a href={`mailto:${user.email}`}>
@@ -110,7 +218,7 @@ function User({ sessionUser, setGetNew }) {
 					<li>
 						<strong>About Me:</strong>
 						<br />
-						{userBio}
+						<p>{userBio}</p>
 					</li>
 					{!showAbout && (
 						<li className="btn-container-li">
@@ -201,6 +309,12 @@ const UserInfoContainer = styled(motion.div)`
 	.username-container {
 		width: 100%;
 		text-align: center;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		span {
+			font-size: 2.5rem;
+		}
 	}
 	.avatar-container {
 		width: 100%;
@@ -241,6 +355,10 @@ const UserInfoContainer = styled(motion.div)`
 			font-family: cursive;
 			color: #706fd3;
 			width: 100%;
+			padding: 10px 0;
+			p {
+				font-size: 1.75rem;
+			}
 			img {
 				width: 100%;
 				height: 100%;
@@ -290,6 +408,29 @@ const UpdateDeleteDiv = styled.div`
 	display: flex;
 	padding: 1rem;
 	flex-direction: column;
+`;
+
+const FollowInfoDiv = styled.div`
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+`;
+
+const FollowButton = styled(motion.button)`
+	color: white;
+	border-radius: 10px;
+	font-size: 1rem;
+	border: none;
+	outline: none;
+	background-color: #0095f6;
+	width: 7rem;
+	height: 3rem;
+	:hover {
+		background-color: #34ace0;
+	}
 `;
 
 export default User;

@@ -9,11 +9,11 @@ function getRandomColor() {
 
 const colors = [];
 
-for (var i = 0; i < 150; i++) {
+for (var i = 0; i < 200; i++) {
 	colors[i] = {
 		color: getRandomColor(),
-		heigth: `${Math.random() * 600 + 50}px`,
-		width: "300px",
+		heigth: `${Math.random() * 300 + 40}px`,
+		width: "150px",
 	};
 }
 

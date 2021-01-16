@@ -1,11 +1,13 @@
 export const pageAnimation = {
 	hidden: {
-		opacity: 0,
-		y: -300,
+		// opacity: 0,
+		// y: -300,
+		scale: 0,
 	},
 	show: {
-		opacity: 1,
-		y: 0,
+		// opacity: 1,
+		// y: 0,
+		scale: 1,
 		transition: {
 			duration: 0.5,
 			// when: "beforeChildren",

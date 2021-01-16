@@ -82,10 +82,7 @@ const Content = styled.div`
 	padding: 10px;
 	text-transform: uppercase;
 	text-align: center;
-
-	/* width: 100%; */
 	background-color: blanchedalmond;
-
 	span {
 		color: black;
 	}

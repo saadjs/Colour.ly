@@ -23,6 +23,7 @@ import * as sessionActions from "./store/session";
 
 //* Page Transitions
 import { AnimatePresence } from "framer-motion";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
 	const dispatch = useDispatch();

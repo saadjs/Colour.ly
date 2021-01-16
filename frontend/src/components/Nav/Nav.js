@@ -1,6 +1,5 @@
 import React from "react";
 import { NavLink, useHistory, useLocation } from "react-router-dom";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 
@@ -31,24 +30,12 @@ function Nav({ sessionUser }) {
 		sessionLinks = (
 			<>
 				<li>
-					<NavLink exact to="/palettes">
-						Explore Palettes
-					</NavLink>
-					<ActivePath
-						transition={{ duration: 0.75 }}
-						initial={{ width: "0%" }}
-						animate={{
-							width: pathname === "/palettes" ? "105px" : "0%",
-						}}
-					/>
-				</li>
-				<li>
 					<NavLink to="/login">Log In</NavLink>
 					<ActivePath
 						transition={{ duration: 0.75 }}
 						initial={{ width: "0%" }}
 						animate={{
-							width: pathname === "/login" ? "45px" : "0%",
+							width: pathname === "/login" ? "3.75rem" : "0%",
 						}}
 					/>
 				</li>
@@ -58,7 +45,7 @@ function Nav({ sessionUser }) {
 						transition={{ duration: 0.75 }}
 						initial={{ width: "0%" }}
 						animate={{
-							width: pathname === "/signup" ? "55px" : "0%",
+							width: pathname === "/signup" ? "5rem" : "0%",
 						}}
 					/>
 				</li>
@@ -68,18 +55,6 @@ function Nav({ sessionUser }) {
 		sessionLinks = (
 			<>
 				<li>
-					<NavLink exact to="/palettes">
-						Explore Palettes
-					</NavLink>
-					<ActivePath
-						transition={{ duration: 0.75 }}
-						initial={{ width: "0%" }}
-						animate={{
-							width: pathname === "/palettes" ? "105px" : "0%",
-						}}
-					/>
-				</li>
-				<li>
 					<NavLink exact to="/palettes/create">
 						Create Palette
 					</NavLink>
@@ -88,7 +63,7 @@ function Nav({ sessionUser }) {
 						initial={{ width: "0%" }}
 						animate={{
 							width:
-								pathname === "/palettes/create" ? "95px" : "0%",
+								pathname === "/palettes/create" ? "9rem" : "0%",
 						}}
 					/>
 				</li>
@@ -103,14 +78,14 @@ function Nav({ sessionUser }) {
 							width:
 								pathname ===
 								`/users/${sessionUser.id}/favorites`
-									? "63px"
+									? "5.5rem"
 									: "0%",
 						}}
 					/>
 				</li>
 				<li>
 					<NavLink to={`/users/${sessionUser.id}`}>
-						<FontAwesomeIcon icon={faUser} size="2x" />
+						<FontAwesomeIcon icon={faUser} size="lg" />
 					</NavLink>
 					<ActivePath
 						transition={{ duration: 0.75 }}
@@ -118,7 +93,7 @@ function Nav({ sessionUser }) {
 						animate={{
 							width:
 								pathname === `/users/${sessionUser.id}`
-									? "30px"
+									? "1.70rem"
 									: "0%",
 						}}
 					/>
@@ -141,7 +116,21 @@ function Nav({ sessionUser }) {
 					whileTap={{ rotate: -90 }}
 				/>
 			</NavLink>
-			<ul>{sessionLinks}</ul>
+			<ul>
+				<li>
+					<NavLink exact to="/palettes">
+						Explore Palettes
+					</NavLink>
+					<ActivePath
+						transition={{ duration: 0.75 }}
+						initial={{ width: "0%" }}
+						animate={{
+							width: pathname === "/palettes" ? "9.75rem" : "0%",
+						}}
+					/>
+				</li>
+				{sessionLinks}
+			</ul>
 		</StyledNav>
 	);
 }
@@ -154,14 +143,16 @@ const StyledNav = styled.nav`
 	justify-content: space-between;
 	align-items: center;
 	padding: 1rem 10rem;
-	background-color: #1d3557;
+	background-color: #fffa65;
+	font-size: 1.5rem;
 	button {
 		padding: 2px;
-		color: #f1faee;
+		color: #487eb0;
 	}
 	a {
-		color: #f1faee;
+		color: #487eb0;
 		text-decoration: none;
+		font-family: "Kaushan Script", cursive;
 	}
 	ul {
 		display: flex;
@@ -170,7 +161,8 @@ const StyledNav = styled.nav`
 		align-items: center;
 		.logout-li {
 			cursor: pointer;
-			color: #f1faee;
+			color: #487eb0;
+			font-family: "Kaushan Script", cursive;
 			:hover {
 				color: red;
 				transform: scale(1.2);
@@ -179,14 +171,15 @@ const StyledNav = styled.nav`
 	}
 	li {
 		padding-left: 3rem;
+		padding-right: 5px;
 		position: relative;
 		text-align: center;
+		font-family: "Kaushan Script", cursive;
 	}
 	@media (max-width: 1300px) {
 		flex-direction: column;
 		padding: 2rem 1rem;
 		ul {
-			padding: 2rem;
 			justify-content: space-around;
 			width: 100%;
 			li {
@@ -198,7 +191,7 @@ const StyledNav = styled.nav`
 
 const ActivePath = styled(motion.div)`
 	height: 0.3rem;
-	background: #23d997;
+	background: #bb3b2c;
 	width: 0;
 	position: absolute;
 	bottom: -80%;

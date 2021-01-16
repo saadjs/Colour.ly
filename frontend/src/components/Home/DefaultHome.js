@@ -9,7 +9,7 @@ import styled from "styled-components";
 
 const masonryOptions = {
 	fitWidth: false,
-	gutter: 10,
+	gutter: 5,
 	itemSelector: ".photo-item",
 };
 
@@ -34,7 +34,11 @@ function DefaultHome() {
 				<h1>Color Copied!</h1>
 			</CopiedText>
 			<div className="logo-container">
-				<h1>Welcome to Colour.ly</h1>
+				<h1>Hey there!</h1>
+				<p>The best colour in the world is your favorite one!!!</p>
+				<p>
+					Let's find that..... <span>Shall We?</span>
+				</p>
 			</div>
 
 			<Masony
@@ -46,7 +50,7 @@ function DefaultHome() {
 				updateOnEachImageLoad={false}
 			>
 				{colors.map((color) => (
-					<li className="photo-item" id="mapped-li">
+					<li className="photo-item" id="mapped-li" key={color.color}>
 						<CopyToClipboard text={color.color} onCopy={handleCopy}>
 							<EachColor
 								whileHover={{ scale: 1.2, zIndex: 1 }}
@@ -78,25 +82,20 @@ const StyledDiv = styled(motion.div)`
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		background: linear-gradient(
-				217deg,
-				rgba(255, 0, 0, 0.8),
-				rgba(255, 0, 0, 0) 70.71%
-			),
-			linear-gradient(
-				127deg,
-				rgba(0, 255, 0, 0.8),
-				rgba(0, 255, 0, 0) 70.71%
-			),
-			linear-gradient(
-				336deg,
-				rgba(0, 0, 255, 0.8),
-				rgba(0, 0, 255, 0) 70.71%
-			);
+		flex-direction: column;
 		h1 {
+			color: #42309c;
 			text-align: center;
 			font-size: 3rem;
-			font-family: cursive;
+			font-family: "Kaushan Script", cursive;
+		}
+		p {
+			color: #0c798e;
+			font-size: 2rem;
+			font-family: "Kaushan Script", cursive;
+			span {
+				color: #42309c;
+			}
 		}
 	}
 	.show.overlay-show {
@@ -124,7 +123,6 @@ const Overlay = styled.div`
 `;
 const CopiedText = styled(motion.div)`
 	opacity: 0;
-
 	position: fixed;
 	left: 0;
 	right: 0;
@@ -146,13 +144,20 @@ const CopiedText = styled(motion.div)`
 
 const EachColor = styled(motion.div)`
 	display: flex;
+	left: auto;
+	right: auto;
 	border-radius: 10px;
 	flex-direction: column;
 	justify-content: flex-end;
 	p {
 		align-self: center;
 		background: whitesmoke;
-		padding: 5px;
+		border-radius: 5px;
+		-webkit-box-shadow: 0 0 15px 2px black;
+		-moz-box-shadow: 0 0 15px 2px black;
+		box-shadow: 0 0 15px 2px black;
+		padding: 2px;
+		font-size: 14px;
 	}
 `;
 
