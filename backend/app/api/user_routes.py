@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from flask_login import login_required
+from flask_login import login_required, current_user
 from app.models import User, Palette, db
 
 user_routes = Blueprint('users', __name__)
@@ -49,13 +49,29 @@ def about_me(id):
 @user_routes.route('/<int:id>/follow', methods=["POST"])
 @login_required
 def follow_user(id):
-    follower = User.query.filter(User.id  == request.json['follower_id']).first()
+    # follower = User.query.filter(User.id  == request.json['follower_id']).first()
+    follower = User.query.get(current_user.get_id())
     leader = User.query.get(id)
-    if follower in leader.followers:
-        leader.followers.remove(follower)
-        db.session.commit()
-        return leader.to_dict_followers()
-    else:
+    if follower == leader:
+        return jsonify("Can't follow youself bruh")
+    if follower not in leader.followers:
         leader.followers.append(follower)
         db.session.commit()
         return leader.to_dict_followers()
+    else:
+        return {"error": "already following"}
+    
+@user_routes.route('/<int:id>/unfollow', methods=['POST'])
+@login_required
+def unfollow_user(id):
+    unfollower = User.query.get(current_user.get_id())
+    leader = User.query.get(id)
+    if unfollower == leader:
+        return jsonify("Can't unfollow youself bruh")
+    if unfollower in leader.followers:
+        leader.followers.remove(unfollower)
+        db.session.commit()
+        return leader.to_dict_followers()
+    else:
+        return {"error": "can't unfollow someone whom you are not following"}
+        
