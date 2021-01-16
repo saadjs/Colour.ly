@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from app.models import User, Palette, db
+from app.forms import FollowForm
 
 user_routes = Blueprint('users', __name__)
 
@@ -43,3 +44,10 @@ def about_me(id):
     db.session.add(user)
     db.session.commit()
     return jsonify(user.to_dict())
+
+
+# * follow user route
+@user_routes.route('/<int:id>/follow', methods=["POST"])
+@login_required
+def follow_user(id):
+    
