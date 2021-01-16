@@ -34,6 +34,7 @@ function User({ sessionUser, setGetNew }) {
 		sessionUser &&
 			(async () => {
 				const response = await axios.get(`/api/users/${userId}`);
+				console.log(response.data);
 				const data = response.data;
 				const paletteData = data.palettes;
 				setUser(data.user);
@@ -51,7 +52,7 @@ function User({ sessionUser, setGetNew }) {
 		setGetNew(false);
 		setPageReload(false);
 	};
-	
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		const res = await axios.put(`/api/users/${userId}/about`, { aboutMe });

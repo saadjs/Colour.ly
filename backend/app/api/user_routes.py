@@ -59,7 +59,9 @@ def follow_user(id):
         return leader.to_dict_followers()
     else:
         return {"error": "already following"}
-    
+
+
+# * unfollow user
 @user_routes.route('/<int:id>/unfollow', methods=['POST'])
 @login_required
 def unfollow_user(id):
