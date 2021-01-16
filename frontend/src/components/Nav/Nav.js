@@ -251,7 +251,7 @@ const StyledNav = styled.nav`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 1rem 2rem;
+	padding: 1rem 5rem;
 	background-color: #fffa65;
 	font-size: 1.5rem;
 	.search-form-container {
@@ -278,12 +278,14 @@ const StyledNav = styled.nav`
 		font-family: "Kaushan Script", cursive;
 	}
 	ul {
+		margin: 0;
 		display: flex;
 		list-style: none;
-		flex-direction: row;
 		align-items: center;
 		.logout-li {
+			all: unset;
 			cursor: pointer;
+			margin-left: 3rem;
 			color: #487eb0;
 			font-family: "Kaushan Script", cursive;
 			:hover {
@@ -294,12 +296,9 @@ const StyledNav = styled.nav`
 	}
 	li {
 		padding-left: 3rem;
-		padding-right: 5px;
-		position: relative;
-		text-align: center;
 		font-family: "Kaushan Script", cursive;
 	}
-	@media (max-width: 1400px) {
+	@media (max-width: 1500px) {
 		flex-direction: column;
 		padding: 2rem 1rem;
 		ul {
