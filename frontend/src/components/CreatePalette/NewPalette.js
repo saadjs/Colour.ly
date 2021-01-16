@@ -191,12 +191,12 @@ const ColorPickerDiv = styled.div`
 const ButtonDiv = styled.div`
 	display: flex;
 	justify-content: center;
+	margin-bottom: 10px;
 `;
 
 const ResetColorBtn = styled.button`
 	color: red;
 	height: 3rem;
-	padding: 1rem;
 	width: 15rem;
 	:hover {
 		background: red;
@@ -206,7 +206,6 @@ const ResetColorBtn = styled.button`
 const RandomColorBtn = styled.button`
 	color: blue;
 	height: 3rem;
-	padding: 1rem;
 	width: 15rem;
 `;
 
