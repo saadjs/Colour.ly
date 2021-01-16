@@ -48,6 +48,11 @@ const StyledContainerDiv = styled.div`
 	:hover {
 		cursor: pointer;
 	}
+	@media (max-width: 1400px) {
+		box-shadow: none;
+		border: 1px solid black;
+		margin: 5rem 0;
+	}
 `;
 
 const StyledInnerDiv = styled.div`
