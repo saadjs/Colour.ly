@@ -89,7 +89,7 @@ const StyledDiv = styled(motion.div)`
 			font-size: 3rem;
 			font-family: "Kaushan Script", cursive;
 		}
-		P {
+		p {
 			color: #0c798e;
 			font-size: 2rem;
 			font-family: "Kaushan Script", cursive;
