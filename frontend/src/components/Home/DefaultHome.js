@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion";
 import { pageAnimation } from "../../styles/Animation";
 import Masony from "react-masonry-component";
 import colors from "./util";
