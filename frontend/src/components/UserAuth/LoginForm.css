@@ -1,30 +1,47 @@
 .LoginForm {
-	height: 80vh;
-	/* width: 90vw; */
-	margin: 1rem;
+	height: 90vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	align-self: center;
 	overflow: hidden;
+	font-family: "Kaushan Script", cursive;
+	position: relative;
+}
+
+.LoginForm::after {
+	background: url("./../styles/images/paintStrokes.jpg");
+	background-size: 100% 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	z-index: -1;
+	content: "";
+	opacity: 0.7;
 }
 
 .login-form {
+	padding: 3rem 2rem;
+	min-width: 500px;
 	border: none;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	height: 80%;
-	width: 25%;
-	box-shadow: 10px 5px 5px #457b9d;
+	-webkit-box-shadow: 0 0 30px 2px #a7a7a7;
+	-moz-box-shadow: 0 0 30px 2px #a7a7a7;
+	box-shadow: 0 0 30px 2px #a7a7a7;
+	background-image: url("./../styles/images/paint.jpg");
+	background-size: contain;
+	background-size: 100% 100%;
 }
 
 input {
 	padding: 1rem;
 	margin: 2px;
-	border-bottom: 1px solid black;
-	border-left: 1px solid black;
+	border: none;
 	border-top: none;
 	border-right: none;
 	font-weight: 600;
@@ -43,34 +60,40 @@ input:focus {
 	flex-direction: column;
 	margin-bottom: 15px;
 	width: 80%;
+	font-family: monospace;
+	font-size: 1.25rem;
 }
 
 .login-button {
 	color: white;
-	background-color: black;
 	padding: 10px;
+	background-color: #213d89;
 	width: 80%;
+	border: none;
 }
 .demo-button {
 	cursor: pointer;
 	margin: 1rem;
-	background-color: #a8dadc;
+	background-color: #2bcbba;
 	padding: 10px;
 	width: 80%;
+	border: none;
 }
 
 .login-button:hover {
-	background-color: #e63946;
 	cursor: pointer;
 }
 
 .form-title {
 	text-align: center;
-	color: #457b9d;
-	font-size: 3rem;
+	font-size: 4rem;
 	margin: 0;
 	padding: 0;
 	font-family: cursive;
+}
+.colourly-logo {
+	width: 50%;
+	margin: auto;
 }
 
 .form-subheading {
@@ -80,22 +103,22 @@ input:focus {
 	margin: 0;
 	padding: 0;
 	padding-bottom: 1rem;
-	color: #e63946;
+	color: #487eb0;
 }
 
 .p-signup-link {
 	font-size: 1rem;
 	margin-top: 1rem;
 	font-weight: 600;
-	font-family: "Open Sans", sans-serif;
+	color: #487eb0;
 }
 
 .signup-link {
 	text-decoration: none;
 	margin-top: 1rem;
-	font-size: 0.8rem;
+	font-size: 1.2rem;
 	font-weight: 600;
-	color: #457b9d;
+	color: #2bcbba;
 }
 
 .errors {
@@ -107,15 +130,4 @@ input:focus {
 	padding-left: 0.5rem;
 	padding-right: 0.5rem;
 	font-weight: 600;
-}
-
-@media (max-width: 1300px) {
-	.LoginForm {
-		width: 90%;
-		height: 75vh;
-	}
-	.login-form {
-		height: 80%;
-		width: 50%;
-	}
 }

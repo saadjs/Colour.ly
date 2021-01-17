@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 //? styles and page transitions
 import "./LoginForm.css";
 import { motion } from "framer-motion";
-import { pageAnimation } from "../styles/Animation";
+import { signupContainer } from "../styles/Animation";
 
 function LoginFormPage({ sessionUser }) {
 	//* redux dispatch
@@ -46,7 +46,7 @@ function LoginFormPage({ sessionUser }) {
 	return (
 		<motion.div
 			className="LoginForm"
-			variants={pageAnimation}
+			variants={signupContainer}
 			initial="hidden"
 			animate="show"
 			exit="exit"
