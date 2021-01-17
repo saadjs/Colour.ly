@@ -304,7 +304,8 @@ const UserInfoContainer = styled(motion.div)`
 	position: absolute;
 	left: 0;
 	width: 20%;
-	box-shadow: 10px 5px 5px #000000;
+	border-radius: 10px;
+	box-shadow: 10px 5px 30px #4d4d4d;
 	flex-direction: column;
 	.username-container {
 		width: 100%;
@@ -417,6 +418,9 @@ const FollowInfoDiv = styled.div`
 	justify-content: space-between;
 	align-items: center;
 	width: 100%;
+	@media (max-width: 1400px) {
+		flex-direction: column;
+	}
 `;
 
 const FollowButton = styled(motion.button)`
