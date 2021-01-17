@@ -2,7 +2,7 @@ from app.models import db, User, Palette
 
 def seed_palettes():
     
-    canadian = Palette(title='Canadian Colours',
+    canadian = Palette(title='Metalics',
                      colors=[
                                 {"name": "Jigglypuff", "color": "#ff9ff3"},
                                 {"name": "Casandora Yellow", "color": "#feca57"},
@@ -14,7 +14,7 @@ def seed_palettes():
                      user_id=User.query.filter_by(username='monkey').first().id
                      )
     
-    chinese = Palette(title='Chinese Colours', 
+    chinese = Palette(title='Chromium', 
                        colors=[
                                 { "name": "Red", "color": "#F44336" },
                                 { "name": "Pink", "color": "#E91E63" },
@@ -25,7 +25,7 @@ def seed_palettes():
                        user_id=User.query.filter_by(username='Demo').first().id
                        )
     
-    french = Palette(title='French Colours',
+    french = Palette(title='Rainbow',
                        colors=[
                                 { "name": "Flat Flesh", "color": "#fad390" },
                                 { "name": "Melon Melody", "color": "#f8c291" },
@@ -36,7 +36,7 @@ def seed_palettes():
                         user_id=User.query.filter_by(username='Demo').first().id
                        )
     
-    indian = Palette(title='Indian Colours',
+    indian = Palette(title='Tropical',
                        colors=[
                                 { "name": "Orchid Orange", "color": "#FEA47F" },
                                 { "name": "Spiro Disco Ball", "color": "#25CCF7" },
@@ -47,7 +47,7 @@ def seed_palettes():
                        user_id=User.query.filter_by(username='saad').first().id
                        )
     
-    spanish = Palette(title='Spanish Colours',
+    spanish = Palette(title='Floral',
                        colors=[
                                 { "name": "Jacksons Purple", "color": "#40407a" },
                                 { "name": "C64 Purple", "color": "#706fd3" },
@@ -58,7 +58,7 @@ def seed_palettes():
                        user_id=User.query.filter_by(username='bob').first().id
                        )
     
-    british = Palette(title='British Colours',
+    british = Palette(title='Pastels',
                        colors=[
                                 { "name": "Protoss Pylon", "color": "#00a8ff" },
                                 { "name": "Periwinkle", "color": "#9c88ff" },
@@ -69,7 +69,7 @@ def seed_palettes():
                        user_id=User.query.filter_by(username='cow').first().id
                        )
     
-    aussie = Palette(title='Aussie Colours',
+    aussie = Palette(title='Jungle',
                        colors=[
                                 { "name": "Beekeeper", "color": "#f6e58d" },
                                 { "name": "Spiced Nectarine", "color": "#ffbe76" },
@@ -80,7 +80,7 @@ def seed_palettes():
                        user_id=User.query.filter_by(username='monkey').first().id
                            )
     
-    american = Palette(title='American Colours',
+    american = Palette(title='City Lights',
                        colors=[
                                 { "name": "Light Greenish Blue", "color": "#55efc4" },
                                 { "name": "Faded Poster", "color": "#81ecec" },
@@ -91,7 +91,7 @@ def seed_palettes():
                        user_id=User.query.filter_by(username='Demo').first().id
                        )
     
-    dutch = Palette(title='Dutch Colours', 
+    dutch = Palette(title='Primrose', 
                        colors=[
                                 { "name": "Sunflower", "color": "#FFC312" },
                                 { "name": "Energos", "color": "#C4E538" },
@@ -102,7 +102,7 @@ def seed_palettes():
                        user_id=User.query.filter_by(username='saad').first().id
                        )
     
-    russian = Palette(title='Russian Colours',
+    russian = Palette(title='Fruit Punch',
                        colors=[
                                 {"name": "Creamy Peach", "color": "#f3a683"},
                                 {"name": "Rosy Highlight", "color": "#f7d794"},
@@ -113,7 +113,7 @@ def seed_palettes():
                        user_id=User.query.filter_by(username='Demo').first().id
                        )
     
-    german = Palette(title='German Colours',
+    german = Palette(title='Bora Bora',
                      colors=[
                                 {"name": "Fusion Red", "color": "#fc5c65"},
                                 {"name": "Orange Hibiscus", "color": "#fd9644"},
@@ -124,7 +124,7 @@ def seed_palettes():
                      user_id=User.query.filter_by(username='Demo').first().id
                      )
     
-    turkish = Palette(title='Turkish Colours',
+    turkish = Palette(title='Desert',
                      colors=[
                                 {"name": "Bright Lilac", "color": "#cd84f1"},
                                 {"name": "Pretty Please", "color": "#ffcccc"},
@@ -135,7 +135,7 @@ def seed_palettes():
                      user_id=User.query.filter_by(username='saad').first().id
                      )
     
-    swedish = Palette(title='Swedish Colours',
+    swedish = Palette(title='Ikea',
                      colors=[
                                 {"name": "Highlighter Pink", "color": "#ef5777"},
                                 {"name": "Dark Periwinkle", "color": "#575fcf"},
