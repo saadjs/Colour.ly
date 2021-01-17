@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 
 export const MasonryOptions = {
-	fitWidth: false,
+	fitWidth: true,
 	gutter: 10,
 	itemSelector: ".photo-item",
 };
@@ -10,6 +10,12 @@ export const MasonryOptions = {
 export const StyledDiv = styled(motion.div)`
 	cursor: copy;
 	background-color: #fdf5e6;
+	width: 90vw;
+	margin: 1rem auto;
+	border-radius: 10px;
+	-webkit-box-shadow: 0 0 15px 2px #a7a7a7;
+	-moz-box-shadow: 0 0 15px 2px #a7a7a7;
+	box-shadow: 0 0 15px 2px #a7a7a7;
 	.logo-container {
 		cursor: initial;
 		display: flex;
@@ -36,7 +42,7 @@ export const StyledDiv = styled(motion.div)`
 		transition-delay: 0.3s;
 	}
 	.masony-container {
-		width: 90%;
+		width: 100%;
 		margin: 1rem auto;
 	}
 `;
@@ -55,6 +61,7 @@ export const Overlay = styled.div`
 	z-index: 0;
 	transition: transform 0.75s ease-in-out;
 `;
+
 export const CopiedText = styled(motion.div)`
 	opacity: 0;
 	position: fixed;
@@ -79,8 +86,6 @@ export const CopiedText = styled(motion.div)`
 
 export const EachColor = styled(motion.div)`
 	display: flex;
-	left: auto;
-	right: auto;
 	border-radius: 10px;
 	flex-direction: column;
 	justify-content: flex-end;
@@ -93,5 +98,7 @@ export const EachColor = styled(motion.div)`
 		box-shadow: 0 0 15px 2px black;
 		padding: 2px;
 		font-size: 14px;
+		padding: 0 1rem;
+		margin: 5px 3rem;
 	}
 `;

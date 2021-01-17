@@ -61,7 +61,6 @@ function DefaultHome() {
 								style={{
 									background: color.color,
 									height: color.heigth,
-									width: color.width,
 								}}
 							>
 								<p>{color.color}</p>
