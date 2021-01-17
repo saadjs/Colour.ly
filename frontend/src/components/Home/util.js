@@ -13,7 +13,7 @@ for (var i = 0; i < 200; i++) {
 	colors[i] = {
 		color: getRandomColor(),
 		heigth: `${Math.random() * 300 + 40}px`,
-		width: "150px",
+		width: "182px",
 	};
 }
 
