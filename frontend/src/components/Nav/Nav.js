@@ -10,7 +10,7 @@ import * as sessionActions from "../../store/session";
 
 // style stuff
 import { motion } from "framer-motion";
-import colourly from "./../../styles/images/colourly.jpeg";
+import colourly from "./../styles/images/colourly.jpeg";
 import { StyledNav, ActivePath } from "./../styles/StyledComponents/NavStyles";
 import SearchResult from "../Home/SearchResult";
 

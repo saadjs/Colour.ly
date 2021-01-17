@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 //? styles and page transitions
 import "./LoginForm.css";
 import { motion } from "framer-motion";
-import { pageAnimation } from "../../styles/Animation";
+import { pageAnimation } from "../styles/Animation";
 
 function LoginFormPage({ sessionUser }) {
 	//* redux dispatch

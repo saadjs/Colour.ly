@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { pageAnimation } from "../../styles/Animation";
-import giphy from "./../../styles/images/giphy.gif";
+import { pageAnimation } from "./../styles/Animation";
+import giphy from "./../styles/images/giphy.gif";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 

@@ -14,7 +14,7 @@ import {
 	slider,
 	sliderContainer,
 	detailContainer,
-} from "../../styles/Animation";
+} from "./../styles/Animation";
 import {
 	StyledDiv,
 	MainCommentDiv,

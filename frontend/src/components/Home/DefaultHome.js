@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { pageAnimation } from "../../styles/Animation";
+import { pageAnimation } from "./../styles/Animation";
 import Masony from "react-masonry-component";
 import colors from "./util";
 import "./../styles/Home.css";

@@ -1,6 +1,6 @@
 import React from "react";
 import ColorColumns from "./ColorColumns";
-import { pageAnimation } from "../../styles/Animation";
+import { pageAnimation } from "./../styles/Animation";
 import {
 	MotionDiv,
 	Colors,
