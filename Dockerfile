@@ -3,16 +3,16 @@ FROM node:15.4.0 AS build-stage
 WORKDIR /frontend
 COPY frontend/. .
 
-# You have to set this because it should be set during build time.
-ENV REACT_APP_BASE_URL=https://new-colors.herokuapp.com/
+# * needed in order to deploy react app in subdir
+ENV REACT_APP_BASE_URL=NiceTry:D
 
-# Build our React App
+# * Build React App
 RUN npm install
 RUN npm run build
 
 FROM python:3.9
 
-# Setup Flask environment
+# * Setup Flask environment
 ENV FLASK_APP=app
 ENV FLASK_ENV=production
 ENV SQLALCHEMY_ECHO=True
@@ -23,9 +23,9 @@ WORKDIR /var/www
 COPY backend/.  .
 COPY --from=build-stage /frontend/build/* app/static/
 
-# Install Python Dependencies
+# * Install Python Dependencies
 RUN pip install -r requirements.txt
 RUN pip install psycopg2
 
-# Run flask environment
+# * Run flask environment
 CMD gunicorn app:app
