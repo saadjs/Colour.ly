@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 export const MasonryOptions = {
 	fitWidth: false,
-	gutter: 5,
+	gutter: 10,
 	itemSelector: ".photo-item",
 };
 
