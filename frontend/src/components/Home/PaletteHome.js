@@ -1,8 +1,12 @@
 import React from "react";
 import ColorColumns from "./ColorColumns";
-import { motion } from "framer-motion";
-import { pageAnimation } from "../../styles/Animation";
-import styled from "styled-components";
+import { pageAnimation } from "./../styles/Animation";
+import {
+	MotionDiv,
+	Colors,
+	ContainerDiv,
+	MainOuterDiv,
+} from "./../styles/StyledComponents/PaletteHomeStyles";
 
 function PaletteHome({ colorCombos, popularCombos }) {
 	return (
@@ -39,38 +43,5 @@ function PaletteHome({ colorCombos, popularCombos }) {
 		</MotionDiv>
 	);
 }
-
-const MotionDiv = styled(motion.div)`
-	display: flex;
-	justify-content: center;
-`;
-
-const Colors = styled.div`
-	display: grid;
-	grid-template-columns: repeat(4, 22%);
-	grid-gap: 4%;
-	width: 100%;
-	@media (max-width: 1400px) {
-		display: inline;
-	}
-`;
-
-const ContainerDiv = styled.div`
-	width: 100%;
-	padding: 2rem 2rem;
-	margin-bottom: 2rem;
-	h1 {
-		text-align: center;
-		padding: 1rem;
-		border: 2px solid black;
-		background-color: #badc58;
-	}
-`;
-
-const MainOuterDiv = styled.div`
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-`;
 
 export default PaletteHome;
