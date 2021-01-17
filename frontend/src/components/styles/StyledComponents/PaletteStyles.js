@@ -20,7 +20,7 @@ export const StyledDiv = styled(motion.div)`
 		align-items: center;
 		padding: 1rem;
 	}
-	@media (max-width: 1400px) {
+	@media (max-width: 1500px) {
 		.created-by {
 			top: 11%;
 			margin-top: 5rem;
