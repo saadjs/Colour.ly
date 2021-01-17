@@ -212,16 +212,16 @@ const StyledDiv = styled(motion.div)`
 		box-shadow: -10px 0px 10px black;
 		right: 0;
 		width: 20%;
-		top: 10%;
+		top: 12%;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
 		align-items: center;
 		padding: 1rem;
 	}
-	@media (max-width: 1300px) {
+	@media (max-width: 1400px) {
 		.created-by {
-			top: 25%;
+			top: 11%;
 			margin-top: 5rem;
 		}
 	}

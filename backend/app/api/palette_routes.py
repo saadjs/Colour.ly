@@ -7,7 +7,7 @@ from sqlalchemy import func
 palette_routes = Blueprint('palettes', __name__)
 
 # * get all the color palettes
-@palette_routes.route('/')
+@palette_routes.route('')
 def palettes():
     palettes = Palette.query.order_by(Palette.id.desc()).limit(12)
     return jsonify([palette.to_dict() for palette in palettes])
@@ -75,3 +75,14 @@ def post_comment(id):
     db.session.add(new_comment)
     db.session.commit()
     return jsonify(palette.to_dict())
+
+
+# * trying out search feature
+@palette_routes.route('/search', methods=['POST'])
+def search_palettes():
+    tag = request.json['data']
+    search = "%{}%".format(tag)
+    palettes = Palette.query.filter(Palette.title.ilike(search)).all()
+    users = User.query.filter(User.username.ilike(search)).all()
+    return {"users" : [user.to_dict() for user in users],
+            "palettes":[palette.to_dict_search() for palette in palettes]}

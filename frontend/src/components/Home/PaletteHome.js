@@ -50,6 +50,9 @@ const Colors = styled.div`
 	grid-template-columns: repeat(4, 22%);
 	grid-gap: 4%;
 	width: 100%;
+	@media (max-width: 1400px) {
+		display: inline;
+	}
 `;
 
 const ContainerDiv = styled.div`
