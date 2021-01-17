@@ -3,10 +3,17 @@ import NewColor from "./NewColor";
 import axios from "axios";
 import { Redirect, useHistory } from "react-router-dom";
 import { SketchPicker } from "react-color";
-import styled from "styled-components";
-
 import { motion } from "framer-motion";
-import { pageAnimation } from "../../styles/Animation";
+import { pageAnimation } from "../styles/Animation";
+import {
+	ColorPickerDiv,
+	ButtonDiv,
+	ResetColorBtn,
+	RandomColorBtn,
+	CreatePaletteBtn,
+	AddToPaletteBtn,
+	Main,
+} from "./../styles/StyledComponents/NewPaletteStyles";
 
 function NewPalette({ sessionUser, colorCombos, setGetNew }) {
 	const [pickedColor, setPickedColor] = useState("#57AEB0");
@@ -157,84 +164,5 @@ function NewPalette({ sessionUser, colorCombos, setGetNew }) {
 		</motion.div>
 	);
 }
-
-const ColorPickerDiv = styled.div`
-	position: absolute;
-	left: 0;
-	width: 400px;
-	box-shadow: 10px 10px 50px #d5abab;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	align-items: center;
-	h1 {
-		padding: 1rem;
-		text-align: center;
-	}
-	input {
-		border: 1px solid black;
-	}
-	.chrome-color-picker {
-		width: 90% !important;
-		margin: 0 auto;
-	}
-	.palettename-input {
-		width: 20rem;
-		text-align: center;
-	}
-	.addcolorname-input {
-		text-align: center;
-		width: 10rem;
-	}
-`;
-
-const ButtonDiv = styled.div`
-	display: flex;
-	justify-content: center;
-	margin-bottom: 10px;
-`;
-
-const ResetColorBtn = styled.button`
-	color: red;
-	height: 3rem;
-	width: 15rem;
-	:hover {
-		background: red;
-		color: black;
-	}
-`;
-const RandomColorBtn = styled.button`
-	color: blue;
-	height: 3rem;
-	width: 15rem;
-`;
-
-const CreatePaletteBtn = styled.button`
-	width: 20rem;
-	height: 3rem;
-	font-size: 2rem;
-	margin-bottom: 10px;
-	background: #5f9aed;
-`;
-
-const AddToPaletteBtn = styled.button`
-	padding: 0.5rem;
-	font-size: 1.4rem;
-	background: pink;
-`;
-
-const Main = styled.div`
-	position: relative;
-	flex-grow: 1;
-	height: 90vh;
-	padding: 1rem;
-	margin-left: 400px;
-	.drawer-header {
-		height: 100%;
-	}
-	@media (max-width: 1400px) {
-		height: 80vh;
-	}
-`;
 
 export default NewPalette;

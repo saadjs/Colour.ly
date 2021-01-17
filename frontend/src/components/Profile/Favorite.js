@@ -5,7 +5,7 @@ import ColorColumns from "./../Home/ColorColumns";
 import styled from "styled-components";
 
 import { motion } from "framer-motion";
-import { pageAnimation } from "../../styles/Animation";
+import { pageAnimation } from "../styles/Animation";
 
 function Favorite() {
 	const [likedPalettes, setLikedPalettes] = useState([]);
