@@ -26,6 +26,12 @@ export const StyledDiv = styled(motion.div)`
 			margin-top: 5rem;
 		}
 	}
+	@media only screen and (max-height: 960px) {
+		.created-by {
+			top: 15%;
+			margin-top: 5rem;
+		}
+	}
 `;
 export const MainCommentDiv = styled.div`
 	box-shadow: -10px 0px 10px #575fcf;
