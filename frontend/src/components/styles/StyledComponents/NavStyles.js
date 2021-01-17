@@ -57,10 +57,11 @@ export const StyledNav = styled.nav`
 		flex-direction: column;
 		padding: 2rem 1rem;
 		ul {
-			justify-content: space-around;
+			justify-content: space-evenly;
 			width: 100%;
 			li {
 				padding: 0;
+				font-size: 1rem;
 			}
 		}
 	}
