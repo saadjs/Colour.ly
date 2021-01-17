@@ -20,6 +20,7 @@ import NotFoundPage from "./components/Home/NotFoundPage";
 //* Redux
 import { useDispatch, useSelector } from "react-redux";
 import * as sessionActions from "./store/session";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
 	const dispatch = useDispatch();
