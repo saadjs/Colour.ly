@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink, useHistory, useLocation } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
@@ -22,14 +22,12 @@ function Nav({ sessionUser }) {
 	});
 	const [showModal, setShowModal] = useState(false);
 	const dispatch = useDispatch();
-	const history = useHistory();
 	const { pathname } = useLocation();
 
 	//* handle logout button press
 	const handleLogout = (e) => {
 		e.preventDefault();
 		dispatch(sessionActions.logout());
-		history.push("/login");
 	};
 
 	const handleSearch = async (e) => {

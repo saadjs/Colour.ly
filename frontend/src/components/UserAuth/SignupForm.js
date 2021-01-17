@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink, Redirect, useHistory } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 //* redux stuff
 import { useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
@@ -10,7 +10,6 @@ import { signupContainer } from "../styles/Animation";
 function SignupFormPage({ sessionUser }) {
 	//* redux
 	const dispatch = useDispatch();
-	const history = useHistory();
 
 	//? all the states for user login and errors
 	const [email, setEmail] = useState("");
@@ -27,7 +26,6 @@ function SignupFormPage({ sessionUser }) {
 		e.preventDefault();
 		if (password === confirmPassword) {
 			setErrors([]);
-			history.push("/");
 
 			return dispatch(
 				sessionActions.signup({ email, username, password })
@@ -50,11 +48,12 @@ function SignupFormPage({ sessionUser }) {
 			exit="exit"
 		>
 			<form className="login-form" onSubmit={handleSubmit}>
-				{errors.map((error, idx) => (
-					<div key={idx} className="errors">
-						<p>{error}</p>
-					</div>
-				))}
+				{errors &&
+					errors.map((error, idx) => (
+						<div key={idx} className="errors">
+							<p>{error}</p>
+						</div>
+					))}
 
 				<div className="input-wrapper">
 					<h1 className="form-title">Colour.ly</h1>
