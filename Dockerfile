@@ -4,7 +4,7 @@ WORKDIR /frontend
 COPY frontend/. .
 
 # * needed in order to deploy react app in subdir
-ENV REACT_APP_BASE_URL=NiceTry:D
+ENV REACT_APP_BASE_URL=https://colour-ly.herokuapp.com/
 
 # * Build React App
 RUN npm install
