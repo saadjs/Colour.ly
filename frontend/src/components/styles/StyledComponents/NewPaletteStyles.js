@@ -9,6 +9,7 @@ export const ColorPickerDiv = styled.div`
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
+	font-family: "Kaushan Script", cursive;
 	h1 {
 		padding: 1rem;
 		text-align: center;
@@ -37,7 +38,8 @@ export const ButtonDiv = styled.div`
 `;
 
 export const ResetColorBtn = styled.button`
-	color: red;
+	color: white;
+	background-color: red;
 	height: 3rem;
 	width: 15rem;
 	:hover {
@@ -62,7 +64,7 @@ export const CreatePaletteBtn = styled.button`
 export const AddToPaletteBtn = styled.button`
 	padding: 0.5rem;
 	font-size: 1.4rem;
-	background: pink;
+	background: #b8e986;
 `;
 
 export const Main = styled.div`

@@ -23,8 +23,9 @@ export const ContainerDiv = styled.div`
 	h1 {
 		text-align: center;
 		padding: 1rem;
-		border: 2px solid black;
-		background-color: #badc58;
+		background-color: white;
+		font-family: "Kaushan Script", cursive;
+		color: #673ab7;
 	}
 `;
 
