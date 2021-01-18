@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 //? styles and page transitions
 import "./LoginForm.css";
 import { motion } from "framer-motion";
-import { signupContainer } from "../styles/Animation";
+import { signupContainer, titleAnim } from "../styles/Animation";
 
 function LoginFormPage({ sessionUser }) {
 	//* redux dispatch
@@ -91,12 +91,12 @@ function LoginFormPage({ sessionUser }) {
 					</NavLink>
 				</p>
 			</form>
-			<div className="catch-phrase">
+			<motion.div className="catch-phrase" variants={titleAnim}>
 				<p>The best colour in the world is your favorite one!!!</p>
 				<p>
 					Let's find that..... <span>Shall We?</span>
 				</p>
-			</div>
+			</motion.div>
 		</motion.div>
 	);
 }
