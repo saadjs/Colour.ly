@@ -16,10 +16,13 @@ import User from "./components/Profile/User";
 import Favorite from "./components/Profile/Favorite";
 import DefaultHome from "./components/Home/DefaultHome";
 import NotFoundPage from "./components/Home/NotFoundPage";
+import Footer from "./components/Nav/Footer";
 
 //* Redux
 import { useDispatch, useSelector } from "react-redux";
 import * as sessionActions from "./store/session";
+
+// * stylesheet
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
@@ -98,6 +101,7 @@ function App() {
 					<NotFoundPage />
 				</Route>
 			</Switch>
+			<Footer />
 		</>
 	);
 }
