@@ -30,9 +30,9 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	-webkit-box-shadow: 0 0 30px 2px #a7a7a7;
-	-moz-box-shadow: 0 0 30px 2px #a7a7a7;
-	box-shadow: 0 0 30px 2px #a7a7a7;
+	-webkit-box-shadow: 0 0 30px 2px #e65a5a;
+	-moz-box-shadow: 0 0 30px 2px #e65a5a;
+	box-shadow: 0 0 30px 2px #e65a5a;
 	background-image: url("./../styles/images/paint.jpg");
 	background-size: contain;
 	background-size: 100% 100%;

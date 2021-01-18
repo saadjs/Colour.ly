@@ -52,7 +52,17 @@ function SignupFormPage({ sessionUser }) {
 			animate="show"
 			exit="exit"
 		>
-			<form className="login-form" onSubmit={handleSubmit}>
+			<motion.form
+				className="login-form"
+				onSubmit={handleSubmit}
+				drag
+				dragConstraints={{
+					top: -200,
+					left: -200,
+					right: 200,
+					bottom: 200,
+				}}
+			>
 				{errors &&
 					errors.map((error, idx) => (
 						<div key={idx} className="errors">
@@ -111,7 +121,7 @@ function SignupFormPage({ sessionUser }) {
 						Sign in
 					</NavLink>
 				</p>
-			</form>
+			</motion.form>
 		</motion.div>
 	);
 }
