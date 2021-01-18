@@ -50,10 +50,9 @@ function DefaultHome() {
 								style={{
 									background: color.color,
 									height: color.heigth,
+									width: "200px",
 								}}
-							>
-								<p>{color.color}</p>
-							</EachColor>
+							/>
 						</CopyToClipboard>
 					</li>
 				))}
