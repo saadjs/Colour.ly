@@ -6,7 +6,13 @@ import { useDispatch } from "react-redux";
 //? styles and page transitions
 import "./LoginForm.css";
 import { motion } from "framer-motion";
-import { signupContainer } from "../styles/Animation";
+import {
+	signupContainer,
+	titleAnim,
+	titleAnim2,
+	positiveX,
+	negativeX,
+} from "../styles/Animation";
 
 function LoginFormPage({ sessionUser }) {
 	//* redux dispatch
@@ -58,7 +64,7 @@ function LoginFormPage({ sessionUser }) {
 							<p>{error}</p>
 						</div>
 					))}
-				<div className="input-wrapper">
+				<motion.div className="input-wrapper" variants={titleAnim}>
 					<h1 className="form-title">Colour.ly</h1>
 					<h3 className="form-subheading">Login</h3>
 					<input
@@ -67,8 +73,8 @@ function LoginFormPage({ sessionUser }) {
 						onChange={(e) => setEmail(e.target.value)}
 						required
 					/>
-				</div>
-				<div className="input-wrapper">
+				</motion.div>
+				<motion.div className="input-wrapper" variants={titleAnim2}>
 					<input
 						type="password"
 						placeholder="Password"
@@ -77,13 +83,21 @@ function LoginFormPage({ sessionUser }) {
 						required
 						id="password-field"
 					/>
-				</div>
-				<button type="submit" className="login-button">
+				</motion.div>
+				<motion.button
+					type="submit"
+					className="login-button"
+					variants={positiveX}
+				>
 					Login
-				</button>
-				<button onClick={handleDemoLogin} className="demo-button">
+				</motion.button>
+				<motion.button
+					onClick={handleDemoLogin}
+					className="demo-button"
+					variants={negativeX}
+				>
 					Login as Demo
-				</button>
+				</motion.button>
 				<p className="p-signup-link">
 					Need an account?{" "}
 					<NavLink to="/signup" className="signup-link">
