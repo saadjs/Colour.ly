@@ -7,7 +7,6 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 import {
 	MasonryOptions,
 	StyledDiv,
-	HeyThereh1,
 	Overlay,
 	CopiedText,
 	EachColor,

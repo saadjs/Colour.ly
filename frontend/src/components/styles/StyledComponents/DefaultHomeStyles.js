@@ -11,7 +11,7 @@ export const MasonryOptions = {
 export const StyledDiv = styled(motion.div)`
 	cursor: copy;
 	padding: 1rem 0;
-	background-color: #fdf5e6;
+	background-color: #ffffff;
 	width: 90vw;
 	margin: 1rem auto;
 	border-radius: 10px;
