@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
 //? page transition stuff
 import { motion } from "framer-motion";
-import { signupContainer, titleAnim } from "../styles/Animation";
+import { signupContainer } from "../styles/Animation";
 
 function SignupFormPage({ sessionUser }) {
 	//* redux
@@ -103,12 +103,6 @@ function SignupFormPage({ sessionUser }) {
 					</NavLink>
 				</p>
 			</form>
-			<motion.div className="catch-phrase" variants={titleAnim}>
-				<p>The best colour in the world is your favorite one!!!</p>
-				<p>
-					Let's find that..... <span>Shall We?</span>
-				</p>
-			</motion.div>
 		</motion.div>
 	);
 }
