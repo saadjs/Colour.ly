@@ -91,6 +91,12 @@ function LoginFormPage({ sessionUser }) {
 					</NavLink>
 				</p>
 			</form>
+			<div className="catch-phrase">
+				<p>The best colour in the world is your favorite one!!!</p>
+				<p>
+					Let's find that..... <span>Shall We?</span>
+				</p>
+			</div>
 		</motion.div>
 	);
 }

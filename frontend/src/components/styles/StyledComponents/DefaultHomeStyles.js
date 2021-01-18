@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 
 export const MasonryOptions = {
+	paddingTop: "1rem",
 	fitWidth: true,
 	gutter: 10,
 	itemSelector: ".photo-item",
@@ -9,6 +10,7 @@ export const MasonryOptions = {
 
 export const StyledDiv = styled(motion.div)`
 	cursor: copy;
+	padding: 1rem 0;
 	background-color: #fdf5e6;
 	width: 90vw;
 	margin: 1rem auto;

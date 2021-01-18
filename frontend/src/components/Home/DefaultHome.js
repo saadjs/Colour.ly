@@ -33,21 +33,11 @@ function DefaultHome() {
 			<CopiedText className={`copy ${copy && "overlay-show"}`}>
 				<h1>Color Copied!</h1>
 			</CopiedText>
-			<div className="logo-container">
-				<HeyThereh1>Hey there!</HeyThereh1>
-				<p>The best colour in the world is your favorite one!!!</p>
-				<p>
-					Let's find that..... <span>Shall We?</span>
-				</p>
-			</div>
-
 			<Masony
 				className="masony-container"
 				elementType={"ul"}
 				gutter={0}
 				options={MasonryOptions}
-				disableImagesLoaded={false}
-				updateOnEachImageLoad={false}
 			>
 				{colors.map((color) => (
 					<li className="photo-item" id="mapped-li" key={color.color}>
