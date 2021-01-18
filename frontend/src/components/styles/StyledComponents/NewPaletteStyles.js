@@ -70,13 +70,13 @@ export const AddToPaletteBtn = styled.button`
 export const Main = styled.div`
 	position: relative;
 	flex-grow: 1;
-	height: 90vh;
+	height: 87vh;
 	padding: 1rem;
 	margin-left: 400px;
 	.drawer-header {
 		height: 100%;
 	}
-	@media (max-width: 1400px) {
+	@media (max-width: 1500px) {
 		height: 80vh;
 	}
 `;

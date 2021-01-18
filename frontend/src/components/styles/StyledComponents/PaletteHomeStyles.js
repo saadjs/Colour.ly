@@ -19,7 +19,7 @@ export const Colors = styled.div`
 export const ContainerDiv = styled.div`
 	width: 100%;
 	padding: 2rem 2rem;
-	margin-bottom: 2rem;
+	margin-bottom: 4.5rem;
 	h1 {
 		text-align: center;
 		padding: 1rem;
