@@ -23,11 +23,11 @@ export const pageAnimation = {
 	},
 };
 export const titleAnim = {
-	hidden: { x: -200 },
+	hidden: { y: -500 },
 	show: {
-		x: 0,
+		y: 0,
 		transition: {
-			duration: 0.75,
+			duration: 1,
 			ease: "easeOut",
 		},
 	},
@@ -39,13 +39,15 @@ export const loginformAnim = {
 };
 
 export const loginContainer = {
-	hidden: { x: 100 },
-	show: { x: 0 },
+	hidden: { y: 100 },
+	show: { y: 0 },
 };
 
 export const signupContainer = {
-	hidden: { x: -100 },
-	show: { x: 0 },
+	// hidden: { scale: 0 },
+	// show: {
+	// 	scale: 1,
+	// },
 };
 
 export const slider = {

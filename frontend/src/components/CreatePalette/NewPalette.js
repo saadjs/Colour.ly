@@ -16,7 +16,7 @@ import {
 } from "./../styles/StyledComponents/NewPaletteStyles";
 
 function NewPalette({ sessionUser, colorCombos, setGetNew }) {
-	const [pickedColor, setPickedColor] = useState("#57AEB0");
+	const [pickedColor, setPickedColor] = useState("#932BBA");
 	const [pickedColorName, setPickedColorName] = useState("");
 	const [createdPalette, setCreatedPalette] = useState([]);
 	const [paletteTitle, setPaletteTitle] = useState("");
