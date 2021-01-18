@@ -24,14 +24,6 @@ export const StyledDiv = styled(motion.div)`
 		align-items: center;
 		justify-content: center;
 		flex-direction: column;
-		p {
-			color: #0c798e;
-			font-size: 2rem;
-			font-family: "Kaushan Script", cursive;
-			span {
-				color: #42309c;
-			}
-		}
 	}
 	.show.overlay-show {
 		opacity: 1;
@@ -47,13 +39,6 @@ export const StyledDiv = styled(motion.div)`
 		width: 100%;
 		margin: 1rem auto;
 	}
-`;
-
-export const HeyThereh1 = styled.h1`
-	color: #42309c;
-	text-align: center;
-	font-size: 3rem;
-	font-family: "Kaushan Script", cursive;
 `;
 
 export const Overlay = styled.div`
@@ -91,16 +76,4 @@ export const EachColor = styled(motion.div)`
 	border-radius: 10px;
 	flex-direction: column;
 	justify-content: flex-end;
-	p {
-		align-self: center;
-		background: whitesmoke;
-		border-radius: 5px;
-		-webkit-box-shadow: 0 0 15px 2px black;
-		-moz-box-shadow: 0 0 15px 2px black;
-		box-shadow: 0 0 15px 2px black;
-		padding: 2px;
-		font-size: 14px;
-		padding: 0 1rem;
-		margin: 5px 3rem;
-	}
 `;
