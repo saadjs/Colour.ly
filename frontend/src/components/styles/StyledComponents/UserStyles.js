@@ -83,7 +83,7 @@ export const UserInfoContainer = styled(motion.div)`
 	}
 `;
 export const PaletteContainer = styled(motion.div)`
-	margin: auto;
+	margin: 2rem auto;
 	padding: 0 1rem;
 	display: grid;
 	width: 50%;
