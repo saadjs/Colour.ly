@@ -12,13 +12,13 @@
 
 Inspired by [Coolors](https://coolors.co/)
 
-# Checkout the Live Site @ [colour-ly.herokuapp.com](https://colour-ly.herokuapp.com/)
+## Checkout the Live Site @ [colour-ly.herokuapp.com](https://colour-ly.herokuapp.com/)
 
 # Sneak Peek 🙈
 
 ### Landing Page
 
-[![Image from Gyazo](https://i.gyazo.com/8ff03d14c33fd4bd7528f5701daff1f9.gif)](https://gyazo.com/8ff03d14c33fd4bd7528f5701daff1f9)
+[![Image from Gyazo](https://i.gyazo.com/842ad11164c4dcf60d03b78bb1ef9b9a.gif)](https://gyazo.com/842ad11164c4dcf60d03b78bb1ef9b9a)
 
 ## User Login and SignUp Pages
 
