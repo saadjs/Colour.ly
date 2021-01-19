@@ -5,7 +5,12 @@ import { useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
 //? page transition stuff
 import { motion } from "framer-motion";
-import { signupContainer } from "../styles/Animation";
+import {
+	signupContainer,
+	titleAnim,
+	titleAnim2,
+	negativeX,
+} from "../styles/Animation";
 
 function SignupFormPage({ sessionUser }) {
 	//* redux
@@ -47,7 +52,17 @@ function SignupFormPage({ sessionUser }) {
 			animate="show"
 			exit="exit"
 		>
-			<form className="login-form" onSubmit={handleSubmit}>
+			<motion.form
+				className="login-form"
+				onSubmit={handleSubmit}
+				drag
+				dragConstraints={{
+					top: -200,
+					left: -200,
+					right: 200,
+					bottom: 200,
+				}}
+			>
 				{errors &&
 					errors.map((error, idx) => (
 						<div key={idx} className="errors">
@@ -55,7 +70,7 @@ function SignupFormPage({ sessionUser }) {
 						</div>
 					))}
 
-				<div className="input-wrapper">
+				<motion.div className="input-wrapper" variants={titleAnim}>
 					<h1 className="form-title">Colour.ly</h1>
 					<h3 className="form-subheading">Sign Up</h3>
 					<input
@@ -64,16 +79,16 @@ function SignupFormPage({ sessionUser }) {
 						onChange={(e) => setEmail(e.target.value)}
 						required
 					/>
-				</div>
-				<div className="input-wrapper">
+				</motion.div>
+				<motion.div className="input-wrapper" variants={titleAnim}>
 					<input
 						type="text"
 						placeholder="Username"
 						onChange={(e) => setUsername(e.target.value)}
 						required
 					/>
-				</div>
-				<div className="input-wrapper">
+				</motion.div>
+				<motion.div className="input-wrapper" variants={titleAnim2}>
 					<input
 						type="password"
 						placeholder="Password"
@@ -82,8 +97,8 @@ function SignupFormPage({ sessionUser }) {
 						onChange={(e) => setPassword(e.target.value)}
 						required
 					/>
-				</div>
-				<div className="input-wrapper">
+				</motion.div>
+				<motion.div className="input-wrapper" variants={titleAnim2}>
 					<input
 						type="password"
 						placeholder="Confirm Password"
@@ -92,17 +107,21 @@ function SignupFormPage({ sessionUser }) {
 						onChange={(e) => setConfirmPassword(e.target.value)}
 						required
 					/>
-				</div>
-				<button type="submit" className="login-button">
+				</motion.div>
+				<motion.button
+					type="submit"
+					className="login-button"
+					variants={negativeX}
+				>
 					Sign Up
-				</button>
+				</motion.button>
 				<p className="p-signup-link">
 					Have an account?{" "}
 					<NavLink to="/login" className="signup-link">
 						Sign in
 					</NavLink>
 				</p>
-			</form>
+			</motion.form>
 		</motion.div>
 	);
 }

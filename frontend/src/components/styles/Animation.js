@@ -22,12 +22,44 @@ export const pageAnimation = {
 		},
 	},
 };
+
 export const titleAnim = {
 	hidden: { y: -500 },
 	show: {
 		y: 0,
 		transition: {
-			duration: 1,
+			duration: 0.5,
+			ease: "easeOut",
+		},
+	},
+};
+
+export const titleAnim2 = {
+	hidden: { y: 500 },
+	show: {
+		y: 0,
+		transition: {
+			duration: 0.5,
+			ease: "easeOut",
+		},
+	},
+};
+export const positiveX = {
+	hidden: { x: 500 },
+	show: {
+		x: 0,
+		transition: {
+			duration: 0.5,
+			ease: "easeOut",
+		},
+	},
+};
+export const negativeX = {
+	hidden: { x: -500 },
+	show: {
+		x: 0,
+		transition: {
+			duration: 0.5,
 			ease: "easeOut",
 		},
 	},
