@@ -30,7 +30,7 @@ function DefaultHome() {
 		>
 			<Overlay className={`show ${copy && "overlay-show"}`} />
 			<CopiedText className={`copy ${copy && "overlay-show"}`}>
-				<h1>Color Copied!</h1>
+				<h1>COPIED</h1>
 			</CopiedText>
 			<Masony
 				className="masony-container"
