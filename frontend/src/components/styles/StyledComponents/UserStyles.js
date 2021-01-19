@@ -48,6 +48,9 @@ export const UserInfoContainer = styled(motion.div)`
 			height: 300px;
 			resize: none;
 		}
+		button {
+			margin-bottom: 2.5rem;
+		}
 	}
 	strong {
 		text-decoration: underline;
