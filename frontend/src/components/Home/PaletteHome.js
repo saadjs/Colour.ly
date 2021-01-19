@@ -18,9 +18,9 @@ function PaletteHome({ colorCombos, popularCombos }) {
 		>
 			<MainOuterDiv>
 				<ContainerDiv>
-					<h1>Recent Palettes</h1>
+					<h1>Popular Palettes</h1>
 					<Colors>
-						{colorCombos.map((combination) => (
+						{popularCombos.map((combination) => (
 							<ColorColumns
 								key={combination.paletteId}
 								{...combination}
@@ -29,9 +29,9 @@ function PaletteHome({ colorCombos, popularCombos }) {
 					</Colors>
 				</ContainerDiv>
 				<ContainerDiv>
-					<h1>Popular Palettes</h1>
+					<h1>Recent Palettes</h1>
 					<Colors>
-						{popularCombos.map((combination) => (
+						{colorCombos.map((combination) => (
 							<ColorColumns
 								key={combination.paletteId}
 								{...combination}
