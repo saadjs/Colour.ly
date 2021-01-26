@@ -9,6 +9,7 @@ from .models import db, User
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.palette_routes import palette_routes
+from .api.s3.util import upload_routes
 
 from .seeds import seed_commands
 
@@ -33,6 +34,7 @@ app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(palette_routes, url_prefix='/api/palettes')
+app.register_blueprint(upload_routes, url_prefix='/api/upload')
 db.init_app(app)
 Migrate(app, db)
 
