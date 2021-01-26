@@ -47,16 +47,19 @@ def upload_img(id):
         s3.put_object(
             Bucket = BUCKET_NAME,
             Body = img,
-            Key = filename
+            Key = filename,
+            ACL = 'public-read'
         )
         url=f'https://s3.amazonaws.com/colour.ly/{filename}'
         user.dp_url = url
         db.session.add(user)
         db.session.commit()
-        print('>>>>>>>>>>>>> :', user)
-        return render_template('upload_to_s3.html', url = url)
-        # return url;
-        
+        print('>>>>>>>>>>>>> :', user.to_dict())
+        # return render_template('upload_to_s3.html', url = url)
+        return url;
+    return 'error'
+
+# * test upload form for image
 @user_routes.route('/image')
 def upload():
     return render_template('upload_to_s3.html')

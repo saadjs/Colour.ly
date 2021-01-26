@@ -24,9 +24,10 @@ def img_upload():
         s3.put_object(
             Bucket = BUCKET_NAME,
             Body = img,
-            Key = filename
+            Key = filename.capitalize,
+            ACL = 'public-read'
         )
         msg = "Upload Done!"
         url=f'https://s3.amazonaws.com/colour.ly/{filename}'
-        # return render_template('upload_to_s3.html', msg = msg, url = url)
-        return url;
+        return render_template('upload_to_s3.html', msg = msg, url = url)
+        # return url;
