@@ -36,34 +36,29 @@ def user(id):
 
 
 # * upload avatar
-@user_routes.route('/<int:id>/upload', methods=['POST'])
+@user_routes.route('/<int:id>/upload', methods=['GET','POST'])
 def upload_img(id):
     user = User.query.get(id)
     if not user:
         return jsonify('no user found')
-    img = request.files['file']
-    if img:
-        filename = secure_filename(img.filename)
-        s3.put_object(
-            Bucket = BUCKET_NAME,
-            Body = img,
-            Key = filename,
-            ACL = 'public-read'
-        )
-        url=f'https://s3.amazonaws.com/colour.ly/{filename}'
-        user.dp_url = url
-        db.session.add(user)
-        db.session.commit()
-        print('>>>>>>>>>>>>> :', user.to_dict())
-        # return render_template('upload_to_s3.html', url = url)
-        return url;
-    return 'error'
-
-# * test upload form for image
-@user_routes.route('/image')
-def upload():
-    return render_template('upload_to_s3.html')
-
+    if request.method == "POST":
+        img = request.files['file']
+        if img:
+            filename = secure_filename(img.filename)
+            s3.put_object(
+                Bucket = BUCKET_NAME,
+                Body = img,
+                Key = filename,
+                ACL = 'public-read'
+            )
+            url=f'https://s3.amazonaws.com/colour.ly/{filename}'
+            user.dp_url = url
+            db.session.add(user)
+            db.session.commit()
+            print('>>>>>>>>>>>>> :', user.to_dict())
+            return render_template('upload_to_s3.html', url = url, id = id)
+            # return url;
+    return render_template('upload_to_s3.html', id = id)
 
 
 # * get list of liked palettes by user
