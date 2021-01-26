@@ -1,8 +1,19 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, jsonify, request, render_template
 from flask_login import login_required, current_user
 from app.models import User, Palette, db
+from werkzeug.utils import secure_filename
+import boto3
+import os
+
 
 user_routes = Blueprint('users', __name__)
+
+s3 = boto3.client('s3',
+                  aws_access_key_id = os.environ.get('AWS_ACCESS_KEY_ID'),
+                  aws_secret_access_key = os.environ.get('AWS_SECRET_ACCESS_KEY'))
+
+BUCKET_NAME = 'colour.ly'
+
 
 # * get list of all users
 @user_routes.route('/')
@@ -22,7 +33,35 @@ def user(id):
     palettes = Palette.query.filter(Palette.user_id == id).order_by(Palette.id.desc())
     return {'user': user.to_dict_full(),
             'palettes': [palette.to_dict() for palette in palettes]}
-    
+
+
+# * upload avatar
+@user_routes.route('/<int:id>/upload', methods=['POST'])
+def upload_img(id):
+    user = User.query.get(id)
+    if not user:
+        return jsonify('no user found')
+    img = request.files['file']
+    if img:
+        filename = secure_filename(img.filename)
+        s3.put_object(
+            Bucket = BUCKET_NAME,
+            Body = img,
+            Key = filename
+        )
+        url=f'https://s3.amazonaws.com/colour.ly/{filename}'
+        user.dp_url = url
+        db.session.add(user)
+        db.session.commit()
+        print('>>>>>>>>>>>>> :', user)
+        return render_template('upload_to_s3.html', url = url)
+        # return url;
+        
+@user_routes.route('/image')
+def upload():
+    return render_template('upload_to_s3.html')
+
+
 
 # * get list of liked palettes by user
 @user_routes.route('/<int:id>/favorites')
