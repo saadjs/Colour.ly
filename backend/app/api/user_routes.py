@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, request, render_template
+from flask import Blueprint, jsonify, request, render_template, abort
 from flask_login import login_required, current_user
 from app.models import User, Palette, db
 from werkzeug.utils import secure_filename
@@ -35,6 +35,13 @@ def user(id):
             'palettes': [palette.to_dict() for palette in palettes]}
 
 
+# * helper func to check file types
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+           
+           
 # * upload avatar
 @user_routes.route('/<int:id>/upload', methods=['GET','POST'])
 def upload_img(id):
@@ -43,21 +50,25 @@ def upload_img(id):
         return jsonify('no user found')
     if request.method == "POST":
         img = request.files['file']
-        if img:
+        if img and allowed_file(img.filename):
             filename = secure_filename(img.filename)
-            s3.put_object(
+            res = s3.put_object(
                 Bucket = BUCKET_NAME,
                 Body = img,
                 Key = filename,
                 ACL = 'public-read'
             )
-            url=f'https://s3.amazonaws.com/colour.ly/{filename}'
-            user.dp_url = url
-            db.session.add(user)
-            db.session.commit()
-            print('>>>>>>>>>>>>> :', user.to_dict())
-            return render_template('upload_to_s3.html', url = url, id = id)
-            # return url;
+            if res['ResponseMetadata']['HTTPStatusCode'] == 200:
+                url=f'https://s3.amazonaws.com/colour.ly/{filename}'
+                user.dp_url = url
+                db.session.add(user)
+                db.session.commit()
+                print('>>>>>>>>>>>>> :', user.to_dict())
+                return render_template('upload_to_s3.html', url = url, id = id)
+                # return url;
+            else:
+                return 'something went wrong', 500
+        abort(406, description='supply image')
     return render_template('upload_to_s3.html', id = id)
 
 
