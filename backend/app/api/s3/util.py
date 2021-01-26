@@ -11,6 +11,7 @@ s3 = boto3.client('s3',
 
 BUCKET_NAME = 'colour.ly'
 
+
 @upload_routes.route('')
 def upload():
     return render_template('upload_to_s3.html')
@@ -26,5 +27,6 @@ def img_upload():
             Key = filename
         )
         msg = "Upload Done!"
-        return render_template('upload_to_s3.html', msg = msg)
-        
+        url=f'https://s3.amazonaws.com/colour.ly/{filename}'
+        # return render_template('upload_to_s3.html', msg = msg, url = url)
+        return url;
