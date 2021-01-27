@@ -2,14 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Link, Redirect, useParams } from "react-router-dom";
 import axios from "axios";
 import ColorColumns from "../Home/ColorColumns";
+import UploadImage from "./UploadImage";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
-import iAmWinking from "../styles/images/avatar.jpeg";
-import excitedMonkey from "../styles/images/excitedMonkey.jpg";
-import hooterWink from "../styles/images/hooterWink.jpg";
-import mindBlown from "../styles/images/mindBlown.jpg";
-import roboHeart from "../styles/images/roboHeart.jpg";
-import skullWinking from "../styles/images/skullWinking.jpg";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { motion } from "framer-motion";
@@ -39,6 +34,7 @@ function User({ sessionUser, setGetNew }) {
 	const [totalFollowing, setTotalFollowing] = useState(null);
 	const [followersShow, setFollowersShow] = useState(false);
 	const [followingShow, setFollowingShow] = useState(false);
+	const [showUpload, setShowUpload] = useState(false);
 
 	const { userId } = useParams();
 
@@ -87,6 +83,7 @@ function User({ sessionUser, setGetNew }) {
 	};
 
 	let showFollowButton;
+	let editProfilePic;
 	let result =
 		followers && followers.some((user) => user.id === sessionUser.id);
 	if (result) {
@@ -104,22 +101,15 @@ function User({ sessionUser, setGetNew }) {
 	}
 	if (sessionUser.id === parseInt(userId, 10)) {
 		showFollowButton = "";
-	}
-
-	let avatar;
-	const currentUser = user.username;
-	if (currentUser === "Demo") {
-		avatar = iAmWinking;
-	} else if (currentUser === "saad") {
-		avatar = skullWinking;
-	} else if (currentUser === "bob") {
-		avatar = hooterWink;
-	} else if (currentUser === "cow") {
-		avatar = mindBlown;
-	} else if (currentUser === "monkey") {
-		avatar = roboHeart;
-	} else {
-		avatar = excitedMonkey;
+		editProfilePic = (
+			<Button
+				variant="outline-secondary"
+				size="sm"
+				onClick={() => setShowUpload(!showUpload)}
+			>
+				Edit Profile Picture
+			</Button>
+		);
 	}
 
 	return (
@@ -128,7 +118,7 @@ function User({ sessionUser, setGetNew }) {
 				<ul>
 					<li className="avatar-container">
 						<motion.img
-							src={avatar}
+							src={user.dpURL}
 							alt="avatar"
 							initial={{ scale: 0 }}
 							animate={{ rotate: 360, scale: 1 }}
@@ -137,6 +127,15 @@ function User({ sessionUser, setGetNew }) {
 								stiffness: 120,
 								damping: 20,
 							}}
+						/>
+					</li>
+					<li style={{ textAlign: "center" }}>
+						{editProfilePic}
+						<UploadImage
+							showUpload={showUpload}
+							setShowUpload={setShowUpload}
+							userId={userId}
+							setPageReload={setPageReload}
 						/>
 					</li>
 					<li className="username-container">
@@ -234,12 +233,13 @@ function User({ sessionUser, setGetNew }) {
 						<li className="btn-container-li">
 							{sessionUser.id === parseInt(userId, 10) && (
 								<UpdateBioDiv>
-									<button
+									<Button
+										variant="outline-secondary"
+										size="sm"
 										onClick={() => setShowAbout(!showAbout)}
-										className="show-about-form-btn"
 									>
 										Update About me
-									</button>
+									</Button>
 								</UpdateBioDiv>
 							)}
 						</li>
