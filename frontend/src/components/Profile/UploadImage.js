@@ -1,24 +1,20 @@
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
 
 function UploadImage(props) {
-	const [img, setImg] = useState(null);
-
 	const fileRef = useRef(null);
 
 	const uploadImg = async (e) => {
 		e.preventDefault();
 		const file = new FormData();
-		console.log(fileRef.current.files[0]);
 		file.append("file", fileRef.current.files[0]);
 		const res = await axios.post(`/api/users/${1}/upload`, file, {
 			headers: {
 				"content-type": "multipart/form-data",
 			},
 		});
-		console.log(res);
 	};
 
 	return (
@@ -37,14 +33,7 @@ function UploadImage(props) {
 			<Modal.Body>
 				<form method="post" onSubmit={uploadImg}>
 					<p>Choose a file to upload it to AWS S3</p>
-					<input
-						type="file"
-						name="file"
-						ref={fileRef}
-						onChange={(e) =>
-							setImg(URL.createObjectURL(e.target.files[0]))
-						}
-					/>
+					<input type="file" name="file" ref={fileRef} />
 					<hr />
 					<input type="submit" name="upload" />
 				</form>
