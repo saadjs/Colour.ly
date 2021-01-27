@@ -64,8 +64,8 @@ def upload_img(id):
                 db.session.add(user)
                 db.session.commit()
                 print('>>>>>>>>>>>>> :', user.to_dict())
-                return render_template('upload_to_s3.html', url = url, id = id)
-                # return url;
+                # return render_template('upload_to_s3.html', url = url, id = id)
+                return url;
             else:
                 return 'something went wrong', 500
         abort(406, description='supply image')
