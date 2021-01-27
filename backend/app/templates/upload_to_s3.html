@@ -1,4 +1,4 @@
-<form action="/api/users/1/upload" method="post" enctype="multipart/form-data">
+<form action="/api/users/{{id}}/upload" method="post" enctype="multipart/form-data">
     <p class="card-text">Choose a file to upload it to AWS S3</p>
        <input type="file" name="file" value="file">
        <hr>
@@ -6,4 +6,4 @@
 </form>
 {{msg}}
 <h1>{{filename}}</h1>
-<img src={{url}} alt="">
+<img src="{{ url }}" alt="">
