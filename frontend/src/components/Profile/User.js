@@ -83,6 +83,7 @@ function User({ sessionUser, setGetNew }) {
 	};
 
 	let showFollowButton;
+	let editProfilePic;
 	let result =
 		followers && followers.some((user) => user.id === sessionUser.id);
 	if (result) {
@@ -100,6 +101,15 @@ function User({ sessionUser, setGetNew }) {
 	}
 	if (sessionUser.id === parseInt(userId, 10)) {
 		showFollowButton = "";
+		editProfilePic = (
+			<Button
+				variant="outline-secondary"
+				size="sm"
+				onClick={() => setShowUpload(!showUpload)}
+			>
+				Edit Profile Picture
+			</Button>
+		);
 	}
 
 	return (
@@ -117,12 +127,15 @@ function User({ sessionUser, setGetNew }) {
 								stiffness: 120,
 								damping: 20,
 							}}
-							onClick={() => setShowUpload(!showUpload)}
 						/>
+					</li>
+					<li style={{ textAlign: "center" }}>
+						{editProfilePic}
 						<UploadImage
 							showUpload={showUpload}
 							setShowUpload={setShowUpload}
 							userId={userId}
+							setPageReload={setPageReload}
 						/>
 					</li>
 					<li className="username-container">
@@ -220,12 +233,13 @@ function User({ sessionUser, setGetNew }) {
 						<li className="btn-container-li">
 							{sessionUser.id === parseInt(userId, 10) && (
 								<UpdateBioDiv>
-									<button
+									<Button
+										variant="outline-secondary"
+										size="sm"
 										onClick={() => setShowAbout(!showAbout)}
-										className="show-about-form-btn"
 									>
 										Update About me
-									</button>
+									</Button>
 								</UpdateBioDiv>
 							)}
 						</li>

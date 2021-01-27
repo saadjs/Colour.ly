@@ -77,7 +77,7 @@ export const UserInfoContainer = styled(motion.div)`
 				height: 100%;
 				display: flex;
 				align-items: center;
-				border-radius: 50%;
+				border-radius: 10px;
 			}
 		}
 		span {

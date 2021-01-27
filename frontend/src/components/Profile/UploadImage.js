@@ -3,7 +3,7 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
 
-function UploadImage({ showUpload, userId, setShowUpload }) {
+function UploadImage({ showUpload, userId, setShowUpload, setPageReload }) {
 	const fileRef = useRef(null);
 	const [err, setErr] = useState([]);
 
@@ -12,12 +12,13 @@ function UploadImage({ showUpload, userId, setShowUpload }) {
 		try {
 			const file = new FormData();
 			file.append("file", fileRef.current.files[0]);
-			const res = await axios.post(`/api/users/${userId}/upload`, file, {
+			await axios.post(`/api/users/${userId}/upload`, file, {
 				headers: {
 					"content-type": "multipart/form-data",
 				},
 			});
-			const data = res.data;
+			setPageReload(false);
+			setShowUpload(false);
 		} catch (err) {
 			if (err.response) {
 				setErr(err.response.data.errors);
@@ -45,7 +46,7 @@ function UploadImage({ showUpload, userId, setShowUpload }) {
 				</Modal.Header>
 				<Modal.Body>
 					<form method="post" onSubmit={uploadImg}>
-						<span>Supported Formats: .png, .jpg, .jpeg, .gif </span>
+						<span>Supported Formats: png, jpg, jpeg, gif </span>
 						<hr />
 						<input type="file" name="file" ref={fileRef} />
 						<hr />
