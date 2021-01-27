@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, Redirect, useParams } from "react-router-dom";
 import axios from "axios";
 import ColorColumns from "../Home/ColorColumns";
-import UploadImage  from './UploadImage'
+import UploadImage from "./UploadImage";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import iAmWinking from "../styles/images/avatar.jpeg";
@@ -40,7 +40,7 @@ function User({ sessionUser, setGetNew }) {
 	const [totalFollowing, setTotalFollowing] = useState(null);
 	const [followersShow, setFollowersShow] = useState(false);
 	const [followingShow, setFollowingShow] = useState(false);
-	const [showUpload, setShowUpload] = useState(true)
+	const [showUpload, setShowUpload] = useState(true);
 
 	const { userId } = useParams();
 
@@ -141,9 +141,9 @@ function User({ sessionUser, setGetNew }) {
 							}}
 							onClick={() => setShowUpload(!showUpload)}
 						/>
-						<UploadImage 
+						<UploadImage
 							show={showUpload}
-        					onHide={() => setShowUpload(false)}
+							onHide={() => setShowUpload(false)}
 						/>
 					</li>
 					<li className="username-container">
