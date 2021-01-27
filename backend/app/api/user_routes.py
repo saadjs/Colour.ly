@@ -65,7 +65,7 @@ def upload_img(id):
             return url;
         else:
             return 'something went wrong', 500
-    return {'errors': ['no image']}, 418
+    return {'errors': ['Try Again!']}, 418
 
 
 # * get list of liked palettes by user

@@ -5,12 +5,6 @@ import ColorColumns from "../Home/ColorColumns";
 import UploadImage from "./UploadImage";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
-import iAmWinking from "../styles/images/avatar.jpeg";
-import excitedMonkey from "../styles/images/excitedMonkey.jpg";
-import hooterWink from "../styles/images/hooterWink.jpg";
-import mindBlown from "../styles/images/mindBlown.jpg";
-import roboHeart from "../styles/images/roboHeart.jpg";
-import skullWinking from "../styles/images/skullWinking.jpg";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { motion } from "framer-motion";
@@ -40,7 +34,7 @@ function User({ sessionUser, setGetNew }) {
 	const [totalFollowing, setTotalFollowing] = useState(null);
 	const [followersShow, setFollowersShow] = useState(false);
 	const [followingShow, setFollowingShow] = useState(false);
-	const [showUpload, setShowUpload] = useState(true);
+	const [showUpload, setShowUpload] = useState(false);
 
 	const { userId } = useParams();
 
@@ -108,22 +102,6 @@ function User({ sessionUser, setGetNew }) {
 		showFollowButton = "";
 	}
 
-	let avatar;
-	const currentUser = user.username;
-	if (currentUser === "Demo") {
-		avatar = iAmWinking;
-	} else if (currentUser === "saad") {
-		avatar = skullWinking;
-	} else if (currentUser === "bob") {
-		avatar = hooterWink;
-	} else if (currentUser === "cow") {
-		avatar = mindBlown;
-	} else if (currentUser === "monkey") {
-		avatar = roboHeart;
-	} else {
-		avatar = excitedMonkey;
-	}
-
 	return (
 		<MainContainer>
 			<UserInfoContainer>
@@ -142,9 +120,9 @@ function User({ sessionUser, setGetNew }) {
 							onClick={() => setShowUpload(!showUpload)}
 						/>
 						<UploadImage
-							show={showUpload}
-							userid={userId}
-							onHide={() => setShowUpload(false)}
+							showUpload={showUpload}
+							setShowUpload={setShowUpload}
+							userId={userId}
 						/>
 					</li>
 					<li className="username-container">

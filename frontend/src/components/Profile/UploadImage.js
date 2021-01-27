@@ -3,7 +3,7 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
 
-function UploadImage(props) {
+function UploadImage({ showUpload, userId, setShowUpload }) {
 	const fileRef = useRef(null);
 	const [err, setErr] = useState([]);
 
@@ -12,15 +12,11 @@ function UploadImage(props) {
 		try {
 			const file = new FormData();
 			file.append("file", fileRef.current.files[0]);
-			const res = await axios.post(
-				`/api/users/${props.userid}/upload`,
-				file,
-				{
-					headers: {
-						"content-type": "multipart/form-data",
-					},
-				}
-			);
+			const res = await axios.post(`/api/users/${userId}/upload`, file, {
+				headers: {
+					"content-type": "multipart/form-data",
+				},
+			});
 			const data = res.data;
 		} catch (err) {
 			if (err.response) {
@@ -33,31 +29,35 @@ function UploadImage(props) {
 	};
 
 	return (
-		<Modal
-			{...props}
-			size="lg"
-			aria-labelledby="contained-modal-title-vcenter"
-			animation={false}
-			centered
-		>
-			<Modal.Header closeButton>
-				<Modal.Title id="contained-modal-title-vcenter">
-					Modal heading
-				</Modal.Title>
-			</Modal.Header>
-			<Modal.Body>
-				<form method="post" onSubmit={uploadImg}>
-					<p>Choose a file to upload it to AWS S3</p>
-					<input type="file" name="file" ref={fileRef} />
-					<hr />
-					<input type="submit" name="upload" />
-				</form>
-				{err && err.map((e) => <h1 key={e}>{e}</h1>)}
-			</Modal.Body>
-			<Modal.Footer>
-				<Button onClick={props.onHide}>Close</Button>
-			</Modal.Footer>
-		</Modal>
+		<div>
+			<Modal
+				size="lg"
+				show={showUpload}
+				animation={false}
+				onHide={() => setShowUpload(false)}
+				aria-labelledby="contained-modal-title-vcenter"
+				centered
+			>
+				<Modal.Header closeButton>
+					<Modal.Title id="contained-modal-title-vcenter">
+						Upload Profile Picture
+					</Modal.Title>
+				</Modal.Header>
+				<Modal.Body>
+					<form method="post" onSubmit={uploadImg}>
+						<span>Supported Formats: .png, .jpg, .jpeg, .gif </span>
+						<hr />
+						<input type="file" name="file" ref={fileRef} />
+						<hr />
+						<input type="submit" name="upload" />
+					</form>
+					{err && err.map((e) => <h1 key={e}>{e}</h1>)}
+				</Modal.Body>
+				<Modal.Footer>
+					<Button onClick={() => setShowUpload(false)}>Close</Button>
+				</Modal.Footer>
+			</Modal>
+		</div>
 	);
 }
 
