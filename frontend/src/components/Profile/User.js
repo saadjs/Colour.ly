@@ -130,7 +130,7 @@ function User({ sessionUser, setGetNew }) {
 				<ul>
 					<li className="avatar-container">
 						<motion.img
-							src={avatar}
+							src={user.dpURL}
 							alt="avatar"
 							initial={{ scale: 0 }}
 							animate={{ rotate: 360, scale: 1 }}
@@ -143,6 +143,7 @@ function User({ sessionUser, setGetNew }) {
 						/>
 						<UploadImage
 							show={showUpload}
+							userid={userId}
 							onHide={() => setShowUpload(false)}
 						/>
 					</li>

@@ -48,7 +48,7 @@ def upload_img(id):
     user = User.query.get(id)
     if not user:
         return jsonify('no user found')
-    img = request.files['file']
+    img = request.files.get('file', False)
     if img and allowed_file(img.filename):
         filename = secure_filename(img.filename)
         res = s3.put_object(
@@ -62,12 +62,10 @@ def upload_img(id):
             user.dp_url = url
             db.session.add(user)
             db.session.commit()
-            print('>>>>>>>>>>>>> :', user.to_dict())
-            # return render_template('upload_to_s3.html', url = url, id = id)
             return url;
         else:
             return 'something went wrong', 500
-    abort(406, description='supply image')
+    return {'errors': ['no image']}, 418
 
 
 # * get list of liked palettes by user
