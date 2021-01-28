@@ -100,6 +100,7 @@ function User({ sessionUser, setGetNew, theme, themeToggler }) {
 			</FollowButton>
 		);
 	}
+	let toggleTheme;
 	if (sessionUser.id === parseInt(userId, 10)) {
 		showFollowButton = "";
 		editProfilePic = (
@@ -111,11 +112,12 @@ function User({ sessionUser, setGetNew, theme, themeToggler }) {
 				Edit Profile Picture
 			</Button>
 		);
+		toggleTheme = <Toggle theme={theme} toggleTheme={themeToggler} />;
 	}
 
 	return (
 		<MainContainer>
-			<Toggle theme={theme} toggleTheme={themeToggler} />
+			{toggleTheme}
 			<UserInfoContainer>
 				<ul>
 					<li className="avatar-container">
