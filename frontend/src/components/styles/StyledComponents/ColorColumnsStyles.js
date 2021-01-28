@@ -1,23 +1,26 @@
 import styled from "styled-components";
 
 export const StyledContainerDiv = styled.div`
-	box-shadow: 10px 5px 5px #d0b64d;
 	padding: 10px;
+	/* border: 1px solid black; */
+	box-shadow: 0px 0px 30px #ada4b1;
+
+	border-radius: 10px;
+	margin: 0.5rem 0;
 	:hover {
 		cursor: pointer;
 	}
 	@media (max-width: 1400px) {
 		box-shadow: none;
 		border: 1px solid black;
-		margin: 5rem 0;
 	}
 `;
 
 export const StyledInnerDiv = styled.div`
-	background-color: #32a25f;
 	height: 175px;
 	width: 100%;
 	overflow: hidden;
+	border-radius: 10px;
 `;
 
 export const StyledH5 = styled.h5`

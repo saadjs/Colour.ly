@@ -8,8 +8,8 @@ export const MotionDiv = styled(motion.div)`
 
 export const Colors = styled.div`
 	display: grid;
-	grid-template-columns: repeat(4, 22%);
-	grid-gap: 4%;
+	grid-template-columns: repeat(4, calc(25% - (180px / 4)));
+	grid-gap: 60px;
 	width: 100%;
 	@media (max-width: 1400px) {
 		display: inline;
@@ -19,7 +19,6 @@ export const Colors = styled.div`
 export const ContainerDiv = styled.div`
 	width: 100%;
 	padding: 2rem 2rem;
-	margin-bottom: 4.5rem;
 	h1 {
 		text-align: center;
 		padding: 1rem;

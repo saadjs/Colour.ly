@@ -95,10 +95,6 @@ export const PaletteContainer = styled(motion.div)`
 		display: flex;
 		justify-content: center;
 	}
-	h1 {
-		border-bottom: 2px solid black;
-		text-align: center;
-	}
 `;
 
 export const UpdateBioDiv = styled.div`

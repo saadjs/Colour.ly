@@ -275,7 +275,6 @@ function User({ sessionUser, setGetNew, theme, themeToggler }) {
 				animate="show"
 				exit="exit"
 			>
-				<h1>My Palettes</h1>
 				{userPalettes.length > 0 ? (
 					userPalettes.map((palette) => (
 						<div
