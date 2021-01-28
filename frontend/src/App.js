@@ -4,6 +4,9 @@ import axios from "axios";
 
 //* Global Styles: styled-component
 import GlobalStyle from "./components/styles/GlobalStyle";
+import { ThemeProvider } from "styled-components";
+import { lightTheme, darkTheme } from "./components/styles/Themes";
+import { useDarkMode } from "./components/styles/useDarkMode";
 
 //* Components
 import LoginFormPage from "./components/UserAuth/LoginForm";
@@ -35,6 +38,10 @@ function App() {
 	const [popularCombos, setPopularCombos] = useState([]);
 	const [getNew, setGetNew] = useState(false);
 
+	// ? theme stuff
+	const [theme, themeToggler] = useDarkMode();
+	const themeMode = theme === "light" ? lightTheme : darkTheme;
+
 	//* Get current user
 	const sessionUser = useSelector((state) => state.session.user);
 
@@ -62,47 +69,58 @@ function App() {
 	}
 
 	return (
-		<>
-			<GlobalStyle />
-			<Nav sessionUser={sessionUser} />
-			<Switch location={location} key={location.pathname}>
-				<Route exact path="/palettes">
-					<PaletteHome
-						colorCombos={colorCombos}
-						popularCombos={popularCombos}
-					/>
-				</Route>
-				<Route exact path="/palettes/create">
-					<NewPalette
-						sessionUser={sessionUser}
-						colorCombos={colorCombos}
-						setGetNew={setGetNew}
-					/>
-				</Route>
-				<Route exact path="/users/:userId">
-					<User sessionUser={sessionUser} setGetNew={setGetNew} />
-				</Route>
-				<Route exact path="/users/:userId/favorites">
-					<Favorite />
-				</Route>
-				<Route exact path="/palettes/:id">
-					<Palette setGetNew={setGetNew} sessionUser={sessionUser} />
-				</Route>
-				<Route exact path="/login">
-					<LoginFormPage sessionUser={sessionUser} />
-				</Route>
-				<Route exact path="/signup">
-					<SignupFormPage sessionUser={sessionUser} />
-				</Route>
-				<Route exact path="/">
-					<DefaultHome />
-				</Route>
-				<Route path="*">
-					<NotFoundPage />
-				</Route>
-			</Switch>
-			<Footer />
-		</>
+		<ThemeProvider theme={themeMode}>
+			<>
+				<GlobalStyle />
+
+				<Nav sessionUser={sessionUser} />
+				<Switch location={location} key={location.pathname}>
+					<Route exact path="/palettes">
+						<PaletteHome
+							colorCombos={colorCombos}
+							popularCombos={popularCombos}
+						/>
+					</Route>
+					<Route exact path="/palettes/create">
+						<NewPalette
+							sessionUser={sessionUser}
+							colorCombos={colorCombos}
+							setGetNew={setGetNew}
+						/>
+					</Route>
+					<Route exact path="/users/:userId">
+						<User
+							sessionUser={sessionUser}
+							setGetNew={setGetNew}
+							theme={theme}
+							themeToggler={themeToggler}
+						/>
+					</Route>
+					<Route exact path="/users/:userId/favorites">
+						<Favorite />
+					</Route>
+					<Route exact path="/palettes/:id">
+						<Palette
+							setGetNew={setGetNew}
+							sessionUser={sessionUser}
+						/>
+					</Route>
+					<Route exact path="/login">
+						<LoginFormPage sessionUser={sessionUser} />
+					</Route>
+					<Route exact path="/signup">
+						<SignupFormPage sessionUser={sessionUser} />
+					</Route>
+					<Route exact path="/">
+						<DefaultHome />
+					</Route>
+					<Route path="*">
+						<NotFoundPage />
+					</Route>
+				</Switch>
+				<Footer />
+			</>
+		</ThemeProvider>
 	);
 }
 

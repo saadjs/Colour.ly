@@ -3,6 +3,7 @@ import { Link, Redirect, useParams } from "react-router-dom";
 import axios from "axios";
 import ColorColumns from "../Home/ColorColumns";
 import UploadImage from "./UploadImage";
+import Toggle from "./../styles/Toggler";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import Modal from "react-bootstrap/Modal";
@@ -21,7 +22,7 @@ import {
 	FollowInfoDiv,
 } from "./../styles/StyledComponents/UserStyles";
 
-function User({ sessionUser, setGetNew }) {
+function User({ sessionUser, setGetNew, theme, themeToggler }) {
 	const [userPalettes, getUserPalettes] = useState([]);
 	const [pageReload, setPageReload] = useState(false);
 	const [user, setUser] = useState([]);
@@ -114,6 +115,7 @@ function User({ sessionUser, setGetNew }) {
 
 	return (
 		<MainContainer>
+			<Toggle theme={theme} toggleTheme={themeToggler} />
 			<UserInfoContainer>
 				<ul>
 					<li className="avatar-container">
