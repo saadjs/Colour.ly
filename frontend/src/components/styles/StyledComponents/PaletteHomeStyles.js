@@ -4,13 +4,12 @@ import styled from "styled-components";
 export const MotionDiv = styled(motion.div)`
 	display: flex;
 	justify-content: center;
-	border: 10px solid black;
 `;
 
 export const Colors = styled.div`
 	display: grid;
-	grid-template-columns: repeat(4, 22%);
-	grid-gap: 4%;
+	grid-template-columns: repeat(4, calc(25% - (180px / 4)));
+	grid-gap: 60px;
 	width: 100%;
 	@media (max-width: 1400px) {
 		display: inline;
@@ -33,6 +32,4 @@ export const MainOuterDiv = styled.div`
 	width: 100%;
 	display: flex;
 	flex-direction: column;
-	padding-bottom: 1rem;
-	border: 5px solid red;
 `;
