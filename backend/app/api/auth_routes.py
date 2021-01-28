@@ -68,6 +68,7 @@ def sign_up():
             email=form.data['email'],
             password=form.data['password']
         )
+        user.dp_url = 'https://s3.amazonaws.com/colour.ly/colourly.jpeg'
         db.session.add(user)
         db.session.commit()
         login_user(user)

@@ -19,8 +19,7 @@ class User(db.Model, UserMixin):
 	about_me = db.Column(db.Text)
 	email = db.Column(db.String(255), nullable = False, unique = True)
 	hashed_password = db.Column(db.String(255), nullable = False)
-	dp_url = db.Column(db.String, 
-                    	server_default='https://s3.amazonaws.com/colour.ly/colourly.jpeg')
+	dp_url = db.Column(db.String, default='https://s3.amazonaws.com/colour.ly/colourly.jpeg')
 
 	palettes = db.relationship('Palette', back_populates='user', cascade='all, delete-orphan')
 	liked_palettes = db.relationship('Palette', secondary=Like, back_populates='liked_by')
