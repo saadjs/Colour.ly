@@ -13,7 +13,6 @@ const Toggle = ({ theme, toggleTheme }) => {
 			>
 				{theme === "light" ? "Go Dark" : "Back to Light"}
 			</Button>
-			<span>(beta feature)</span>
 		</ThemeToggler>
 	);
 };
@@ -25,6 +24,7 @@ const ThemeToggler = styled.div`
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
+	padding: 0 1rem;
 	span {
 		padding: 0 1rem;
 	}
