@@ -6,31 +6,16 @@ import Button from "react-bootstrap/Button";
 const Toggle = ({ theme, toggleTheme }) => {
 	return (
 		<ThemeToggler>
-			<Button
-				onClick={toggleTheme}
-				variant="dark"
-				className="theme-toggle-button"
-			>
-				{theme === "light" ? "Go Dark" : "Back to Light"}
+			<Button onClick={toggleTheme} variant="dark">
+				{theme === "light" ? "Switch to Dark Mode" : "Back to Light"}
 			</Button>
 		</ThemeToggler>
 	);
 };
 
-const ThemeToggler = styled.div`
+const ThemeToggler = styled.p`
 	position: absolute;
-	top: 12%;
-	right: 0;
-	display: flex;
-	justify-content: flex-end;
-	align-items: center;
-	padding: 0 1rem;
-	span {
-		padding: 0 1rem;
-	}
-	@media (max-width: 1500px) {
-		top: 20%;
-	}
+	right: 1rem;
 `;
 
 Toggle.propTypes = {
