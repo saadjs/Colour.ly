@@ -23,7 +23,7 @@ html{
         width: 0.5rem;
     }
     &::-webkit-scrollbar-thumb{
-        background-color: #fffa65;
+        background-color: #c4ffb2;
     }
     
 }

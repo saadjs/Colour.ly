@@ -47,10 +47,6 @@ input {
 	font-weight: 600;
 }
 
-input:hover {
-	border-bottom: 2px solid #a8dadc;
-}
-
 input:focus {
 	outline: none;
 }

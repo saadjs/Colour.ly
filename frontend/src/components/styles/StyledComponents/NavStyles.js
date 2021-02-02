@@ -7,13 +7,13 @@ export const StyledNav = styled.nav`
 	justify-content: space-between;
 	align-items: center;
 	padding: 1rem 5rem;
-	background-color: #fffa65;
+	background-color: #c4ffb2;
 	font-size: 1.5rem;
 	.search-form-container {
 	}
 	.search-form {
 		input {
-			border: 2px solid #fffa65;
+			border: 2px solid #c4ffb2;
 		}
 		input,
 		input::-webkit-input-placeholder {

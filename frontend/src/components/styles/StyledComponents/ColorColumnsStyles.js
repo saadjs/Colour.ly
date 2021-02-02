@@ -2,9 +2,7 @@ import styled from "styled-components";
 
 export const StyledContainerDiv = styled.div`
 	padding: 10px;
-	/* border: 1px solid black; */
-	box-shadow: 0px 0px 30px #ada4b1;
-
+	box-shadow: 0px 0px 5px #ada4b1;
 	border-radius: 10px;
 	margin: 0.5rem 0;
 	:hover {
@@ -24,7 +22,6 @@ export const StyledInnerDiv = styled.div`
 `;
 
 export const StyledH5 = styled.h5`
-	color: #000000;
 	text-align: center;
 	padding: 0.5rem;
 	font-size: 1rem;
@@ -39,6 +36,7 @@ export const Columns = styled.div`
 export const PaletteInfoDiv = styled.div`
 	display: flex;
 	justify-content: space-between;
+	padding-top: 5px;
 `;
 
 export const LikesContainer = styled.div`
@@ -46,10 +44,10 @@ export const LikesContainer = styled.div`
 	padding: 0.5rem;
 	justify-content: center;
 	align-items: center;
-	box-shadow: 5px 5px 10px 1px rgba(0, 0, 255, 0.2);
+	border-radius: 5px;
+	box-shadow: 0px 0px 3px #ada4b1;
 	p {
-		padding-left: 5px;
-		padding-right: 8px;
+		padding: 0 5px;
 	}
 	.home-dil {
 		color: red;
