@@ -31,7 +31,6 @@ export const UserInfoContainer = styled(motion.div)`
 	}
 	.show-about-form-btn {
 		padding: 0.5rem;
-
 		font-size: 1rem;
 		margin-top: 0.5rem;
 	}
@@ -54,7 +53,7 @@ export const UserInfoContainer = styled(motion.div)`
 	}
 	strong {
 		text-decoration: underline;
-		color: black;
+		color: #9A2EC5;
 	}
 	ul {
 		list-style-type: none;
