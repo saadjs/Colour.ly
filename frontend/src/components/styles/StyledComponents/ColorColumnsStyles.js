@@ -2,9 +2,7 @@ import styled from "styled-components";
 
 export const StyledContainerDiv = styled.div`
 	padding: 10px;
-	/* border: 1px solid black; */
-	box-shadow: 0px 0px 30px #ada4b1;
-
+	box-shadow: 0px 0px 5px #ada4b1;
 	border-radius: 10px;
 	margin: 0.5rem 0;
 	:hover {
