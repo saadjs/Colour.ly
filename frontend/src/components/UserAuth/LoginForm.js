@@ -25,7 +25,7 @@ function LoginFormPage({ sessionUser }) {
 	const [errors, setErrors] = useState([]);
 
 	//! if use had already logged in, redirect to Home
-	if (sessionUser) return <Redirect to="/" />;
+	if (sessionUser) return <Redirect to="/palettes" />;
 
 	//? user login submit handler
 	const handleSubmit = (e) => {
@@ -46,7 +46,7 @@ function LoginFormPage({ sessionUser }) {
 				password: "password",
 			})
 		);
-		history.push("/");
+		history.push("/palettes");
 	};
 
 	return (
