@@ -9,8 +9,8 @@ export const ColorPickerDiv = styled.div`
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
-	font-family: "Kaushan Script", cursive;
 	h1 {
+		font-family: "Kaushan Script", cursive;
 		padding: 1rem;
 		text-align: center;
 	}
