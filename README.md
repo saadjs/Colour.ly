@@ -18,27 +18,19 @@ Inspired by [Coolors](https://coolors.co/)
 
 ### Landing Page
 
-[![Image from Gyazo](https://i.gyazo.com/842ad11164c4dcf60d03b78bb1ef9b9a.gif)](https://gyazo.com/842ad11164c4dcf60d03b78bb1ef9b9a)
+[![Image from Gyazo](https://s3.amazonaws.com/colour.ly/images/colourlyHome.gif)
 
 ## User Login and SignUp Pages
 
 ### Login Page
 
-![Login Page](./frontend/src/components/styles/screenshots/loginPage.png)
-
-### SignUp Page
-
-![SignUp Page](./frontend/src/components/styles/screenshots/signupPage.png)
+![Login Page](https://s3.amazonaws.com/colour.ly/images/colourlyLogin.png)
 
 ## Palette Pages
 
 ### Palette Home Page
 
-![Landing Page](./frontend/src/components/styles/screenshots/paletteHome.png)
-
-### Popular Palettes Home
-
-![Popular Palettes Home](./frontend/src/components/styles/screenshots/popularPalettes.png)
+![Landing Page](https://s3.amazonaws.com/colour.ly/images/homeGrid.png)
 
 ### Palette Page
 
@@ -46,13 +38,13 @@ Inspired by [Coolors](https://coolors.co/)
 
 ### Create Palette Page
 
-![Create Palette Page](./frontend/src/components/styles/screenshots/createPalette.png)
+![Create Palette Page](https://s3.amazonaws.com/colour.ly/images/createPalette.png)
 
 ## Profile Page
 
 ### User Profile
 
-![User Profile](./frontend/src/components/styles/screenshots/userProfile.png)
+![User Profile](https://s3.amazonaws.com/colour.ly/images/profile.png)
 
 # Features
 
