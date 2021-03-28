@@ -34,7 +34,7 @@ Inspired by [Coolors](https://coolors.co/)
 
 ### Palette Page
 
-![Image from Gyazo](https://i.gyazo.com/0f113e2b23963eb0c84ef5e64823ecbb.gif)](https://gyazo.com/0f113e2b23963eb0c84ef5e64823ecbb)
+![Image from Gyazo](https://i.gyazo.com/0f113e2b23963eb0c84ef5e64823ecbb.gif)
 
 ### Create Palette Page
 
