@@ -18,7 +18,7 @@ Inspired by [Coolors](https://coolors.co/)
 
 ### Landing Page
 
-[![Image from Gyazo](https://s3.amazonaws.com/colour.ly/images/colourlyHome.gif)
+![Landing Page](https://s3.amazonaws.com/colour.ly/images/colourlyHome.gif)
 
 ## User Login and SignUp Pages
 
@@ -34,7 +34,7 @@ Inspired by [Coolors](https://coolors.co/)
 
 ### Palette Page
 
-[![Image from Gyazo](https://i.gyazo.com/bdc46dedae21689a200ca02a16de7ef0.gif)](https://gyazo.com/bdc46dedae21689a200ca02a16de7ef0)
+![Image from Gyazo](https://i.gyazo.com/0f113e2b23963eb0c84ef5e64823ecbb.gif)](https://gyazo.com/0f113e2b23963eb0c84ef5e64823ecbb)
 
 ### Create Palette Page
 
